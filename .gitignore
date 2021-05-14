@@ -1,3 +1,6 @@
+# class files
+*.docx
+
 # Django
 *.log
 *.pot
