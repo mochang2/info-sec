@@ -1,7 +1,3 @@
-# class files(docs, pdfs)
-*.docx
-*.pdf
-
 # Django
 *.log
 *.pot
