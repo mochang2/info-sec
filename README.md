@@ -1,2 +1,1 @@
-README.md
-info-sec assignments and projects
+# info-sec assignment
