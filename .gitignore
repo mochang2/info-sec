@@ -1,0 +1,16 @@
+# class files(docs, pdfs)
+*.docx
+*.pdf
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+settings.py
+media
+.env
+
+# py setting
+.vscode/
+settings.json
