@@ -40,13 +40,18 @@
 #### 랜섬웨어와 같이 돈을 요하는 공격보다는 심각한 공격이 아닌 것 같지만, 결국 디페이스 공격이 성공하기 위해선 내부 서버에 취약점이 존재해야 가능하다. 따라서 디페이스는 해커의 장난 정도로 무시할 것이 아니다.
 ![디페이스 예시](http://m.ddaily.co.kr/data/photos/cdn/20170309/art_1488682857.jpg)
 
-
-<img src="./deface_img.jpg" width="450px" height="300px" alt="디페이스 화면"></img><br/>
-
 * 참고: <https://www.boannews.com/media/view.asp?idx=55936> , <https://www.boannews.com/media/view.asp?idx=97036>
 
 ----------------------------------------------------------------------
 
-## 6. 
+## 6. Billion laughs attack(xml lol)
+#### 2017, 2020 OWASP top 10에 등록된 Xml eXternal Entities(XXE) 취약점을 활용한 공격이다. XXE 취약점이란 XML 타입의 데이터 웹 요청을 통해 전송 시 서버에서 XML 외부 엔티티 처리를 가능하게 되는 경우에 발생한다. XML을 통해 사용자가 웹 어플리케이션으로 전달되는 XML 데이터를 직접 업로드나 수정이 가능하게 되는데 이에 대한 입력값 검증 등이 제대로 이루어지지 않으면 발생한다.
+#### 2020년도 정보보안기사에 나온 xml injection attack에 대한 예시 코드로는 다음과 같다.
+
+    <!DOCTYPE foo [
+    <!ENTITY xxe SYSTEM "file:///etc/passwd">
+    ]>
+
+####
 
 ----------------------------------------------------------------------
