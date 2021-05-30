@@ -1,5 +1,7 @@
 # class files
 *.docx
+!Assignment 2.1pdf
+*.pdf
 
 # Django
 *.log
