@@ -120,16 +120,20 @@
 
 ----------------------------------------------------------------------
 
-## 12. 
-#### 
+## 12. SPF(메일서버등록제, Sender Policy Framework)
+#### 메일서버 정보를 사전에 DNS에 txt 레코드로 공개 등록함으로써 수신자로 하여금 이메일에 표시된 발송자 정보가 실제 메일서버의 정보와 일치하는지를 확인할 수 있도록 하는 인증기술을 말한다. 스팸 메일은 보통 발신지를 위조해서 보내는 경우가 많기 때문에 이를 이용해서 스팸메일을 차단하는 방식이다. 단, 스팸 발신자가 도메인을 만들고 도메인이 합법적인 것처럼 보이게 만드는 SPF 레코드를 추가하는 일은 쉽기 때문에 오히려 역이용될 수도 있다.
+#### SPF 레코드 처리 결과로는 Pass(domain 사용이 인증되었음), Fail(domain 사용 권한이 레코드에서 명시적으로 거부), SoftFail(domain 사용 인증이 거부되었지만 거부가 덜 명확해서 바로 실패로 확인되지는 않음), Neutral(SPF 레코드에서 SMTP 클라이언트의 domain 사용 인증을 요구하지 않아 메시지를 수용), None(일치하는 SPF 레코드를 찾지 못해 SPF 처리가 수행되지 않음), PermError( SPF 레코드의 구문 오류, 중첩된 SPF 레코드 처리 중의 DNS 실패 또는 중첩된 SPF 레코드 처리 중에 구성된 SPF 처리 제한 초과 등의 영구적인 오류발생), TempError(임시 오류가 발생)이 있다.   
 
-* 참고: 
+* 참고: <https://docs.oracle.com/cd/E19957-01/820-0512/gdpno/index.html> , <https://spam.kisa.or.kr/white/sub1_2.do>
 
 ----------------------------------------------------------------------
 
-## 13. 
-#### 
+## 13. 수리카타(Suricata)
+#### 수리카타는 오픈소스 IDS 시스템의 한 종류이다. snort의 단일 스레드 처리방식이라 많은 데이터를 처리하기엔 느리다는 단점을 보완하여 멀티 코어와 멀티 스레드 처리방식을 지원한다. 또한 snort의 룰이 호환되어 사용 가능하다는 장점이 있다.
 
-* 참고: 
+###### 다음 사진은 snort와 suricata를 비교한 사진이다.
+![snort suricata 비교](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwlEDe%2FbtqFWekLQj6%2FeGoBpfjL1jBbjkr0tgZZO1%2Fimg.png)
+
+* 참고: <https://saynot.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-Suricata%EC%88%98%EB%A6%AC%EC%B9%B4%ED%83%80-%EA%B3%B5%EB%B6%80> , <https://suricata-ids.org/>
 
 ----------------------------------------------------------------------
