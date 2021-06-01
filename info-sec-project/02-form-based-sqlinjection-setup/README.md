@@ -2,11 +2,57 @@
 ###### To set up, I referred to Django official documents: [Django official](https://www.djangoproject.com/)
 
 ### 0. Preparation
-Python must be installed.  
-The code will be written on Visual Studio(VS).
+I assume that you already followed 01-common-step.
 
 -----------
 
+### 1. Check MySQL
+After you create a superuser, when you do select query from sql_db.auth_user, the result would like this:  
+![after create superuser](https://user-images.githubusercontent.com/63287638/120335125-2e6ffa80-c32c-11eb-9901-26c3a42a265f.PNG)
+</br>
+However, it's inconvenient to check the password, so I'll change the password storage method simply.
+
+-----------
+
+### 2. Change the way passwords are stored
+Insert these codes into BASE_DIR/venv/Lib/site-packages/django/contrib/auth/hashers.py: 
+
+    class PasswordStoreWithVul(BasePasswordHasher):
+        algorithm = "password_with_vul"
+
+        def salt(self):
+            return ""
+
+        def encode(self, password, salt):
+            assert salt == ""
+            return password[::-1]
+
+        def decode(self, encoded):
+            return {
+                "algorithm": self.algorithm,
+                "hash": encoded[:],
+                "salt": None,
+            }
+
+        def verify(self, password, encoded):
+            pass
+
+        def safe_summary(self, encoded):
+            pass
+
+        def harden_runtime(self, password, encoded):
+            pass
+
+Then, insert this code into a 'PASSWORD_HASHERS' list under BASE_DIR/venv/Lib/site-packages/django/conf/global_settings.py:
+
+    "django.contrib.auth.hashers.PasswordStoreWithVul",
+
+The above code must be inserted in the first line of the list.
+
+-----------
+
+### 3. Create sample users
+###### These users are used to practice form based SQL injection, which bypasses a normal password authentication.
 
 exam/sqlinjection123
 exam2/formbasedinjection123
