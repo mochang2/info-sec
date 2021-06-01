@@ -43,6 +43,9 @@ Insert these codes into BASE_DIR/venv/Lib/site-packages/django/contrib/auth/hash
         def harden_runtime(self, password, encoded):
             pass
 
+With this password storing way, you can simply store password in a reversed order(if you set a password as 'asdf', 'fdsa' will be stored in a database)
+</br>
+</br>
 Then, insert this code into a 'PASSWORD_HASHERS' list under BASE_DIR/venv/Lib/site-packages/django/conf/global_settings.py:
 
     "django.contrib.auth.hashers.PasswordStoreWithVul",
@@ -53,14 +56,23 @@ The above code must be inserted in the first line of the list.
 
 ### 3. Create sample users
 ###### These users are used to practice form based SQL injection, which bypasses a normal password authentication.
+Now, in an admin page(http~~locahost~~/admin), you can simply add new users not subject to hash function encryption.  
+Access to the admin page, click 'Users' under AUTHENTICATION AND AUTHORIZATION, click 'ADD USER' and create sample users.  
+![admin page add user button](https://user-images.githubusercontent.com/63287638/120339493-1f8b4700-c330-11eb-9e85-63a6a29c5e8f.png)
+</br>
+In my case, I create three users:  
+![after create 3 example users](https://user-images.githubusercontent.com/63287638/120340389-f4edbe00-c330-11eb-9a36-069319855d55.PNG)
+</br>
+(username/password)  
+exam/sqlinjection123  
+exam2/formbasedinjection123  
+exam3/blindinjection123  
 
-exam/sqlinjection123
-exam2/formbasedinjection123
-exam3/blindinjection123
+-----------
 
 </br></br></br></br>
 
-todo: mysql 연동 -> 슈퍼유저 만들기 -> admin 사이트 가서 아이디 몇 개 더 만들고 mysql과 연동이 되었는지 확인 -> 로그인폼 만들기 -> sql injection 시도
+todo: 로그인폼 만들기 -> sql injection 시도
 
 
 </br></br></br></br>
