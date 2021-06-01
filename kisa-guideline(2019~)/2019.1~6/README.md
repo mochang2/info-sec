@@ -39,8 +39,4 @@
 
 * 참고: <https://vim.fandom.com/wiki/Modeline_magic> , <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=35049>
 
-----------------------------------------------------------------------
-
-## ㅁ
-
-----------------------------------------------------------------------
+</br>
