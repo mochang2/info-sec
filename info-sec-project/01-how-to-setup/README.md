@@ -15,9 +15,31 @@ Turn on the terminal in VS and type in the working directory :
 
 The first venv is python module and the second venv would be the name of the virtual environment.  
 </br>
-These would be installed  
+These would be installed:  
 ![virtual env install](https://user-images.githubusercontent.com/63287638/120278132-dc10e880-c2ef-11eb-9467-dbf6cd484398.PNG)
+</br>
+To activate virtual environment(venv), move to(cd) ~~venv/Scripts and type .\acitvate. Then venv will be executed.
 
+-----------
+
+### 2. Install Django and start a project
+In Scripts directory, type : 
+
+    pip install django
+
+When you type "pip freeze", Django==x.x.x (x.x.x means version) would be included.
+</br>
+Move to project's root directory, where you will start a project.
+</br>
+Then type in your terminal such as:
+
+    django-admin startproject ~~~
+
+In my case, to express it has vulnerabilites, the name of the project is vulSite.
+</br>
+These would in installed including manage.py  
+![start project](https://user-images.githubusercontent.com/63287638/120280136-4591f680-c2f2-11eb-8639-dcaacb513b76.PNG)
+</br>
 
 
 </br></br></br></br>

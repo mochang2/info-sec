@@ -1,1 +1,1 @@
-Django files(.html, urls.py, views.py, settings.py)
+Django files(.html, urls.py, views.py) and steps to be ready to practice SQL injection.

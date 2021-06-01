@@ -4,6 +4,10 @@
 *.pdf
 
 # Django
+__init__.py
+asgi.py
+wsgi.py
+manage.py
 *.log
 *.pot
 *.pyc
