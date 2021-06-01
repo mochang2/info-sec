@@ -16,6 +16,8 @@ settings.py
 media
 venv
 *.exe
+migrations
+tests.py
 
 # py setting
 .vscode/
