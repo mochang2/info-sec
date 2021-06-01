@@ -8,7 +8,7 @@ The code will be written on Visual Studio(VS).
 -----------
 
 ### 1. Install a virtual environment
-The reason for the need for an independent virtual environment is to prevent Python libraries downloaded from the Internet from causing conflicts. (External libraries are often dependent on each other, which can cause malfunction if the version is not correct)  
+The reason why an independent virtual environment is needed is to prevent Python libraries downloaded from the Internet from causing conflicts. (External libraries are often dependent on each other, which can cause malfunction if the version is not correct)  
 Turn on the terminal in VS and type in the working directory :
 
     python -m venv venv
@@ -76,7 +76,7 @@ Insert urls.py in vulSite(project name) directory these codes:
         path("posts/", include("posts.urls")),
     ]
 
-When you type ht<span>tp://</span>localhost:portnumber/auth(or posts), you can open each app's html files(not now because there is nothing in apps).
+When you type ht<span>tp://</span>localhost:portnumber/auth(or posts), you can open each app's html files(not now because there is nothing to show in apps).
 </br>
 </br>
 Create templates directory and html files in it like this:  
@@ -114,6 +114,7 @@ __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url
 -----------
 
 ### 5.
+
 
 
 </br></br></br></br>
