@@ -4,6 +4,7 @@
 *.pdf
 
 # Django
+
 __init__.py
 asgi.py
 wsgi.py
