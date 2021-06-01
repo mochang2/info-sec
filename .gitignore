@@ -18,6 +18,9 @@ venv
 *.exe
 migrations
 tests.py
+*.sqlite3
+*.sqlite
+db.sqlite3
 
 # py setting
 .vscode/

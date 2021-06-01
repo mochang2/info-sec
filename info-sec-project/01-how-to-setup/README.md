@@ -57,6 +57,7 @@ These would be installed
 'users' app will be composed of the code related to login and it will show form based sql injection.  
 'posts' app will be composed of the code related to post and it will show blind sql injection.
 </br>
+</br>
 Open settings.py, which is in vulSite(project name) and add app names like this:  
 ![settings](https://user-images.githubusercontent.com/63287638/120285386-25fdcc80-c2f8-11eb-992a-fd5813d36f3f.PNG)
 </br>
@@ -64,11 +65,55 @@ Open settings.py, which is in vulSite(project name) and add app names like this:
 -----------
 
 ### 4. Create urls.py and templates directory and update views.py
-#####
+Insert urls.py in vulSite(project name) directory these codes:
 
+    from django.contrib import admin
+    from django.urls import path, include
+
+    urlpatterns = [
+        path("admin/", admin.site.urls),
+        path("auth/", include("users.urls")),
+        path("posts/", include("posts.urls")),
+    ]
+
+When you type ht<span>tp://</span>localhost:portnumber/auth(or posts), you can open each app's html files(not now because there is nothing in apps).
+</br>
+</br>
+Create templates directory and html files in it like this:  
+![create templates](https://user-images.githubusercontent.com/63287638/120286629-6f9ae700-c2f9-11eb-8368-2dd93515e59c.PNG)
+</br>
+Type any texts in html files that can show this page is a login page.  
+</br>
+Move to views.py
+Add these codes:
+
+    from django.shortcuts import render, redirect
+
+    def login_func(request):
+        data = {}
+        return render(request, "login.html", data)
+
+Create urls.py under each app and add these codes:
+
+    from django.urls import path, include
+    from . import views
+
+    app_name = "users"
+
+    urlpatterns = [
+        path("", views.login_func, name="login"),
+    ]
+
+Add similar codes in the posts app.
+</br>
+</br>
+__When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url, this page would be shown:__  
+![login page ex1](https://user-images.githubusercontent.com/63287638/120288127-d8369380-c2fa-11eb-875b-0572566115e4.png)
+</br>
 
 -----------
 
+### 5.
 
 
 </br></br></br></br>
