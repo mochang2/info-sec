@@ -1,6 +1,5 @@
 # setting up Django to practice SQL injection
-###### To set up, I referred to Django official documents:
-[Django official](https://www.djangoproject.com/)
+###### To set up, I referred to Django official documents: [Django official](https://www.djangoproject.com/)
 
 ### 1. Install a virtual environment
 The reason for the need for an independent virtual environment is to prevent Python libraries downloaded from the Internet from causing conflicts. (External libraries are often dependent on each other, which can cause malfunction if the version is not correct)  
