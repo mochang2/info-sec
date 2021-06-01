@@ -113,7 +113,53 @@ __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url
 
 -----------
 
-### 5.
+### 5. Change database to MySQL
+If you followed these steps, db.sqlite3 would be added automately. SQLite is a relatively lightweight database used by applications, not servers. I will delete db.sqlite3 and change to MySQL.  
+Delete db.sqlite3. As there are no important data now, it would be okay. Then download MySQL from here: [MySQL Download](https://www.mysql.com/).  
+Create a new database in MySQL, used to store users and posts like this:  
+![mysql new database](https://user-images.githubusercontent.com/63287638/120312660-fb217180-c313-11eb-87f3-9acc49323f58.png)
+</br>
+Come back to VS and type in the terminal:
+
+    pip install mysqlclient
+
+This module helps Django to use MySQL.
+</br>
+</br>
+Then revise "DATABASESE" in settings.py like this:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'sql_db',
+            'USER': 'user',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': 'MySQL well known port is 3306',
+        }
+    }
+
+USER and PASSWORD are username and password of your MySQL.
+</br>
+</br>
+From the terminal, navigate to the directory where manage.py is located, and enter:
+
+    py manage.py makemigrations
+
+and
+
+    py manage.py migrate
+
+When you check 'sql_db' in MySQL, these tables would be:  
+![mysql first migrate](https://user-images.githubusercontent.com/63287638/120321280-17c2a700-c31e-11eb-8d16-7a94b9d4cea0.PNG)
+</br>
+
+-----------
+
+### 6. Create a superuser
+
+
+</br></br></br></br>
 
 todo: mysql 연동 -> 슈퍼유저 만들기 -> admin 사이트 가서 아이디 몇 개 더 만들고 mysql과 연동이 되었는지 확인 -> 로그인폼 만들기 -> sql injection 시도
 
