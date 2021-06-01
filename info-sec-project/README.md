@@ -4,7 +4,10 @@
 
 ### Introduction
 Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, including form based SQL injection and blind SQL injection.  
-I will use Django, one of the frameworks to make web pages using Python, and MySQL, most popular one among the database applications to show how attackers attack step by step. The way to set up the configurations is here:  [common-setup]<https://github.com/mochang2/info-sec/blob/master/info-sec-project/01-how-to-setup/README.md>  ,[form-based-sql-injection-setup]<https://github.com/mochang2/info-sec/blob/master/info-sec-project/02-form-based-sqlinjection-setup/README.md>  ,[blind-sql-injection]<https://github.com/mochang2/info-sec/blob/master/info-sec-project/03-blind-sqlinjection-setup/README.md>
+I will use Django, one of the frameworks to make web pages using Python, and MySQL, most popular one among the database applications to show how attackers attack step by step. The way to set up the configurations is here:
+</br>
+[common-setup](https://github.com/mochang2/info-sec/blob/master/info-sec-project/01-how-to-setup/README.md)  [form-based-sql-injection-setup](https://github.com/mochang2/info-sec/blob/master/info-sec-project/02-form-based-sqlinjection-setup/README.md)  
+[blind-sql-injection](https://github.com/mochang2/info-sec/blob/master/info-sec-project/03-blind-sqlinjection-setup/README.md)
 
 ### Form Based SQL Injection
 
