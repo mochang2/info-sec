@@ -84,8 +84,7 @@ Create templates directory and html files in it like this:
 </br>
 Type any texts in html files that can show this page is a login page.  
 </br>
-Move to views.py
-Add these codes:
+Move to views.py and add these codes:
 
     from django.shortcuts import render, redirect
 
@@ -104,7 +103,7 @@ Create urls.py under each app and add these codes:
         path("", views.login_func, name="login"),
     ]
 
-Add similar codes in the posts app.
+Add similar codes in 'posts' app.
 </br>
 </br>
 __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url, this page would be shown:__  
@@ -118,6 +117,7 @@ If you followed these steps, db.sqlite3 would be added automately. SQLite is a r
 Delete db.sqlite3. As there are no important data now, it would be okay. Then download MySQL from here: [MySQL Download](https://www.mysql.com/).  
 Create a new database in MySQL, used to store users and posts like this:  
 ![mysql new database](https://user-images.githubusercontent.com/63287638/120312660-fb217180-c313-11eb-87f3-9acc49323f58.png)
+</br>
 </br>
 Come back to VS and type in the terminal:
 
@@ -157,18 +157,10 @@ When you check 'sql_db' in MySQL, these tables would be:
 -----------
 
 ### 6. Create a superuser
+Type this where manage.py is located:
 
+    py manage.py createsuperuser
 
-</br></br></br></br>
-
-todo: mysql 연동 -> 슈퍼유저 만들기 -> admin 사이트 가서 아이디 몇 개 더 만들고 mysql과 연동이 되었는지 확인 -> 로그인폼 만들기 -> sql injection 시도
-
-
-</br></br></br></br>
-이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
-
-볼드 처리할 곳을 __, **로 감싸주면 됩니다.
-
-인용문은 >을 앞에 붙여주면 됩니다.
-
-순서 없는 목록은 *, +, - 세 가지 방법을 사용할 수 있습니다. 들여쓰기를 하면 하위의 목록으로 만들 수 있습니다.
+Create a superuser, access to ht<span>tp://</span>localhost:port/admin and login.  
+</br>
+</br>
