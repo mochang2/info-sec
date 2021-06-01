@@ -115,6 +115,7 @@ __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url
 
 ### 5.
 
+todo: mysql 연동 -> 슈퍼유저 만들기 -> admin 사이트 가서 아이디 몇 개 더 만들고 mysql과 연동이 되었는지 확인 -> 로그인폼 만들기 -> sql injection 시도
 
 
 </br></br></br></br>
