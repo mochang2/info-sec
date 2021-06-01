@@ -14,11 +14,13 @@ Turn on the terminal in VS and type in the working directory :
     python -m venv venv
 
 The first venv is python module and the second venv would be the name of the virtual environment.  
-  These would be installed
+</br>
+These would be installed
+![virtual env install](https://user-images.githubusercontent.com/63287638/120278132-dc10e880-c2ef-11eb-9467-dbf6cd484398.PNG)
 
 
 
-
+</br></br></br></br>
 이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
 
 볼드 처리할 곳을 __, **로 감싸주면 됩니다.
