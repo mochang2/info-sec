@@ -10,7 +10,7 @@ I assume that you already followed 01-common-step.
 After you create a superuser, when you do select query from sql_db.auth_user, the result would like this:  
 ![after create superuser](https://user-images.githubusercontent.com/63287638/120335125-2e6ffa80-c32c-11eb-9901-26c3a42a265f.PNG)
 </br>
-However, it's inconvenient to check the password, so I'll change the password storage method simply.
+However, it's inconvenient to check the password, so I will change the password storage method to simpler one.
 
 -----------
 
