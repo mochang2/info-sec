@@ -31,16 +31,30 @@ When you type "pip freeze", Django==x.x.x (x.x.x means version) would be include
 </br>
 Move to project's root directory, where you will start a project.
 </br>
-Then type in your terminal such as:
+Then type in your terminal like:
 
     django-admin startproject ~~~
 
 In my case, to express it has vulnerabilites, the name of the project is vulSite.
 </br>
-These would in installed including manage.py  
+These would be installed including manage.py  
 ![start project](https://user-images.githubusercontent.com/63287638/120280136-4591f680-c2f2-11eb-8639-dcaacb513b76.PNG)
 </br>
 
+### 3. Install an app
+An app refers to an application that performs a particular function, while a project refers to putting those apps together. Therefore, different functions are implemented by different apps.
+</br>
+</br>
+Type in your terminal:
+
+    py manage.py startapp app_name
+
+These would be installed  
+![startapp](https://user-images.githubusercontent.com/63287638/120281293-b8e83800-c2f3-11eb-9a57-1453c5a13ef3.PNG)
+</br>
+'users' app will be composed of the code related to login and it will show form based sql injection.  
+'posts' app will be composed of the code related to post and it will show blind sql injection.
+</br>
 
 </br></br></br></br>
 이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
