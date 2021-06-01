@@ -13,7 +13,7 @@ I will use Django, one of the frameworks to make web pages using Python, and MyS
 ### Conclusion
 
 #### References
-EunHye Jung, "Django Virtualenv", 'https://eunhyejung.github.io/python/2018/09/09/django-virtualenv.html'  
+EunHye Jung, "Django Virtualenv", ht<span>tps://</span>eunhyejung.github.io/python/2018/09/09/django-virtualenv.html  
 "Django documentation", https://www.djangoproject.com/
 
 
