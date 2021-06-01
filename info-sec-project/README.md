@@ -1,5 +1,6 @@
 # SQL INJECTION
 ###### Finding out how SQL injection is actually used and how dangerous it is.
+------------------
 
 ### Introduction
 Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, including form based SQL injection and blind SQL injection.
