@@ -15,7 +15,7 @@ Turn on the terminal in VS and type in the working directory :
 
 The first venv is python module and the second venv would be the name of the virtual environment.  
 </br>
-These would be installed
+These would be installed  
 ![virtual env install](https://user-images.githubusercontent.com/63287638/120278132-dc10e880-c2ef-11eb-9467-dbf6cd484398.PNG)
 
 
