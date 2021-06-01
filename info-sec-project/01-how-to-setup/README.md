@@ -41,6 +41,8 @@ These would be installed including manage.py
 ![start project](https://user-images.githubusercontent.com/63287638/120280136-4591f680-c2f2-11eb-8639-dcaacb513b76.PNG)
 </br>
 
+-----------
+
 ### 3. Install an app
 An app refers to an application that performs a particular function, while a project refers to putting those apps together. Therefore, different functions are implemented by different apps.
 </br>
@@ -55,6 +57,19 @@ These would be installed
 'users' app will be composed of the code related to login and it will show form based sql injection.  
 'posts' app will be composed of the code related to post and it will show blind sql injection.
 </br>
+Open settings.py, which is in vulSite(project name) and add app names like this:  
+![settings](https://user-images.githubusercontent.com/63287638/120285386-25fdcc80-c2f8-11eb-992a-fd5813d36f3f.PNG)
+</br>
+
+-----------
+
+### 4. Create urls.py and templates directory and update views.py
+#####
+
+
+-----------
+
+
 
 </br></br></br></br>
 이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
