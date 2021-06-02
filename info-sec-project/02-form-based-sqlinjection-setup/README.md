@@ -79,25 +79,84 @@ Your sql_db.auth_user in MySQL would be changed like this:
 -----------
 
 ### 4. Revise login.html under users/templates/
+###### Originally, to create a normal website with Django, we define the model at models.py and send queries to database through it, but we will not define the model because we will only practice SQL injection here.
+Input these codes in the body part of the login.html:
 
-원래 models.py에서 모델 설정하는데 그냥 바로 db에 접근하도록
+    <form class="login" method="POST" enctype="application/x-www-form-urlencoded" id="login-form">
+        <!-- Django requires this token before submitting post method -->
+        {% csrf_token %}
+
+        {% if user.is_authenticated %}
+        <p>welcome! {{username}}</p>
+
+        {% else %}
+        <div class="login-field">
+            <input type="text" class="login-input" placeholder="username" maxlength="20" name="username">
+        </div>
+        <div class="login-field">
+            <!-- To see what I input, type is text, not password -->
+            <input type="text" class="login-input" placeholder="password" name="password">
+        </div>
+        <button class="login-submit">
+            <span class="button-text">login</span>
+        </button>
+        {% endif %}
+    </form>
+
+</br>
 
 -----------
 
-
 ### 5. Revise views.py of 'users' app
+Change views.py of 'users' app
+
+    from django.shortcuts import render, redirect
+    from django.contrib.auth import login as auth_login, logout as auth_logout
+    from django.contrib.auth.models import User
 
 
-</br></br></br></br>
+    def login_func(request):
+        data = {}
+        if request.method == "POST":
+            username = request.POST.get("username", None)
+            password = request.POST.get("password", None)
+            password = password[::-1]  # reverse the password
+            query = (
+                "select id, username, password from auth_user where username='"
+                + str(username)
+                + "' and password='"
+                + str(password)
+                + "'"
+            )
 
-todo: 로그인폼 만들기 -> sql injection 시도
+            try:
+                user = User.objects.raw(query)[0]
+                if user:
+                    auth_login(request, user)
+            except Exception as e:
+                print("Unexpected input")
+
+            data.update({"username": username})
+
+        return render(request, "login.html", data)
 
 
-</br></br></br></br>
-이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
+    def logout(request):
+        auth_logout(request)
+        return redirect("http://127.0.0.1:8000/auth/")
 
-볼드 처리할 곳을 __, **로 감싸주면 됩니다.
+Change urls.py of 'users' app
 
-인용문은 >을 앞에 붙여주면 됩니다.
+    from django.urls import path, include
+    from . import views
 
-순서 없는 목록은 *, +, - 세 가지 방법을 사용할 수 있습니다. 들여쓰기를 하면 하위의 목록으로 만들 수 있습니다.
+    app_name = "users"
+
+    urlpatterns = [
+        path("", views.login_func, name="login"),
+        path("logout/", views.logout, name="logout"),
+    ]
+
+When you access to ht<span>tp://</span>localhost:port/auth/logout/, logout is executed. It makes you easier to logout.  
+</br>
+__Now, you are ready to practice form based sql injection.__

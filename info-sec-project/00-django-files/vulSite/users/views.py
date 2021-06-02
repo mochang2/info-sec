@@ -2,21 +2,31 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 
-# from .models import User
-
 
 def login_func(request):
     data = {}
     if request.method == "POST":
         username = request.POST.get("username", None)
         password = request.POST.get("password", None)
-        # login code
-        data.update({"username": username})
-        print(username)
-        print(password)
+        password = password[::-1]  # reverse the password
+        query = (
+            "select id, username, password from auth_user where username='"
+            + str(username)
+            + "' and password='"
+            + str(password)
+            + "'"
+        )
 
-    for i in User.objects.raw("select id, username, password from auth_user"):
-        print(i.id, i.username, i.password)
+        try:
+            user = User.objects.raw(query)[0]
+            # print(user.id)
+            if user:
+                auth_login(request, user)
+        except Exception as e:
+            # print(e)
+            print("Unexpected input")
+
+        data.update({"username": username})
 
     return render(request, "login.html", data)
 
