@@ -55,11 +55,12 @@ The attacker can bypass authentication by arbitrarily manipulating the condition
 
 Running queries passed to MySQL directly from MySQL results in the following:  
 ![result from the mysql with '#'](https://user-images.githubusercontent.com/63287638/120437238-d2a08280-c3ba-11eb-95a6-c9a7a2f2471d.PNG)  
-All of the users stored in the tables are returned.
+All of the users stored in the tables are returned.  
 </br>
 
-해결방안 : 장고 같은 경우 공식 문서에서 사용하는 authenticate 와 같은 함수로 로그인. 기본적으로 sql injection 등은 막혀 있음. 장고 외에도 APM 환경 등으로 웹서버를 만들거만 입력값 검증(허가되지 않은 특수 문자 예를 들면 db에서 예약된 특수문자들 mysql 같은 경우 #, ', " mssql같은 경우 -, ' ," 등을 이스케이프 처리함)
-
+__Countermeasures for form based sql injection__  
+In the case of Django, do not send queries to the database via 'raw', but rather process logins with functions such as 'authenticate' as recommended in the official document. This function essentially blocks various SQL injection.  
+In addition to Django environment, there are various ways to prevent SQL injection. In APM environment, for example, there are functions in PHP language, which escape reserved special characters(#, ', " etc). Or simply, only authorized characters can be entered using a whitelist policy.  
 </br>
 
 ------------------
