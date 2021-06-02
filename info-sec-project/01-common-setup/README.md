@@ -115,7 +115,7 @@ __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url
 ### 5. Change database to MySQL
 If you followed these steps, db.sqlite3 would be added automately. SQLite is a relatively lightweight database used by applications, not servers. I will delete db.sqlite3 and change to MySQL.  
 Delete db.sqlite3. As there are no important data now, it would be okay. Then download MySQL from here: [MySQL Download](https://www.mysql.com/).  
-Create a new database in MySQL, used to store users and posts like this:  
+Create a new database in MySQL with 'create database db_name', used to store users and posts like:  
 ![mysql new database](https://user-images.githubusercontent.com/63287638/120312660-fb217180-c313-11eb-87f3-9acc49323f58.png)
 </br>
 </br>
@@ -142,7 +142,7 @@ Then revise "DATABASESE" in settings.py like this:
 USER and PASSWORD are username and password of your MySQL.
 </br>
 </br>
-From the terminal, navigate to the directory where manage.py is located, and enter:
+From the terminal, navigate to the directory where manage.py is located(when you tried to use commands including manage.py, you should type the commands here), and enter:
 
     py manage.py makemigrations
 
@@ -170,6 +170,6 @@ and
 
     py manage.py migrate
 
-Then, you can access to ht<span>tp://</span>localhost:port/admin and login.  
+Then, you can access to 'ht<span>tp://</span>localhost:port/admin' and login.  
 </br>
 </br>
