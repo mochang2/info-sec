@@ -103,7 +103,7 @@ Create urls.py under each app and add these codes:
         path("", views.login_func, name="login"),
     ]
 
-Add similar codes in 'posts' app.
+Add similar codes in the 'posts' app.
 </br>
 </br>
 __When you type ht<span>tp://</span>localhost:portnumber/auth in web browser url, this page would be shown:__  

@@ -7,7 +7,7 @@ I assume that you already followed 01-common-step.
 -----------
 
 ### 1. Define a model and applying changes to databases
-Insert these codes models.py under 'posts' app
+Insert these codes into models.py under the 'posts' app
 
     class Post(models.Model):
         # id : auto created field
@@ -15,7 +15,7 @@ Insert these codes models.py under 'posts' app
         writer = models.TextField()
         created_at = models.DateTimeField(auto_now_add=True)
 
-Insert thes codes admin.py under 'posts' app
+Insert thes codes into admin.py under the 'posts' app
 
     from .models import Post
 
@@ -33,7 +33,7 @@ There will be nothing in posts_post table now.
 -----------
 
 ### 2. Revise posts.html and views.py
-Delete unnecessary codes and insert these codes:
+Delete unnecessary codes and insert these codes into posts.html:
 
     <!DOCTYPE html>
     <html>
@@ -114,7 +114,7 @@ Delete unnecessary codes and insert these codes:
 
     </html>
 
-Revise views.py like this:
+Revise views.py under the 'posts' app like this:
 
     from django.shortcuts import render, redirect
     from .models import Post
@@ -132,8 +132,7 @@ Revise views.py like this:
 
 </br>
 If you access to ht<span>tp://</span>localhost:port/posts/, the web server will give this page as a response.  
-![posts page without anything](https://user-images.githubusercontent.com/63287638/120485006-99820580-c3ee-11eb-9146-78f7b98c3d06.PNG)
-</br>
+![posts page without anything](https://user-images.githubusercontent.com/63287638/120485006-99820580-c3ee-11eb-9146-78f7b98c3d06.PNG)  
 </br>
 
 -----------

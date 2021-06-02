@@ -107,8 +107,8 @@ Input these codes in the body part of the login.html:
 
 -----------
 
-### 5. Revise 'users' app
-Change views.py of 'users' app
+### 5. Revise the 'users' app
+Change views.py of the 'users' app
 
     from django.shortcuts import render, redirect
     from django.contrib.auth import login as auth_login, logout as auth_logout
@@ -145,7 +145,7 @@ Change views.py of 'users' app
         auth_logout(request)
         return redirect("http://127.0.0.1:8000/auth/")
 
-Change urls.py of 'users' app
+Change urls.py of the 'users' app
 
     from django.urls import path, include
     from . import views
