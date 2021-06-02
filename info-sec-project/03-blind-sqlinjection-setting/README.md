@@ -131,7 +131,7 @@ Revise views.py under the 'posts' app like this:
         return render(request, "posts.html", data)
 
 </br>
-If you access to ht<span>tp://</span>localhost:port/posts/, the web server will give this page as a response.  
+If you access to ht<span>tp://</span>localhost:port/posts/, the web server will give this page as a response.</br>
 ![posts page without anything](https://user-images.githubusercontent.com/63287638/120485006-99820580-c3ee-11eb-9146-78f7b98c3d06.PNG)  
 </br>
 
