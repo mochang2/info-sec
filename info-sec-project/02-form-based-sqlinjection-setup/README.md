@@ -107,7 +107,7 @@ Input these codes in the body part of the login.html:
 
 -----------
 
-### 5. Revise views.py of 'users' app
+### 5. Revise 'users' app
 Change views.py of 'users' app
 
     from django.shortcuts import render, redirect
