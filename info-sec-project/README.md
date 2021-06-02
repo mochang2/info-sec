@@ -49,13 +49,13 @@ If the user is the normal user, he or she may try logging in like this:
 
 However, an attacker who does not know the password can try:  
 ![form based sql injection trial](https://user-images.githubusercontent.com/63287638/120434696-c1a24200-c3b7-11eb-84b4-bcabc64452a4.PNG)  
-The attacker can bypass authentication by arbitrarily manipulating the conditions of query statements for authentication. He or she manipulates the query statements so that the conditional clause of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the attack is successful, the attacker loges in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
+The attacker can bypass authentication by arbitrarily manipulating the conditions of query statements. He or she manipulates the query statements so that the conditional clause(after where) of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the attack is successful, the attacker loges in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
 ![form based sql injection success](https://user-images.githubusercontent.com/63287638/120435926-45106300-c3b9-11eb-92a8-9321a93e5734.PNG)  
 </br>
 
-Running queries passed to MySQL directly from MySQL results in the following:  
+Running queries passed to the database directly from MySQL results in the following:  
 ![result from the mysql with '#'](https://user-images.githubusercontent.com/63287638/120437238-d2a08280-c3ba-11eb-95a6-c9a7a2f2471d.PNG)  
-All of the users stored in the tables are returned.  
+All of the users in the tables are returned.  
 </br>
 
 __Countermeasures for form based sql injection__  
@@ -66,12 +66,15 @@ In addition to Django environment, there are various ways to prevent SQL injecti
 ------------------
 
 ### Blind SQL Injection
-
+이렇게 많은 노가다가 필요하므로 보통 공격자는 자동화된 툴을 이용한다.
 </br>
 
 ------------------
 
 ### Conclusion
+이처럼 sql injection은 인증을 우회할 수 있는 어마무시한 공격이다. 조심하는 법을 항상 익히고 취약점을 파악하려고 노력하고 보안 패치에 신경쓰자. 안 그러면 내가 힘들게 만든 웹 사이트가 닫을 수도 있다.
+위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!
+
 
 #### References
 <!--- span is used to prevent hyperlinks ---> 
