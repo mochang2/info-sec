@@ -47,12 +47,13 @@ If the user is the normal user, he or she may try logging in like this:
 ![exam login trial](https://user-images.githubusercontent.com/63287638/120431179-1abba700-c3b3-11eb-8392-ea157c6e9139.png)  
 </br>
 
-However, an attacker who does not know the password can try:
+However, an attacker who does not know the password can try:  
 ![form based sql injection trial](https://user-images.githubusercontent.com/63287638/120434696-c1a24200-c3b7-11eb-84b4-bcabc64452a4.PNG)  
-The attacker bypasses authentication by arbitrarily manipulating the conditions of query statements for authentication by trying the above. He or she manipulates the query statements so that the conditional clause of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the attack is successful, the attacker logges in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
+The attacker can bypass authentication by arbitrarily manipulating the conditions of query statements for authentication. He or she manipulates the query statements so that the conditional clause of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the attack is successful, the attacker loges in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
 ![form based sql injection success](https://user-images.githubusercontent.com/63287638/120435926-45106300-c3b9-11eb-92a8-9321a93e5734.PNG)  
 </br>
 
+Running rawquery passed to MySQL directly from MySQL results in the following results:
 
 해결방안 : 장고 같은 경우 공식 문서에서 사용하는 authenticate 와 같은 함수로 로그인. 기본적으로 sql injection 등은 막혀 있음. 장고 외에도 APM 환경 등으로 웹서버를 만들거만 입력값 검증(허가되지 않은 특수 문자 예를 들면 db에서 예약된 특수문자들 mysql 같은 경우 #, ', " mssql같은 경우 -, ' ," 등을 이스케이프 처리함)
 
