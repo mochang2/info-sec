@@ -152,7 +152,11 @@ Also, add these codes on urlpatterns of urls.py under the 'posts' app:
 
 When you access to ht<span>tp://</span>localhost:port/posts/createposts/, a new fake writing will be posted. If you try several times, the web server will respond like this screen:  
 <img src="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" alt="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" width="800" height="auto" />
+</br>
 
+It is also added to MySQL.  
+![mysql new table-posts with dummy contents](https://user-images.githubusercontent.com/63287638/120494259-a4409880-c3f6-11eb-8241-e3c8e5b2ab3e.PNG)
+</br>
 
 -----------
 
