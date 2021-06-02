@@ -132,7 +132,7 @@ Revise views.py under the 'posts' app like this:
 
 </br>
 If you access to ht<span>tp://</span>localhost:port/posts/, the web server will give this page as a response.</br>
-![posts page without anything](https://user-images.githubusercontent.com/63287638/120486142-b5d27200-c3ef-11eb-9fea-0089cce39e65.PNG | width=890)  
+<img src="https://user-images.githubusercontent.com/63287638/120486142-b5d27200-c3ef-11eb-9fea-0089cce39e65.PNG" alt="https://user-images.githubusercontent.com/63287638/120486142-b5d27200-c3ef-11eb-9fea-0089cce39e65.PNG" width="800" height="auto" />  
 </br>
 
 -----------
