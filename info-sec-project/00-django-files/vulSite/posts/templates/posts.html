@@ -66,8 +66,9 @@
         </div>
         <div class="bulletins">
             {% for i in bulletin_list %}
-            {{i.id}} &nbsp;&nbsp;&nbsp; {{i.title}} &nbsp;&nbsp;&nbsp; {{i.writer}} &nbsp;&nbsp;&nbsp;
-            {{i.created_at}}<br>
+            {{i.id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.title}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.writer}}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.created_at}}<br>
             {% endfor %}
         </div>
         <form class="form-POST" method="POST" enctype="application/x-www-form-urlencoded">

@@ -14,7 +14,6 @@ def index(request):
     return render(request, "posts.html", data)
 
 
-# def createmodel(requests):
-#     Post.objects.create(title="write what you want", writer="write who you want")
-#     data = {}
-#     return render(requests, "testmodel.html", data)
+def createposts(requests):
+    Post.objects.create(title="write what you want", writer="write who you want")
+    return redirect("/posts/")  # relative path

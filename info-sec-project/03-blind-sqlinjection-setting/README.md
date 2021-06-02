@@ -93,8 +93,9 @@ Delete unnecessary codes and insert these codes into posts.html:
             </div>
             <div class="bulletins">
                 {% for i in bulletin_list %}
-                {{i.id}} &nbsp;&nbsp;&nbsp; {{i.title}} &nbsp;&nbsp;&nbsp; {{i.writer}} &nbsp;&nbsp;&nbsp;
-                {{i.created_at}}<br>
+                {{i.id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.title}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.writer}}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{i.created_at}}<br>
                 {% endfor %}
             </div>
             <form class="form-POST" method="POST" enctype="application/x-www-form-urlencoded">
@@ -133,11 +134,24 @@ Revise views.py under the 'posts' app like this:
 </br>
 If you access to ht<span>tp://</span>localhost:port/posts/, the web server will give this page as a response.</br>
 <img src="https://user-images.githubusercontent.com/63287638/120486142-b5d27200-c3ef-11eb-9fea-0089cce39e65.PNG" alt="https://user-images.githubusercontent.com/63287638/120486142-b5d27200-c3ef-11eb-9fea-0089cce39e65.PNG" width="800" height="auto" />  
-</br>
 
 -----------
 
 ### 3. Create any dummy contents
+I will not implement detailed functions and will simply create fake posts through url access.  
+Add these codes on views.py under the 'posts' app:
+
+    def createposts(requests):
+        Post.objects.create(title="write what you want", writer="write who you want")
+        return redirect("/posts/")  # relative path
+
+Write the title you want to write where 'write what you want' is and write the writer you want to write where 'write who you want' is.  
+Also, add these codes on urlpatterns of urls.py under the 'posts' app:
+
+    path("createposts/", views.createposts, name="createposts"),
+
+When you access to ht<span>tp://</span>localhost:port/posts/createposts/, a new fake writing will be posted. If you try several times, the web server will respond like this screen:  
+<img src="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" alt="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" width="800" height="auto" />
 
 
 -----------
