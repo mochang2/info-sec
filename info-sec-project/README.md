@@ -1,5 +1,6 @@
 # SQL INJECTION
 ###### Finding out how SQL injection is actually used and how dangerous it is.
+###### I intentionally coded with vulnerability.
 
 ------------------
 
@@ -66,6 +67,7 @@ In addition to Django environment, there are various ways to prevent SQL injecti
 ------------------
 
 ### Blind SQL Injection
+폼 베이스드 SQL 인젝션과 달리 참 거짓으로부터 정보를 얻어내는 방법이다.
 이렇게 많은 노가다가 필요하므로 보통 공격자는 자동화된 툴을 이용한다.
 </br>
 
@@ -83,6 +85,7 @@ EunHye Jung, "Django Virtualenv", ht<span>tps://</span>eunhyejung.github.io/pyth
 "Django MySQL Interworking", ht<span>tps://</span>myjamong.tistory.com/102  
 Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps://</span>stackoverflow.com/questions/15044778/how-to-get-user-id-from-auth-user-table-in-django  
 박응용, "Jump to Python", ht<span>tps://</span>wikidocs.net/book/1
+"Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/
 
 
 

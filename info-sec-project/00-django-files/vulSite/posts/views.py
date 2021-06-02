@@ -1,7 +1,20 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from .models import Post
 
 
 def index(request):
     data = {}
+
+    if request.method == "POST":
+        pass
+
+    bulletin_list = Post.objects.all().order_by("id")  # order all contents by id
+    data.update({"bulletin_list": bulletin_list})
+
     return render(request, "posts.html", data)
+
+
+# def createmodel(requests):
+#     Post.objects.create(title="write what you want", writer="write who you want")
+#     data = {}
+#     return render(requests, "testmodel.html", data)

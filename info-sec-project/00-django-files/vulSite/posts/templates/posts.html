@@ -1,1 +1,88 @@
-posts page
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- screen -->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>bulletin board</title>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        body {
+            margin: 0;
+            margin-top: 100px;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bulletin-title {
+            font-size: 84px;
+            font-weight: bolder;
+        }
+
+        .header {
+            display: flex;
+            width: 700px;
+            justify-content: space-between;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        input {
+            border: 1px solid black;
+            width: 400px;
+            height: 23.6px;
+        }
+
+        .form-POST {
+            display: flex;
+            justify-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="bulletin-title">BULLETIN BOARD</div>
+        <div class="header">
+            <span class="bold">Num</span>
+            <span class="bold">Title</span>
+            <span class="bold">Writer</span>
+            <span class="bold">Created</span>
+        </div>
+        <div class="bulletins">
+            {% for i in bulletin_list %}
+            {{i.id}} &nbsp;&nbsp;&nbsp; {{i.title}} &nbsp;&nbsp;&nbsp; {{i.writer}} &nbsp;&nbsp;&nbsp;
+            {{i.created_at}}<br>
+            {% endfor %}
+        </div>
+        <form class="form-POST" method="POST" enctype="application/x-www-form-urlencoded">
+            <!-- Django requires this token before submitting post method -->
+            {% csrf_token %}
+
+            <div class="search">
+                <input type="text" class="search-input" placeholder="search using title" maxlength="100" name="search">
+            </div>
+            <button class="search-submit">
+                <span class="button-text">OK</span>
+            </button>
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
