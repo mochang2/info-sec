@@ -6,6 +6,9 @@ I assume that you already followed 01-common-step.
 
 -----------
 
+### 1. 
+
+-----------
 
 </br></br></br></br>
 이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
