@@ -136,7 +136,7 @@ Change views.py of 'users' app
             except Exception as e:
                 print("Unexpected input")
 
-            data.update({"username": username})
+            data.update({"username": user.username})
 
         return render(request, "login.html", data)
 
