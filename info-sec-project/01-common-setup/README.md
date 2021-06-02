@@ -161,6 +161,15 @@ Type this where manage.py is located:
 
     py manage.py createsuperuser
 
-Create a superuser, access to ht<span>tp://</span>localhost:port/admin and login.  
+This command makes a superuser, which has the privileges like an administrator.  
+Enter the following in the terminal to reflect the changes:
+
+    py manage.py makemigrations
+
+and
+
+    py manage.py migrate
+
+Then, you can access to ht<span>tp://</span>localhost:port/admin and login.  
 </br>
 </br>

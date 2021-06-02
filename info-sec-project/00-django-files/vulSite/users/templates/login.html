@@ -1,1 +1,60 @@
-login page
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- screen -->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <!-- delete cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        body {
+            margin: 0;
+            margin-top: 100px;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form class="login" method="POST" enctype="application/x-www-form-urlencoded" id="login-form">
+            <!-- Django requires this token before submitting post method -->
+            {% csrf_token %}
+
+            {% if user.is_authenticated %}
+            <p>welcome! {{username}}</p>
+
+            {% else %}
+            <div class="login-field">
+                <input type="text" class="login-input" placeholder="username" maxlength="20" name="username">
+            </div>
+            <div class="login-field">
+                <input type="password" class="login-input" placeholder="password" name="password">
+            </div>
+            <button class="login-submit">
+                <span class="button-text">로그인</span>
+            </button>
+            {% endif %}
+
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

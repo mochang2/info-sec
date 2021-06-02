@@ -1,4 +1,4 @@
-# setting up Django to practice SQL injection
+# setting up Django to practice form based SQL injection
 ###### To set up, I referred to Django official documents: [Django official](https://www.djangoproject.com/)
 
 ### 0. Preparation
@@ -67,8 +67,26 @@ In my case, I create three users:
 exam/sqlinjection123  
 exam2/formbasedinjection123  
 exam3/blindinjection123  
+</br>
+Then, enter again
+
+    py manage.py migrate
+
+Your sql_db.auth_user in MySQL would be changed like this:  
+![after changing password storing way](https://user-images.githubusercontent.com/63287638/120423493-7f700500-c3a5-11eb-8a71-9cf74191cf1a.PNG)
+</br>
 
 -----------
+
+### 4. Revise login.html under users/templates/
+
+원래 models.py에서 모델 설정하는데 그냥 바로 db에 접근하도록
+
+-----------
+
+
+### 5. Revise views.py of 'users' app
+
 
 </br></br></br></br>
 
