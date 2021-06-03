@@ -5,7 +5,7 @@
 ------------------
 
 ### Introduction
-Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by inserting unintended characters into the input form. Blind SQL injection is a type of SQL Injection attack that asks the database true or false questions and get information based on the response.  
+Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection and XQuery injection. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by inserting unintended characters into the input form. Blind SQL injection is an attack that asks the database true or false questions and gets information based on the response.  
 I will use Django(one of the frameworks to make web pages), which uses the Python, has a default admin page and has a default user database schema we can use without any changes. Also I will use MySQL, most popular one among the database applications to show how attackers attack step by step. The ways to set up the configurations are here:
 </br>
 1. [common-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/01-common-setup) &nbsp;&nbsp;&nbsp;2. [form-based-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/02-form-based-sqlinjection-setup) &nbsp;&nbsp;&nbsp;3. [blind-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/03-blind-sqlinjection-setup)
@@ -129,7 +129,7 @@ With this information, the attacker can log in as an __administrator__.
 ------------------
 
 ### Conclusion
-As you have seen, SQL injection can attack the database that typically contains all the interesting and critical data for applications. This is why SQL injection is a common attack. If this vulnerability is not defended well, the web server will be no different from the simple text. Therefore, we should always try to prevent vulnerabilities from threats, and if security patches are made, we should make a habit of checking them carefully.  
+As you have seen, SQL injection can attack the database that typically contains all the interesting and critical data for applications. This is why SQL injection is a common attack. If this vulnerability is not defended well, the web server will be no different from the simple text. Therefore, we should always try to prevent vulnerability from threats, and if security patches are made, we should make a habit of checking them carefully.  
 
 __Countermeasures for SQL injection__  
 The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary. A whitelist policy that denotes allowed special characters is recommended, not a blacklist policy.  
