@@ -68,7 +68,23 @@ In addition to Django environment, there are various ways to prevent SQL injecti
 
 ### Blind SQL Injection
 ###### Again, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for querying) works.
-###### 'information_schema.tables' in MySQL is a default table and (column of information_schema.tables)table_type="BASE TABLE" means it is created by users, not default tables.
+###### 'information_schema.tables' in MySQL is a default table and (column of information_schema.tables)table_type="BASE TABLE" means it is not a default table, but created by users.
+
+Let me explain the principle first.  
+![blind sql table name injection](https://user-images.githubusercontent.com/63287638/120575698-8279fc80-c45c-11eb-962c-a16c3875cbd7.PNG)  
+![blind sql table name one character injection](https://user-images.githubusercontent.com/63287638/120575705-8443c000-c45c-11eb-8f53-ea8a11a5bc36.PNG)  
+limit pos(ition), len(gth) : _limit_ is a function that limits the number of the results from queries. _pos_ means the starting row and _len_ means the number of rows. _pos_ starts from 0.  
+substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts some characters from _str_ at _pos_ by _len_. _pos_ stars from 1.  
+Using these functions the attackers can get the name of the tables users created and  
+![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
+</br>
+can get the name of the columns of the tables users created. _(You may remember that the 'auth_user' table has user credentials)_  
+</br>
+
+The web page to practice blind SQL injection is a bulletin board page. When a user enters some text in the search form(placeholder is _search using title_), web server only returns the posts containing the text in the title. The below picture is the default page that basically shows all posts.  
+<img src="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" alt="https://user-images.githubusercontent.com/63287638/120493594-0fd63600-c3f6-11eb-8d3c-28014b82c58c.PNG" width="800" height="auto" />  
+</br>
+
 The function that receives text from a user and sends a query to a database is
 
     if request.method == "POST":
@@ -81,25 +97,11 @@ The function that receives text from a user and sends a query to a database is
         data.update({"bulletin_list": bulletin_list})
         return render(request, "posts.html", data)
 
-The above function shows posts containing the text in the title, which is entered by the user. This insecure query can be emasculated by using '(open and close the string in MySQL) and #(comment in MySQL).  
-</br>
-Before we try, let me explain the principle.  
-![blind sql table name injection](https://user-images.githubusercontent.com/63287638/120575698-8279fc80-c45c-11eb-962c-a16c3875cbd7.PNG)  
-![blind sql table name one character injection](https://user-images.githubusercontent.com/63287638/120575705-8443c000-c45c-11eb-8f53-ea8a11a5bc36.PNG)  
-limit pos(ition), len(gth) : _limit_ is a function that limits the number of the results from queries. _pos_ means the starting row and _len_ means the number of rows. _pos_ starts from 0.  
-substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts some characters from _str_ at _pos_ by _len_. _pos_ stars from 1.  
-Using these functions the attackers can get the name of the tables users created and  
-![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
-</br>
-can get the name of the columns of the tables users created. _(You may remember that the 'auth_user' table has user credentials)_  
+This insecure query can be emasculated by using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
 </br>
 
 
-
-
-
-
-만약 이런 식으로 하여 이게 참이면 모든 쿼리가 출력될 것이고 거짓이면 아무 쿼리도 출력이 안 될 것이다.
+~~ 내용을 검색 폼에 입력한다 뒤의 ~~가 참이면 모든 쿼리가 출력될 것이고 거짓이면 아무 게시도 출력이 안 될 것이다.
 
 이를 브라우저에서 직접 이용해보겠다.
 
