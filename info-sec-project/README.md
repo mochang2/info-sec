@@ -15,7 +15,7 @@ I will use Django(one of the frameworks to make web pages), which uses Python, h
 
 ### Form Based SQL Injection
 ###### Firstly, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for login processing) works.
-Currently, the stored id, username, password in a database is:  
+Currently, the stored id, username and password in the database are:  
 ![after changing password storing way](https://user-images.githubusercontent.com/63287638/120423493-7f700500-c3a5-11eb-8a71-9cf74191cf1a.PNG)  
 </br>
 The function that processes logins at the backend is:
@@ -39,7 +39,7 @@ The function that processes logins at the backend is:
 
         return render(request, "login.html", data)
 
-Find the user whose username and password matches what a user enters, and if there are multiple matching IDs, log in with the first of them.  
+This function finds the user whose username and password matches what a client enters, and if there are multiple results, the client logs in with the first of them.  
 If login is successful, the following screen will be displayed.  
 ![exam login success](https://user-images.githubusercontent.com/63287638/120431184-1c856a80-c3b3-11eb-9614-7614ee99f8d2.png)  
 </br>
