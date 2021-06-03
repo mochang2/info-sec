@@ -149,5 +149,5 @@ Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps
 "Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/  
 Stackoverflow, "escaping in Python", ht<span>tps://</span>stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings  
 OWASP, "blind SQL injection", ht<span>tps://</span>owasp.org/www-community/attacks/Blind_SQL_Injection  
-PHP official document, "htmlspcialchars", ht<span>tps://</span>www.php.net/manual/en/function.htmlspecialchars.php  
+PHP official document, "htmlspcialchars", ht<span>tps://ww</span>w.php.net/manual/en/function.htmlspecialchars.php  
 OWASP, "SQL Injection Prevention Cheat Sheet", ht<span>tps://</span>cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
