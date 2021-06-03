@@ -102,13 +102,15 @@ This insecure query can be emasculated by using _substr_, _limit_, _'_(open and 
 </br>
 
 Attackers enter
->' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#</br>
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+
 If the first character of 186th BASE TABLE is 'a', all of the posts will be returned. However, if the first character of 186th BASE TABLE is not 'a', none of the posts will be returned. _(As 186th BASE TABLE is a 'auth_user' table in my MySQL, all of the posts are printed)_. Like this.  
 <img src="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" alt="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" width="800" height="auto" />  
 </br>
 
 IF attackers enter('a' is chaged to 'b')
->' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#</br>
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+
 Nothing is returned.  
 <img src="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" alt="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" width="800" height="auto" />  
 </br>
