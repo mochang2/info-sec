@@ -105,7 +105,7 @@ If the first character of 186th BASE TABLE is 'a', all of the posts will be retu
 <img src="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" alt="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" width="800" height="auto" />  
 </br>
 
-IF attackers enter('a' is chaged to 'b')
+If attackers enter('a' is chaged to 'b')
 >' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
 
 Nothing is returned.  
