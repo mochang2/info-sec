@@ -6,7 +6,18 @@ def index(request):
     data = {}
 
     if request.method == "POST":
-        pass
+        search = request.POST.get("search", None)
+        query = (
+            "select * from posts_post where title like '%%"
+            + str(search)
+            + "%%' order by id"
+        )
+        try:
+            bulletin_list = Post.objects.raw(query)
+        except Exception as e:
+            print("Unexpected input")
+        data.update({"bulletin_list": bulletin_list})
+        return render(request, "posts.html", data)
 
     bulletin_list = Post.objects.all().order_by("id")  # order all contents by id
     data.update({"bulletin_list": bulletin_list})

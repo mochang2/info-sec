@@ -84,9 +84,9 @@ EunHye Jung, "Django Virtualenv", ht<span>tps://</span>eunhyejung.github.io/pyth
 "Django documentation", ht<span>tps://</span>www.djangoproject.com/  
 "Django MySQL Interworking", ht<span>tps://</span>myjamong.tistory.com/102  
 Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps://</span>stackoverflow.com/questions/15044778/how-to-get-user-id-from-auth-user-table-in-django  
-박응용, "Jump to Python", ht<span>tps://</span>wikidocs.net/book/1
-"Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/
-
+박응용, "Jump to Python", ht<span>tps://</span>wikidocs.net/book/1  
+"Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/  
+Stackoverflow, "escaping in Python", ht<span>tps://</span>stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings  
 
 
 00. django files
