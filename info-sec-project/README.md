@@ -127,10 +127,12 @@ Now, let's assume one attacker, with many trials, eventually knows that there is
 >' and 1=2 union select id, username, password, null from auth_user#  
 Any false condition follows after _and_ for the backend not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
 ![blind sql the end result - get credentials](https://user-images.githubusercontent.com/63287638/120583324-f28e7f80-c468-11eb-84bf-5d26b56e50c4.PNG)  
-With this information, the attacker can log in with an __admin__ privilege.
+With this information, the attacker can log in with an __admin__ privilege.  
+</br>
 
-</br>
-</br>
+__Countermeasures for form based sql injection__  
+
+
 사용자 비밀번호는 일방향 해시 알고리즘으로 저장(쉽게 알아볼 수 있는 평문 저장이 아닌)
 자동화 툴로 많은 시도->로그 기록 갑작스러운 이상하게 많은 쿼리? 의심
 입력값 검증, 화이트리스트+이스케이프 처리
