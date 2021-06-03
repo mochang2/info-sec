@@ -6,7 +6,7 @@
 
 ### Introduction
 Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection and XQuery injection. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by inserting unintended characters into the input form. Blind SQL injection is an attack that asks the database true or false questions and gets information based on the response.  
-I will use Django(one of the frameworks to make web pages), which uses Python, has a default admin page and has a default _user_ database schema we can use without any changes. Also I will use MySQL, most popular one among the database applications, to show how attackers attack step by step. The ways to set up the configurations are here:
+I will use Django(one of the frameworks to make web pages), which uses Python, has a default admin page and has a default _user_ database schema we can use without any changes. Also, I will use MySQL, most popular one among the database applications, to show how attackers attack step by step. The ways to set up the configurations are here:
 </br>
 1. [common-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/01-common-setup) &nbsp;&nbsp;&nbsp;2. [form-based-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/02-form-based-sqlinjection-setup) &nbsp;&nbsp;&nbsp;3. [blind-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/03-blind-sqlinjection-setup)
 </br>
@@ -134,7 +134,7 @@ As you have seen, SQL injection can attack the database that typically contains 
 __Countermeasures for SQL injection__  
 The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary. A whitelist policy that denotes allowed special characters is recommended, not a blacklist policy.  
 Also, use secure functions. In the case of Django, do not send queries to the database via 'raw', but rather send queries with functions recommended in the official document. They essentially blocks various SQL injection. In addition to Django environment, there are ways to prevent SQL injection in various envionments. In APM environment, for example, there are functions in PHP language such as _htmlspecialchars_, which escape reserved special characters(#, ', " etc).  
-Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Also, giving least privileges to accounts which run the web server to prevent falsification of the database is a good countermeasure.  
+Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Giving least privileges to accounts which run the web server to prevent falsification of the database is another good countermeasure.  
 </br>
 
 ------------------
