@@ -73,7 +73,7 @@ limit pos(ition), len(gth) : _limit_ is a function that limits the number of the
 substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts some characters from _str_ at _pos_ by _len_. _pos_ stars from 1.  
 </br>
 
-Using these functions the attackers can get the name of the tables which an administrator created and  
+Using these functions, the attackers can get the name of the tables which an administrator created and  
 ![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
 </br>
 can get the name of the columns of the tables. _(You may remember that the 'auth_user' table has user credentials)_  
@@ -95,7 +95,7 @@ The function that receives text from a client and sends a query to a database is
         data.update({"bulletin_list": bulletin_list})
         return render(request, "posts.html", data)
 
-This insecure query can be abused using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
+This insecure _query_ can be abused using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
 </br>
 
 Attackers enter
@@ -135,7 +135,7 @@ As you have seen, SQL injection can attack the database that typically contains 
 
 __Countermeasures for SQL injection__  
 The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary. A whitelist policy that denotes allowed special characters is recommended, not a blacklist policy.  
-Also, use secure functions. In the case of Django, do not send queries to the database via 'raw', but rather send queries with functions recommended in the official document. They essentially blocks various SQL injection. In addition to Django environment, there are ways to prevent SQL injection in various envionments. In APM environment, for example, there are functions in PHP language such as _htmlspecialchars_, which escape reserved special characters(#, ', " etc).  
+Also, use secure functions. In the case of Django, do not send queries to the database via _raw_, but rather send queries with functions recommended in the official document. They essentially blocks various SQL injection. In addition to Django environment, there are ways to prevent SQL injection in various envionments. In APM environment, for example, there are functions in PHP language such as _htmlspecialchars_, which escape reserved special characters(#, ', " etc).  
 Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Giving least privileges to accounts which run the web server to prevent falsification of the database is another good countermeasure.  
 </br>
 
