@@ -124,7 +124,7 @@ Running queries passed to the database directly from MySQL results in the follow
 </br>
 
 Now, let's assume one attacker, with many trials, eventually knows that there is an 'auth_user' table that has user credentials and the name of the columns of the table. With _union select_, the attacker can know the id, username and password of the users. The attacker enters  
->' and 1=2 union select id, username, password, null from auth_user#
+>' and 1=2 union select id, username, password, null from auth_user#  
 Any false condition follows after _and_ for the backend not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
 ![blind sql the end result - get credentials](https://user-images.githubusercontent.com/63287638/120583324-f28e7f80-c468-11eb-84bf-5d26b56e50c4.PNG)  
 With this information, the attacker can log in with an __admin__ privilege.
