@@ -64,7 +64,7 @@ As the clause after _#_(second query), password validation part, has no meaning,
 
 ### Blind SQL Injection
 ###### Again, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for querying) works.
-###### 'information_schema.tables' in MySQL is a default table and (column of information_schema.tables)table_type="BASE TABLE" means it is not a default table, but created by users.
+###### _information_schema.tables_ in MySQL is a default table and (column of information_schema.tables)table_type="BASE TABLE" means it is not a default table, but created by users.
 
 Let me explain the principle first.  
 ![blind sql table name injection](https://user-images.githubusercontent.com/63287638/120575698-8279fc80-c45c-11eb-962c-a16c3875cbd7.PNG)  
