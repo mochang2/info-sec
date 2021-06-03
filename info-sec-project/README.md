@@ -121,7 +121,7 @@ Running queries passed to the database directly from MySQL results in the follow
 Now, let's assume one attacker, with many trials, eventually knows that there is an 'auth_user' table that has user credentials and the name of the columns of the table. With _union select_, the attacker can know the id, username and password of the users. The attacker enters  
 >' and 1=2 union select id, username, password, null from auth_user#
 
-Any false condition follows after _and_ for the backend function not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
+Any false condition follows after _and_ for the backend function to return nothing from a 'posts_post' table. As a result, only user credentials are returned.  
 ![blind sql the end result - get credentials](https://user-images.githubusercontent.com/63287638/120583324-f28e7f80-c468-11eb-84bf-5d26b56e50c4.PNG)  
 With this information, the attacker can log in as an __administrator__.  
 </br>
@@ -132,8 +132,8 @@ With this information, the attacker can log in as an __administrator__.
 As you have seen, SQL injection can attack the database that typically contains all the interesting and critical data for applications. This is why SQL injection is a common attack. If this vulnerability is not defended well, the web server will be no different from the simple text. Therefore, we should always try to prevent vulnerabilities from threats, and if security patches are made, we should make a habit of checking them carefully.  
 
 __Countermeasures for SQL injection__  
-The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary.  
-In the case of Django, do not send queries to the database via 'raw', but rather process logins with functions such as 'authenticate' as recommended in the official document. This function essentially blocks various SQL injection. In addition to Django environment, there are various ways to prevent SQL injection. In APM environment, for example, there are functions in PHP language, which escape reserved special characters(#, ', " etc). Or simply, only authorized characters can be entered using a whitelist policy.  
+The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary. A whitelist policy that denotes allowed special characters is recommended, not a blacklist policy.  
+Also, use secure functions. In the case of Django, do not send queries to the database via 'raw', but rather send queries with functions recommended in the official document. They essentially blocks various SQL injection. In addition to Django environment, there are ways to prevent SQL injection in various envionments. In APM environment, for example, there are functions in PHP language such as _htmlspecialchars_, which escape reserved special characters(#, ', " etc).  
 Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Also, giving least privileges to accounts which run the web server to prevent falsification of the database is a good countermeasure.  
 </br>
 
@@ -149,4 +149,5 @@ Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps
 "Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/  
 Stackoverflow, "escaping in Python", ht<span>tps://</span>stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings  
 OWASP, "blind SQL injection", ht<span>tps://</span>owasp.org/www-community/attacks/Blind_SQL_Injection  
+PHP official document, "htmlspcialchars", ht<span>tps://</span>www.php.net/manual/en/function.htmlspecialchars.php  
 OWASP, "SQL Injection Prevention Cheat Sheet", ht<span>tps://</span>cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
