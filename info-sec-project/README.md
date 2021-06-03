@@ -104,7 +104,7 @@ This insecure query can be emasculated by using _substr_, _limit_, _'_(open and 
 Attackers enter
 >' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
 
-If the first character of 186th BASE TABLE is 'a', all of the posts will be returned. However, if the first character of 186th BASE TABLE is not 'a', none of the posts will be returned. _(As 186th BASE TABLE is a 'auth_user' table in my MySQL, all of the posts are printed)_. Like this.  
+If the first character of 186th BASE TABLE is 'a', all of the posts will be returned. However, if the first character of 186th BASE TABLE is not 'a', none of the posts will be returned. _(As 186th BASE TABLE is a 'auth_user' table in my MySQL, all of the posts are printed)_.  
 <img src="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" alt="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" width="800" height="auto" />  
 </br>
 
@@ -115,11 +115,11 @@ Nothing is returned.
 <img src="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" alt="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" width="800" height="auto" />  
 </br>
 
-Since the way of figuring out one letter is slow and needs many efforts, attackers usually use automated tools. Through this blind SQL injection attack, attackers can know the schema of the database, the name of the tables and the name of the columns of the tables. 
+Since the way of figuring out one letter is slow and needs many efforts, attackers usually use automated tools. Through the blind SQL injection attack, attackers can know the schema of the database, the name of the tables and the name of the columns of the tables. 
 </br>
 
 Running queries passed to the database directly from MySQL results in the following(same result with the above picture):  
-![result from the mysql - blind sql injection](https://user-images.githubusercontent.com/63287638/120583067-80b63600-c468-11eb-9170-6844ee017e15.PNG)  
+![result from the mysql - blind sql injection](https://user-images.githubusercontent.com/63287638/120587774-f58d6e00-c470-11eb-8da2-5af4cbe3d3c1.PNG)
 </br>
 </br>
 
