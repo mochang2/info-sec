@@ -74,7 +74,7 @@ substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts so
 Using these functions the attackers can get the name of the tables which an administrator created and  
 ![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
 </br>
-can get the name of the columns of the tables which an administrator created. _(You may remember that the 'auth_user' table has user credentials)_  
+can get the name of the columns of the tables. _(You may remember that the 'auth_user' table has user credentials)_  
 </br>
 
 The web page to practice blind SQL injection is a bulletin board page. When a user enters some text in the search form(placeholder is _search using title_), web server only returns the posts containing the text in the title. The below picture is the default page that basically shows all posts.  
@@ -93,7 +93,7 @@ The function that receives text from a user and sends a query to a database is
         data.update({"bulletin_list": bulletin_list})
         return render(request, "posts.html", data)
 
-This insecure query can be emasculated by using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
+This insecure query can be abused using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
 </br>
 
 Attackers enter
@@ -121,9 +121,9 @@ Running queries passed to the database directly from MySQL results in the follow
 Now, let's assume one attacker, with many trials, eventually knows that there is an 'auth_user' table that has user credentials and the name of the columns of the table. With _union select_, the attacker can know the id, username and password of the users. The attacker enters  
 >' and 1=2 union select id, username, password, null from auth_user#
 
-Any false condition follows after _and_ for the backend not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
+Any false condition follows after _and_ for the backend function not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
 ![blind sql the end result - get credentials](https://user-images.githubusercontent.com/63287638/120583324-f28e7f80-c468-11eb-84bf-5d26b56e50c4.PNG)  
-With this information, the attacker can log in with an __admin__ privilege.  
+With this information, the attacker can log in as an __administrator__.  
 </br>
 
 ------------------
@@ -132,7 +132,7 @@ With this information, the attacker can log in with an __admin__ privilege.
 As you have seen, SQL injection can attack the database that typically contains all the interesting and critical data for applications. This is why SQL injection is a common attack. If this vulnerability is not defended well, the web server will be no different from the simple text. Therefore, we should always try to prevent vulnerabilities from threats, and if security patches are made, we should make a habit of checking them carefully.  
 
 __Countermeasures for SQL injection__  
-The best way to prevent SQL injection is to check input values. Checking inputs at front-end can be detoured easily using web proxy tools, so doing at back-end is necessary.  
+The best way to prevent SQL injection is to check input values. Checking inputs at frontend can be detoured easily using web proxy tools, so doing at backend is necessary.  
 In the case of Django, do not send queries to the database via 'raw', but rather process logins with functions such as 'authenticate' as recommended in the official document. This function essentially blocks various SQL injection. In addition to Django environment, there are various ways to prevent SQL injection. In APM environment, for example, there are functions in PHP language, which escape reserved special characters(#, ', " etc). Or simply, only authorized characters can be entered using a whitelist policy.  
 Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Also, giving least privileges to accounts which run the web server to prevent falsification of the database is a good countermeasure.  
 </br>
