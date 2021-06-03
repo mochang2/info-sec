@@ -72,7 +72,7 @@ Delete unnecessary codes and insert these codes into posts.html:
             }
             input {
                 border: 1px solid black;
-                width: 400px;
+                width: 720px;
                 height: 23.6px;
             }
             .form-POST {
@@ -103,7 +103,7 @@ Delete unnecessary codes and insert these codes into posts.html:
                 {% csrf_token %}
 
                 <div class="search">
-                    <input type="text" class="search-input" placeholder="search using title" maxlength="100" name="search">
+                    <input type="text" class="search-input" placeholder="search using title" maxlength="200" name="search">
                 </div>
                 <button class="search-submit">
                     <span class="button-text">OK</span>

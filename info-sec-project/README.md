@@ -48,9 +48,9 @@ If the user is the normal user, he or she may try logging in like this:
 ![exam login trial](https://user-images.githubusercontent.com/63287638/120431179-1abba700-c3b3-11eb-8392-ea157c6e9139.png)  
 </br>
 
-However, an attacker who does not know the password can try:  
+However, attackers who do not know the password can try:  
 ![form based sql injection trial](https://user-images.githubusercontent.com/63287638/120434696-c1a24200-c3b7-11eb-84b4-bcabc64452a4.PNG)  
-The attacker can bypass authentication by arbitrarily manipulating the conditions of query statements. He or she manipulates the query statements so that the conditional clause(after where) of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the conditions come after 'or' is always true(' or 2>1# etc), password authentication can be bypassed in countless ways. If the attack is successful, the attacker loges in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
+The attackers can bypass authentication by arbitrarily manipulating the conditions of query statements. He or she manipulates the query statements so that the conditional clause(after where) of the query statement is always true by annotating the password-checking part via #(meaning comment in MySQL). If the conditions come after 'or' is always true(' or 2>1# etc), password authentication can be bypassed in countless ways. If the attack is successful, the attackers log in with a user entitlement that corresponds to the first record on the returning record set. If it is an unmanaged site like the one I use in my example, it will usually be logged in as an administrator, who has almost all privileges such as reading, writing and giving permissions. Like this.  
 ![form based sql injection success](https://user-images.githubusercontent.com/63287638/120435926-45106300-c3b9-11eb-92a8-9321a93e5734.PNG)  
 </br>
 
@@ -100,29 +100,43 @@ The function that receives text from a user and sends a query to a database is
 This insecure query can be emasculated by using _substr_, _limit_, _'_(open and close the string in MySQL) and _#_(comment in MySQL).  
 </br>
 
+Attackers enter
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+If the first character of 186th BASE TABLE is 'a', all of the posts will be returned. However, if the first character of 186th BASE TABLE is not 'a', none of the posts will be returned. _(As 186th BASE TABLE is a 'auth_user' table in my MySQL, all of the posts are printed)_. Like this.  
+<img src="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" alt="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" width="800" height="auto" />  
+</br>
 
-~~ 내용을 검색 폼에 입력한다 뒤의 ~~가 참이면 모든 쿼리가 출력될 것이고 거짓이면 아무 게시도 출력이 안 될 것이다.
+IF attackers enter('a' is chaged to 'b')
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+Nothing is returned.  
+<img src="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" alt="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" width="800" height="auto" />  
+</br>
 
-이를 브라우저에서 직접 이용해보겠다.
+Since the way of figuring out one letter is slow and needs many efforts, attackers usually use automated tools. Through this blind SQL injection attack, attackers can know the schema of the database, the name of the tables and the name of the columns of the tables. 
+</br>
 
-이렇게 한글자 한글자씩 알아내 db의 구조, 테이블 및 그 테이블의 컬럼 이름 등을 알 수 있다.
+Running queries passed to the database directly from MySQL results in the following(same result with the above picture):  
+![result from the mysql - blind sql injection](https://user-images.githubusercontent.com/63287638/120583067-80b63600-c468-11eb-9170-6844ee017e15.PNG)  
+</br>
+</br>
 
-공격자가 최종 노가다를 통해 auth_user라는 테이블이 사용자 이름과 아이디를 저장하고 있다는 것을 알아냈다고 하자.
+Now, let's assume one attacker, with many trials, eventually knows that there is an 'auth_user' table that has user credentials and the name of the columns of the table. With _union select_, the attacker can know the id, username and password of the users. The attacker enters  
+>' and 1=2 union select id, username, password, null from auth_user#
+Any false condition follows after _and_ for the backend not to return anything from a 'posts_post' table. As a result, only user credentials are returned.  
+![blind sql the end result - get credentials](https://user-images.githubusercontent.com/63287638/120583324-f28e7f80-c468-11eb-84bf-5d26b56e50c4.PNG)  
+With this information, the attacker can log in with an __admin__ privilege.
 
-이를 통해 공격자는 admin 권한으로 로그인을 할 수도 있다.
-
-
-이렇게 많은 노가다가 필요하므로 보통 공격자는 자동화된 툴을 이용한다.
+</br>
 </br>
 사용자 비밀번호는 일방향 해시 알고리즘으로 저장(쉽게 알아볼 수 있는 평문 저장이 아닌)
 자동화 툴로 많은 시도->로그 기록 갑작스러운 이상하게 많은 쿼리? 의심
 입력값 검증, 화이트리스트+이스케이프 처리
-
+db 접근권한 제한(웹 서버에 사용되는 계정은 information_schema와 같은 데이터베이스에 접근 못하게)
 ------------------
 
 ### Conclusion
 이처럼 sql injection은 인증을 우회할 수 있는 어마무시한 공격이다. 조심하는 법을 항상 익히고 취약점을 파악하려고 노력하고 보안 패치에 신경쓰자. 안 그러면 내가 힘들게 만든 웹 사이트가 닫을 수도 있다.
-위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!
+위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!(OWSAP 라든가 그런거 찾아보자)
 
 
 #### References
