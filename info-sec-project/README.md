@@ -128,7 +128,7 @@ This insecure query can be emasculated by using _substr_, _limit_, _'_(open and 
 #### References
 <!--- span is used to prevent hyperlinks ---> 
 EunHye Jung, "Django Virtualenv", ht<span>tps://</span>eunhyejung.github.io/python/2018/09/09/django-virtualenv.html  
-"Django documentation", ht<span>tps://www.</span>djangoproject.com/  
+"Django documentation", ht<span>tps://ww</span>w.djangoproject.com/  
 "Django MySQL Interworking", ht<span>tps://</span>myjamong.tistory.com/102  
 Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps://</span>stackoverflow.com/questions/15044778/how-to-get-user-id-from-auth-user-table-in-django  
 박응용, "Jump to Python", ht<span>tps://</span>wikidocs.net/book/1  
