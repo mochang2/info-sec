@@ -161,15 +161,30 @@ It is also added to MySQL.
 -----------
 
 ### 4. Implement search capabilities
+Revised the function index in views.py under the 'posts' app, where I have wrapped up roughly(if ~~~: pass).
 
+    def index(request):
+        data = {}
 
+        if request.method == "POST":
+            search = request.POST.get("search", None)
+            query = (
+                "select * from posts_post where title like '%%"
+                + str(search)
+                + "%%' order by id"
+            )
+            try:
+                bulletin_list = Post.objects.raw(query)
+            except Exception as e:
+                print("Unexpected input")
+            data.update({"bulletin_list": bulletin_list})
+            return render(request, "posts.html", data)
 
+        bulletin_list = Post.objects.all().order_by("id")  # order all contents by id
+        data.update({"bulletin_list": bulletin_list})
 
-</br></br></br></br>
-이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
+        return render(request, "posts.html", data)
 
-볼드 처리할 곳을 __, **로 감싸주면 됩니다.
-
-인용문은 >을 앞에 붙여주면 됩니다.
-
-순서 없는 목록은 *, +, - 세 가지 방법을 사용할 수 있습니다. 들여쓰기를 하면 하위의 목록으로 만들 수 있습니다.
+When you type something in the search input box, the result will be returned.
+__Now, you are ready to practice form based sql injection.__
+</br>
