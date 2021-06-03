@@ -60,11 +60,6 @@ The first result is from a normal user whose username is exam while the second r
 As the clause after _#_(second query), password validation part, has no meaning, all of the users in the tables are returned.  
 </br>
 
-__Countermeasures for form based sql injection__  
-In the case of Django, do not send queries to the database via 'raw', but rather process logins with functions such as 'authenticate' as recommended in the official document. This function essentially blocks various SQL injection.  
-In addition to Django environment, there are various ways to prevent SQL injection. In APM environment, for example, there are functions in PHP language, which escape reserved special characters(#, ', " etc). Or simply, only authorized characters can be entered using a whitelist policy.  
-</br>
-
 ------------------
 
 ### Blind SQL Injection
@@ -131,19 +126,18 @@ Any false condition follows after _and_ for the backend not to return anything f
 With this information, the attacker can log in with an __admin__ privilege.  
 </br>
 
-__Countermeasures for form based sql injection__  
-
-
-사용자 비밀번호는 일방향 해시 알고리즘으로 저장(쉽게 알아볼 수 있는 평문 저장이 아닌)
-자동화 툴로 많은 시도->로그 기록 갑작스러운 이상하게 많은 쿼리? 의심
-입력값 검증, 화이트리스트+이스케이프 처리
-db 접근권한 제한(웹 서버에 사용되는 계정은 information_schema와 같은 데이터베이스에 접근 못하게)
 ------------------
 
 ### Conclusion
-이처럼 sql injection은 인증을 우회할 수 있는 어마무시한 공격이다. 조심하는 법을 항상 익히고 취약점을 파악하려고 노력하고 보안 패치에 신경쓰자. 안 그러면 내가 힘들게 만든 웹 사이트가 닫을 수도 있다.
-위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!(OWSAP 라든가 그런거 찾아보자) 프론트 단에서의 검증이 아닌 백엔드에서 검증
+As you have seen, SQL injection can attack the database that typically contains all the interesting and critical data for applications. This is why SQL injection is a common attack. If this vulnerability is not defended well, the web server will be no different from the simple text. Therefore, we should always try to prevent vulnerabilities from threats, and if security patches are made, we should make a habit of checking them carefully.  
 
+__Countermeasures for SQL injection__  
+The best way to prevent SQL injection is to check input values. Checking inputs at front-end can be detoured easily using web proxy tools, so doing at back-end is necessary.  
+In the case of Django, do not send queries to the database via 'raw', but rather process logins with functions such as 'authenticate' as recommended in the official document. This function essentially blocks various SQL injection. In addition to Django environment, there are various ways to prevent SQL injection. In APM environment, for example, there are functions in PHP language, which escape reserved special characters(#, ', " etc). Or simply, only authorized characters can be entered using a whitelist policy.  
+Other ways to prevent SQL injection, according to OWASP, is to use prepared statments or stored procedures. Also, giving least privileges to accounts which run the web server to prevent falsification of the database is a good countermeasure.  
+</br>
+
+------------------
 
 #### References
 <!--- span is used to prevent hyperlinks ---> 
@@ -155,14 +149,4 @@ Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps
 "Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/  
 Stackoverflow, "escaping in Python", ht<span>tps://</span>stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings  
 OWASP, "blind SQL injection", ht<span>tps://</span>owasp.org/www-community/attacks/Blind_SQL_Injection  
-
-
-
-</br></br></br></br>
-이탤릭체 로 표시하려면 원하는 곳을 _, *로 감싸주면 됩니다.
-
-볼드 처리할 곳을 __, **로 감싸주면 됩니다.
-
-인용문은 >을 앞에 붙여주면 됩니다.
-
-순서 없는 목록은 *, +, - 세 가지 방법을 사용할 수 있습니다. 들여쓰기를 하면 하위의 목록으로 만들 수 있습니다.
+OWASP, "SQL Injection Prevention Cheat Sheet", ht<span>tps://</span>cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
