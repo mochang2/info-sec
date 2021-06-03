@@ -5,7 +5,7 @@
 ------------------
 
 ### Introduction
-Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by entering unintended characters into the input form. Blind SQL injection is a type of SQL Injection attack that asks the database true or false questions and get information based on the response.  
+Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by inserting unintended characters into the input form. Blind SQL injection is a type of SQL Injection attack that asks the database true or false questions and get information based on the response.  
 I will use Django(one of the frameworks to make web pages), which uses the Python, has a default admin page and has a default user database schema we can use without any changes. Also I will use MySQL, most popular one among the database applications to show how attackers attack step by step. The ways to set up the configurations are here:
 </br>
 1. [common-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/01-common-setup) &nbsp;&nbsp;&nbsp;2. [form-based-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/02-form-based-sqlinjection-setup) &nbsp;&nbsp;&nbsp;3. [blind-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/03-blind-sqlinjection-setup)
@@ -26,7 +26,7 @@ The function that processes logins at the backend is:
             username = request.POST.get("username", None)
             password = request.POST.get("password", None)
             password = password[::-1]  # reverse the password, the way to store password in a database
-            query = ("select id, username, password from auth_user where username='" + str(username) + "' and password='" + str(password) + "'")
+            query = "select id, username, password from auth_user where username='" + str(username) + "' and password='" + str(password) + "'"
 
             try:
                 user = User.objects.raw(query)[0]
@@ -76,10 +76,10 @@ Let me explain the principle first.
 ![blind sql table name one character injection](https://user-images.githubusercontent.com/63287638/120575705-8443c000-c45c-11eb-8f53-ea8a11a5bc36.PNG)  
 limit pos(ition), len(gth) : _limit_ is a function that limits the number of the results from queries. _pos_ means the starting row and _len_ means the number of rows. _pos_ starts from 0.  
 substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts some characters from _str_ at _pos_ by _len_. _pos_ stars from 1.  
-Using these functions the attackers can get the name of the tables users created and  
+Using these functions the attackers can get the name of the tables which an administrator created and  
 ![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
 </br>
-can get the name of the columns of the tables users created. _(You may remember that the 'auth_user' table has user credentials)_  
+can get the name of the columns of the tables which an administrator created. _(You may remember that the 'auth_user' table has user credentials)_  
 </br>
 
 The web page to practice blind SQL injection is a bulletin board page. When a user enters some text in the search form(placeholder is _search using title_), web server only returns the posts containing the text in the title. The below picture is the default page that basically shows all posts.  
@@ -102,13 +102,13 @@ This insecure query can be emasculated by using _substr_, _limit_, _'_(open and 
 </br>
 
 Attackers enter
->' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#</br>
 If the first character of 186th BASE TABLE is 'a', all of the posts will be returned. However, if the first character of 186th BASE TABLE is not 'a', none of the posts will be returned. _(As 186th BASE TABLE is a 'auth_user' table in my MySQL, all of the posts are printed)_. Like this.  
 <img src="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" alt="https://user-images.githubusercontent.com/63287638/120581668-26b47100-c466-11eb-8734-1f354175f0e2.PNG" width="800" height="auto" />  
 </br>
 
 IF attackers enter('a' is chaged to 'b')
->' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#
+>' and substr((select table_name from information_schema.tables where table_type="BASE TABLE" limit 185,1),1,1)='a'#</br>
 Nothing is returned.  
 <img src="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" alt="https://user-images.githubusercontent.com/63287638/120581870-7f840980-c466-11eb-86a2-164fd484e8d1.PNG" width="800" height="auto" />  
 </br>
@@ -137,7 +137,7 @@ db 접근권한 제한(웹 서버에 사용되는 계정은 information_schema�
 
 ### Conclusion
 이처럼 sql injection은 인증을 우회할 수 있는 어마무시한 공격이다. 조심하는 법을 항상 익히고 취약점을 파악하려고 노력하고 보안 패치에 신경쓰자. 안 그러면 내가 힘들게 만든 웹 사이트가 닫을 수도 있다.
-위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!(OWSAP 라든가 그런거 찾아보자)
+위에서 반복해서 얘기했지만 입력값 검증!! 젤 중요해!(OWSAP 라든가 그런거 찾아보자) 프론트 단에서의 검증이 아닌 백엔드에서 검증
 
 
 #### References
