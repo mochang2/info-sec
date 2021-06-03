@@ -5,7 +5,7 @@
 ------------------
 
 ### Introduction
-Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection.  
+Injection was selected for OWASP TOP 1 vulnerability for 2017 and 2020, consecutively. There are many types of injection such as XML injection, XQuery injection, and so on. Among them, SQL injection is the most notorious one, so this project will address two kinds of SQL injection, form based SQL injection and blind SQL injection. Form based SQL injection is an attack that allows to perform unintended functions by entering unintended characters into the input form. Blind SQL injection is a type of SQL Injection attack that asks the database true or false questions and determines the answer based on the applications response.  
 I will use Django(one of the frameworks to make web pages), which uses the Python, has a default admin page and has a default user database schema we can use with no change. Also I will use MySQL, most popular one among the database applications to show how attackers attack step by step. The ways to set up the configurations are here:
 </br>
 1. [common-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/01-common-setup) &nbsp;&nbsp;&nbsp;2. [form-based-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/02-form-based-sqlinjection-setup) &nbsp;&nbsp;&nbsp;3. [blind-sql-injection-setting](https://github.com/mochang2/info-sec/tree/master/info-sec-project/03-blind-sqlinjection-setup)
@@ -14,7 +14,7 @@ I will use Django(one of the frameworks to make web pages), which uses the Pytho
 ------------------
 
 ### Form Based SQL Injection
-###### Firstly, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for login processing).
+###### Firstly, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for login processing) works.
 Currently, the stored id, username, password in a database is:  
 ![after changing password storing way](https://user-images.githubusercontent.com/63287638/120423493-7f700500-c3a5-11eb-8a71-9cf74191cf1a.PNG)  
 </br>
@@ -67,9 +67,54 @@ In addition to Django environment, there are various ways to prevent SQL injecti
 ------------------
 
 ### Blind SQL Injection
-폼 베이스드 SQL 인젝션과 달리 참 거짓으로부터 정보를 얻어내는 방법이다.
+###### Again, I assume that the attackers know that the target web server uses MySQL as a database application and how views.py(Python code responsible for querying) works.
+###### 'information_schema.tables' in MySQL is a default table and (column of information_schema.tables)table_type="BASE TABLE" means it is created by users, not default tables.
+The function that receives text from a user and sends a query to a database is
+
+    if request.method == "POST":
+        search = request.POST.get("search", None)
+        query = "select * from posts_post where title like '%%" + str(search) + "%%' order by id"
+        try:
+            bulletin_list = Post.objects.raw(query)
+        except Exception as e:
+            print("Unexpected input")
+        data.update({"bulletin_list": bulletin_list})
+        return render(request, "posts.html", data)
+
+The above function shows posts containing the text in the title, which is entered by the user. This insecure query can be emasculated by using '(open and close the string in MySQL) and #(comment in MySQL).  
+</br>
+Before we try, let me explain the principle.  
+![blind sql table name injection](https://user-images.githubusercontent.com/63287638/120575698-8279fc80-c45c-11eb-962c-a16c3875cbd7.PNG)  
+![blind sql table name one character injection](https://user-images.githubusercontent.com/63287638/120575705-8443c000-c45c-11eb-8f53-ea8a11a5bc36.PNG)  
+limit pos(ition), len(gth) : _limit_ is a function that limits the number of the results from queries. _pos_ means the starting row and _len_ means the number of rows. _pos_ starts from 0.  
+substr(str(ing), pos(ition), len(gth)): _substr_ is a function that subtracts some characters from _str_ at _pos_ by _len_. _pos_ stars from 1.  
+Using these functions the attackers can get the name of the tables users created and  
+![blind sql column name injection](https://user-images.githubusercontent.com/63287638/120576439-b9044700-c45d-11eb-8df3-12f3c597758a.PNG)
+</br>
+can get the name of the columns of the tables users created. _(You may remember that the 'auth_user' table has user credentials)_  
+</br>
+
+
+
+
+
+
+만약 이런 식으로 하여 이게 참이면 모든 쿼리가 출력될 것이고 거짓이면 아무 쿼리도 출력이 안 될 것이다.
+
+이를 브라우저에서 직접 이용해보겠다.
+
+이렇게 한글자 한글자씩 알아내 db의 구조, 테이블 및 그 테이블의 컬럼 이름 등을 알 수 있다.
+
+공격자가 최종 노가다를 통해 auth_user라는 테이블이 사용자 이름과 아이디를 저장하고 있다는 것을 알아냈다고 하자.
+
+이를 통해 공격자는 admin 권한으로 로그인을 할 수도 있다.
+
+
 이렇게 많은 노가다가 필요하므로 보통 공격자는 자동화된 툴을 이용한다.
 </br>
+사용자 비밀번호는 일방향 해시 알고리즘으로 저장(쉽게 알아볼 수 있는 평문 저장이 아닌)
+자동화 툴로 많은 시도->로그 기록 갑작스러운 이상하게 많은 쿼리? 의심
+입력값 검증, 화이트리스트+이스케이프 처리
 
 ------------------
 
@@ -87,6 +132,7 @@ Stackoverflow, "how to get User id from auth_user table in django?", ht<span>tps
 박응용, "Jump to Python", ht<span>tps://</span>wikidocs.net/book/1  
 "Try to use Django model", ht<span>tps://</span>dev-yakuza.posstree.com/ko/django/models/  
 Stackoverflow, "escaping in Python", ht<span>tps://</span>stackoverflow.com/questions/10678229/how-can-i-selectively-escape-percent-in-python-strings  
+OWASP, "blind SQL injection", ht<span>tps://</span>owasp.org/www-community/attacks/Blind_SQL_Injection  
 
 
 
