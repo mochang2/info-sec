@@ -21,7 +21,7 @@
 </br>
 
 2. 이벤트 로그 크기 설정
-#### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CUrrentControlSet\services\eventlog\...\MaxSize 에서 보안(Security.evtx), 시스템(System.evtx), 애플리케이션(Application.evtx)는 4GB이상, 파워쉘(Windows PowerShell.evtx)는 100MB이상 권장..
+#### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CUrrentControlSet\services\eventlog\...\MaxSize 에서 보안(Security.evtx), 시스템(System.evtx), 애플리케이션(Application.evtx)는 4GB이상, 파워쉘(Windows PowerShell.evtx)는 100MB이상 권장.
 </br>
 
 3. 로컬 방화벽 로그 설정
@@ -29,7 +29,7 @@
 </br>
 
 4. 프리패치 활성화(프리패치: Windows 운영체제에서 응용프로그램이 사용하는 시스템 자원을 특정 파일에 미리 저장하여, 프로그램 실행을 빠르게 도와주는 파일)
-#### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\EnablePrefetcher 에서 0x03 권장(0x00: 비활성화 0x01: 응용프로그램 프리패칭 활성화 0x02: 부트 프리패칭 활성화 0x03: 응용프로그램과 부트 프리패칭 활성화)..
+#### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\EnablePrefetcher 에서 0x03 권장(0x00: 비활성화 0x01: 응용프로그램 프리패칭 활성화 0x02: 부트 프리패칭 활성화 0x03: 응용프로그램과 부트 프리패칭 활성화).
 </br>
 
 5. 시스템 복원 설정
@@ -42,7 +42,7 @@
 
 ## 로그 설정 권고(리눅스)
 1. 히스토리 파일명 변경
-#### set HISTFILE/HISTFILESIZE/HISTSIZE = xx 로 설정하여 History 로그 관련 파일명과 설정 변경. 공격자가 로그를 지울 수 있기 때문..
+#### set HISTFILE/HISTFILESIZE/HISTSIZE = xx 로 설정하여 History 로그 관련 파일명과 설정 변경. 공격자가 로그를 지울 수 있기 때문.
 </br>
 
 2. 로그 로테이션 설정
