@@ -18,6 +18,7 @@
 ## 로그 설정 권고(윈도우)
 1. 이벤트 로그 감사 설정
 #### 제어판을 이용하여 설정. gpedit.msc > 컴퓨터 구성 > Windows 설정 > 보안 설정 > ... > 계정 로그온, 계정 관리, 세부 추적, 로그온/로그오프 , 개체 액세스, 시스템 등의 감사 정책 설정.
+</br>
 
 2. 이벤트 로그 크기 설정
 #### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CUrrentControlSet\services\eventlog\...\MaxSize 에서 보안(Security.evtx), 시스템(System.evtx), 애플리케이션(Application.evtx)는 4GB이상, 파워쉘(Windows PowerShell.evtx)는 100MB이상 권장.
