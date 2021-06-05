@@ -17,24 +17,21 @@
 
 ## 로그 설정 권고(윈도우)
 1. 이벤트 로그 감사 설정
-#### 제어판을 이용하여 설정. gpedit.msc > 컴퓨터 구성 > Windows 설정 > 보안 설정 > ... >계정 로그온, 계정 관리, 세부 추적, 로그온/로그오프 , 개체 액세서, 시스템 등의 감사 정책 설정.
+#### 제어판을 이용하여 설정. gpedit.msc > 컴퓨터 구성 > Windows 설정 > 보안 설정 > ... > 계정 로그온, 계정 관리, 세부 추적, 로그온/로그오프 , 개체 액세스, 시스템 등의 감사 정책 설정.
 
 2. 이벤트 로그 크기 설정
 #### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CUrrentControlSet\services\eventlog\...\MaxSize 에서 보안(Security.evtx), 시스템(System.evtx), 애플리케이션(Application.evtx)는 4GB이상, 파워쉘(Windows PowerShell.evtx)는 100MB이상 권장.
 
-3. 이벤트 로그 설정(시간 변경)
-#### 로그 크기 설정. 이벤트 뷰어 > 응용 프로그램 및 서비스 로그 > Microsoft > Windows > DateTimeControlPanel > Operational > 속성. 로깅: 사용, 크기 100MB 이상 권장
+3. 로컬 방화벽 로그 설정
+#### 제어판을 이용한 설정. 시작 프로그램, 관리 도구 또는 제어판 > ... > 속성 > 로깅 또는 사용자 지정. 손실된 패킷을 로그에 기록: 활성화, 성공한 연결을 로그에 기록: 활성화, LogFileSize: 100MB 이상 권장
 
-4. 로컬 방화벽 로그 설정
-#### 제어판을 이용한 설정. 시작 프로그램, 관리 도구 또는 제어판 > ... > 속성 > 로깅, 사용자 지정. 손실된 패킷을 로그에 기록: 활성화, 성공한 연결을 로그에 기록: 활성화, LogFileSize: 100MB 이상 권장
-
-5. 프리패치 활성화
+4. 프리패치 활성화(프리패치: Windows 운영체제에서 응용프로그램이 사용하는 시스템 자원을 특정 파일에 미리 저장하여, 프로그램 실행을 빠르게 도와주는 파일)
 #### 레지스트리를 이용하여 설정. HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters\EnablePrefetcher 에서 0x03 권장(0x00: 비활성화 0x01: 응용프로그램 프리패칭 활성화 0x02: 부트 프리패칭 활성화 0x03: 응용프로그램과 부트 프리패칭 활성화).
 
-6. 시스템 복원 설정
+5. 시스템 복원 설정
 #### 제어판을 이용한 설정. 시작프로그램, 관리 도구 > ... > 백업 일정 또는 제어판> ... > 복원 설정, 디스크 공간 사용에서 시스템 설정 및 이전 버전 파일 복원 체크 후 디스크 공간 사용을 20GB이상으로 설정 권장
 
-* 참고: <https://krcert.or.kr/data/guideList.do?page=2&sort_code=&sort_code_name=&search_sort=title_name&search_word=>
+* 참고: <https://krcert.or.kr/data/guideList.do?page=2&sort_code=&sort_code_name=&search_sort=title_name&search_word=> , <http://forensic.korea.ac.kr/DFWIKI/index.php/%ED%94%84%EB%A6%AC%ED%8C%A8%EC%B9%98_%EB%B6%84%EC%84%9D_%EB%8F%84%EA%B5%AC>
 
 ----------------------------------------------------------------------
 
