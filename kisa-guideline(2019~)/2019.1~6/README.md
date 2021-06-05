@@ -1,7 +1,7 @@
 # 1월
 ## SQLite 취약점 발견
 #### SQLite는 MySQL이나 PostgreSQL과 같은 데이터베이스 관리 시스템이지만, 서버가 아니라 응용 프로그램에 넣어 사용하는 비교적 가벼운 데이터베이스이다. 
-#### 마젤란(Magellan)이라는 SQLite 취약점은 원격지의 공격자가 영향을 받는 기기에서 임의 또는 악성 코드를 실행하고, 프로그램 메모리를 누출시키거나 응용 프로그램을 중단시키도록 허용 가능하다. 
+#### 마젤란(Magellan)이라는 SQLite 취약점은 원격지의 공격자가 영향을 받는 기기에서 임의 또는 악성 코드를 실행하고, 프로그램 메모리를 누출시키거나 응용 프로그램을 중단시킬 수 있다.
 
 * 참고: <https://ko.wikipedia.org/wiki/SQLite> , <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=30151&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
