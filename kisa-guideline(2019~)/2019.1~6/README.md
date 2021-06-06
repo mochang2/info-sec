@@ -5,7 +5,7 @@
 
 * 참고: <https://ko.wikipedia.org/wiki/SQLite> , <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=30151&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
-----------------------------------------------------------------------
+</br>
 
 ## 아나토바(Anatova) 랜섬웨어
 #### 랜섬웨어(ransomware)는 몸값(ransom)과 소프트웨어(software)가 합쳐진 단어로 파일 등을 암호화한 뒤 몸값을 요구하는 범죄를 말한다. 보통 토르(Tor) 네트워크 등을 통한 암호화폐를 몸값으로 요구하므로 추적이 힘들며, 몸값을 보내도 암호화를 해제할 거라는 보장이 없다.
@@ -13,7 +13,7 @@
 
 * 참고: <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=30152&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
-----------------------------------------------------------------------
+</br>
 
 ## 로그 설정 권고(윈도우)
 1. 이벤트 로그 감사 설정
@@ -38,7 +38,7 @@
 
 * 참고: <https://krcert.or.kr/data/guideList.do?page=2&sort_code=&sort_code_name=&search_sort=title_name&search_word=> , <http://forensic.korea.ac.kr/DFWIKI/index.php/%ED%94%84%EB%A6%AC%ED%8C%A8%EC%B9%98_%EB%B6%84%EC%84%9D_%EB%8F%84%EA%B5%AC>
 
-----------------------------------------------------------------------
+</br>
 
 ## 로그 설정 권고(리눅스)
 1. 히스토리 파일명 변경
