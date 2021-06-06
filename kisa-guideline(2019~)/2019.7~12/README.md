@@ -16,8 +16,27 @@
 ----------------------------------------------------------------------
 
 # 9월
-## 
-#### 
+## DDOS 대응방안
+1. SYN Flood
+#### SYN 자체가 공격이 아니다. 짧은 기간 동안 많은 SYN 패킷이 오는 것이 공격이다. 따라서 방화벽 및 프록시 서버와 같은 모든 주변 장치에서 "TCP 연결 유지" 및 "최대 연결" 규칙을 정의한다. 또한 SYN cookie를 사용하여 인증된 사용자만 백로그큐를 사용하게 함으로써 공격의 영향을 완화할 수 있다.
+</br>
+
+2. SYN/ACK Flood(TCP SYN DRDOS)
+#### TCP는 일정 시간 안에 응답이 없으면 패킷이 정상적으로 전달되지 못한 것으로 판단하여 재전송하기 때문에 공격의 효과가 더 커지게 된다. UDP나 ICMP flood와 같이 방화벽이나 프록시 서버에서 패킷 임계치 기반 차단 설정을 함으로써 방어할 수 있다.
+</br>
+
+3. NTP DRDOS(UDP 포트를 이용하는 서비스 중 하나)
+#### NTP는 UDP 123번 포트를 이용하여 네트워크로 연결된 컴퓨터의 시간을 동기화하는데 사용된다. monlist 요청은 해당 NTP 서버에 접속한 사용자들을 묻는 요청으로 요청 대비 응답이 매우 큰 요청이다. NTP 서버를 2.4.7이상으로 업그레이드함으로써 monlist 명령을 제거하거나 OpenNTPD와 같이 monlist를 활용하지 않는 NTP 버전을 이용한다. 서버를 업그레이드할 수 없는 경우 npt.conf에서 disable moniter를 추가하고 NTP 데몬을 재기동한다. 또한 다른 공격에 대한 방어와 마찬가지로 방화벽 규칙을 적용한다.
+</br>
+
+4. DNS DRDOS(UDP, TCP 53번 포트 사용)
+#### DNS의 any 또는 txt 타입의 쿼리를 사용한다. 응답 대비 요청이 상당히 크기 때문이다. DNS 개발사(BIND, MS 등)에서 제공한 지침에 따라 DNS 재귀 기능을 사용하지 않음으로써 (또는 허가된 사용자만, 특히 authoritative server 같은 경우) 어느 정도 방어가 가능하다.
+</br>
+
+5. CLDAP(Connection-less Lightweight Directory Access Protocol)
+#### 공격자가 공격대상 IP 주소로 도용하고 LDAP 서버로 CLDAP 요청을 보내는 형태의 공격이다. CLDAP은 공유 인터넷 디렉터리를 연결/검색/수정하는데 사용되며 UDP 389 포트를 사용한다. UDP LDAP 프로토콜은 52~70배까지 증폭이 가능하여 공격 효율성이 높다. LDAP 서버를 운영하는 경우 방화벽 규칙을 설정하여 공격에 악용되지 않도록 예방 조치가 필요하다
+
+* 참고: <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35135&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
 ----------------------------------------------------------------------
 
