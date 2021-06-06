@@ -19,6 +19,14 @@
 
 ----------------------------------------------------------------------
 
+# 3월
+## 정보보호최고책임자(CISO)의 업무
+#### 22, 23, 37, 66 ,67p
+
+* 참고: <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35296&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
+
+----------------------------------------------------------------------
+
 # 5월
 ## 
 * 참고: <>
