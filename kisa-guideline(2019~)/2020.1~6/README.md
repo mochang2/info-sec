@@ -36,7 +36,6 @@
 #### 그 중 SCADA는 발전소, 철도, 항만과 같은 사회기반시설이나 산업체의 공장을 감시, 제어하고 운영 관련 데이터를 수집, 기록하는 역할을 한다. SCADA는 DCS와 자주 비교된다. SCADA는 공정을 조직화하여 감시하는 장치이지만 DCS는 실시간으로 공정을 제어하는 시스템이다. 또한 SCADA는 지리적으로 넓게 분산되는 형태의 응용에 적합하고 DCS는 하나의 지엽적인 현장에서 발생하는 작업들을 처리하는데 주로 사용된다.
 #### PLC는 산업 플랜트의 유지관리 및 자동 제어 및 모니터링에 사용하는 (기계)제어 장치이다. PLC는 입력을 프로그램에 의해 순차적으로 논리 처리하고 그 출력 결과를 이용해 연결된 외부장치를 제어한다. 순차제어(sequential control)에 사용되는 대표적 장치이다. PLC는 단독으로 쓰일 수도 있고, SCADA 등의 시스템과 함께 사용되기도 한다.
 <img src="https://www.securicon.com/wp-content/uploads/2019/05/image001.png" width="200px" height="auto" />
-![ICS SCADA DCS](https://www.securicon.com/wp-content/uploads/2019/05/image001.png)
 
 * 참고: <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35433&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9> , <https://www.securicon.com/whats-the-difference-between-ot-ics-scada-and-dcs/> , <https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%B9%B4%EB%8B%A4> , <https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EB%B8%94_%EB%A1%9C%EC%A7%81_%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC>
 
