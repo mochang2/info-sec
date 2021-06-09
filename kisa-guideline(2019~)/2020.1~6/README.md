@@ -38,6 +38,14 @@
 <img src="https://www.securicon.com/wp-content/uploads/2019/05/image001.png" width="200px" height="auto" />
 
 * 참고: <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35433&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9> , <https://www.securicon.com/whats-the-difference-between-ot-ics-scada-and-dcs/> , <https://ko.wikipedia.org/wiki/%EC%8A%A4%EC%B9%B4%EB%8B%A4> , <https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EB%B8%94_%EB%A1%9C%EC%A7%81_%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC>
+</br>
+
+## 딥링크(Deeplink)
+#### 딥링크란 모바일 웹상에 있는 링크나 그림을 클릭할 경우 기기 내 관련 앱이나 사전에 정의된 특정 웹페이자 실행되는 모바일 기술을 말한다. 웹(WWW) 어플리케이션이 http:// 나 https:// 프로토콜을 가지고 있는 것처럼, 모바일 어플레케이션도 각자의 프로토콜을 가지고 있다. 예를 들면, 유튜브는 youtube://, 멜론(아이폰)은 meloniphone://, 벅스는 bugs3:// 프로토콜을 가지고 있다. 가끔씩 모바일로 웹 서핑을 하다가, 어떤 버튼을 눌렀는데 네이티브 앱으로 바로 이동하는 경험을 해본 경험이 있을 것이다. 그것이 바로 '모바일 딥링크'를 이용하여, 특정 앱 페이지로 들어가는 것이다.
+#### 이 딥링크에 취약점이 있다. 모바일 어플리케이션마다 개별적으로 생성한 딥링크의 검증이 없을 경우, 관련 앱 자바 스크립트가 권한인증 없이 자동으로 실행되어 의도치 않은 악성 URL에 접속하고 어플리케이션 내 민감 정보가 공격자에게 노출된다.
+#### 딥링크 취약점과 관련하여 다음과 같은 조치방안을 참고하여 패치 및 개발이 권고된다. 첫째는 딥링크 URI 파싱시 취약한 함수 사용 금지하기이다. URI 파싱 시 getHost, substring, split과 함수 보다는 getQueryParmaeter 등의 함수를 활용하여 필터링이 가능하도록 한다. 둘째는 인가된 URI에만 자바인터페이스 권한을 부여한다. 외부 사이트에서 접속 시 검증 없이 자바인터페이스 권한을 줄 때 이를 악용하여 개인정보가 유출되기 때문이다. 셋째는 도메인 검증을 이용한 우회를 방지한다. 하드코딩된 일부 string 구문 비교를 통해 파싱할 경우 취약점을 유발할 수 있으므로 검증된 도메인에서 함수 호출, 정보 반환, 웹뷰를 출력하도록 검증된 도메인 리스트 설정을 하거나, 서브 도메인 악용을 막기 위해 슬래쉬(/)로 끝나도록 명확한 검증 도메인명을 작성한다. 넷째로 URI.parse 함수 사용 시 특정 기능을 수행하는 특수문자들을 필터링한다.
+
+* 참고: <https://blog.ab180.co/posts/deeplinkga-mweojyo> , <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35434&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
 ----------------------------------------------------------------------
 
