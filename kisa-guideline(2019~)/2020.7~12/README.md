@@ -46,7 +46,20 @@
 * 참고: <https://it.donga.com/117/> , <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35691>
 </br>
 
-## UPnP
+## UPnP(Universal Plug and Play)
+#### Plug and Play란 컴퓨터에 장치를 부착하면 자동을 검색하고 사용 가능하게 하는 기능을 말한다. 이를 네트워크 상으로 확장시킨 개념이 UPnP다. 네트워크에 연결된 기기 간에 복잡한 설정 절차 없이 통신을 가능하게(포트 포워딩) 해주는 기술로, 한 기기가 가진 서비스를 다른 기기가 자동으로 찾을 수 있도록 해주는 기능이다. UPnP는 UPnP 포럼이 공표한 컴퓨터 네트워크 프로토콜의 집합으로 장치들을 부드럽게 연결하고 가정 네트워크와 회사 환경의 기능을 단순화하는 것을 목표로 한다.
+#### UPnP는 미디어 및 장치의 독립, 사용자 인터페이스(UI) 제어, 운영 체제와 프로그래밍 언어의 독립, 프로그래밍 제어, 확장성 등의 기능을 한다.
+
+![UPnP 프로토콜 구조](https://www.itfind.or.kr/WZIN/jugidong/1075/107501_image006.gif)
+
+#### UPnP는 위와 같은 구조로 이루어져 있다. Wired 프로토콜에 기반을 두고 있으며 디바이스 간에 교환하는 데이터는 XML로 표현하고 HTTP를 통해서 통신한다. 위 프로토콜 중 SSDP(Simple Service Discovery Protocol)는 네트워크상의 서비스를 찾기 위한 프로토콜이며, GENA(General Event Notification Architecture)는 한 디바이스의 상태가 변했을 때 이를 다른 디바이스에게 알리기 위한 프로토콜이며, SOAP(Simple Object Access Protocol)은 한 디바이스가 다른 디바이스에게 제어 명령을 보내기 위해 사용하는 프로토콜이다.
+#### UPnP 통신은 다음과 같은 단계로 이루어진다. 0. addressing(주소 지정) 1. discovery(멀티캐스트 주소를 기반으로 기기 검색) 2. description(디바이스에 관한 기술 문서 요청) 3. control(컨트롤 포인트가 디바이스의 서비스에게 명령을 보냄) 4. event(디바이스가 자신의 이벤트에 등록된 네트워크 상의 제어 포인트에게 자신의 변화 상태를 송신) 5. presentation(URL을 통해 접근하면 프레젠테이션 페이지 정보를 반환)
+#### 참고로 DLNA UPnP와 같은 기능을 제공하면서 UPnP의 호환성과 보안을 강화한 기술이다.
+
+* 참고: <https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EB%B2%84%EC%84%A4_%ED%94%8C%EB%9F%AC%EA%B7%B8_%EC%95%A4_%ED%94%8C%EB%A0%88%EC%9D%B4> , <https://onecellboy.tistory.com/2> , <https://www.itfind.or.kr/WZIN/jugidong/1075/107501.htm>
+</br>
+
+## DLNA
 #### 추가하기
 
 ----------------------------------------------------------------------
