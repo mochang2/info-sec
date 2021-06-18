@@ -68,6 +68,13 @@
 * 참고: <https://spirespark.com/dlna/certification> , <http://netfrontlife.blogspot.com/2011/02/dlna-1-dlna.html>
 </br>
 
+## NAS(Network Attached Storage)
+#### 네트워크 결합 스토리지. NAS는 직접 연결하지 않고 네트워크를 통해 데이터를 주고 받는 저장장치이다. LAN으로 연결하는 외장 하드디스크라고 생각하면 된다. 반대 개념으론 컴퓨터에 직접 연결해서 사용하는 DAS(Direct Attached Storage)가 있다.
+#### NAS를 사용하면 간편하게 데이터 공유가 가능하고 저장장치를 직접 가지고 다닐 필요가 없어진다. 또한 유지비도 저렴하다. 하지만 네트워크 연결이 필수이며, 설정이 복잡하며 데이터 관리의 어려움이라는 단점도 가지고 있다.
+
+* 참고: <https://namu.wiki/w/NAS(%EC%A0%80%EC%9E%A5%EC%9E%A5%EC%B9%98)>
+</br>
+
 ----------------------------------------------------------------------
 
 # 10월
