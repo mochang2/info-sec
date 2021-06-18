@@ -59,8 +59,14 @@
 * 참고: <https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EB%B2%84%EC%84%A4_%ED%94%8C%EB%9F%AC%EA%B7%B8_%EC%95%A4_%ED%94%8C%EB%A0%88%EC%9D%B4> , <https://onecellboy.tistory.com/2> , <https://www.itfind.or.kr/WZIN/jugidong/1075/107501.htm>
 </br>
 
-## DLNA
-#### 추가하기
+## DLNA(Digital Living Network Alliance)
+#### 단체 이름이기도 한 DLNA는 DLNA 인증을 통한 제품 간에 네트워크를 통해 제조사나 제품 종류에 관계 없이 다양한 미디어 컨텐츠(음악/사진/동영상 등)을 공유하고 재생할 수 있도록 하는 기술을 말한다. DLNA 단체에는 산업기기/회사 간 협력(Industry collaboration), 표준 규격을 준수하는 상호 연동(Standard-based interoperability), 제품의 규격 준수(Compelling products)를 목표로 하는 여러 회사들이 모여 규격 제정, 인증 관리 및 향후 방향 모색 등 다양한 활동을 하고 있다. (참고로 현재는 DLNA 인증을 spirespark라는 곳에서 하고 있다)
+#### 미디어 컨텐츠를 전통적인 방식으로 공유하던 방식은 USB를 이용하거나 케이블 등을 통해 실제 물리적인 연결을 통해서만 가능했다. 하지만 DLNA를 이용하면 Ethernet, Wi-Fi, Bluetooth와 같은 기능(프로토콜)을 이용해서 같은 IP 대역에 있는 기기들이 네트워크를 통해 컨텐츠를 공유한다.
+#### DLNA를 사용하는 예시로는 스마트폰에 있는 사진을 TV에서 감상하고 프린터로 인화하거나, PC에 저장된 영화를 TV에서 감상하거나, NAS에 있는 동영상을 스마트폰을 통해 제어하면서 TV에서 감상하는 방법 등이 있다.
+![DLNA 사용 예시](http://2.bp.blogspot.com/-8cQhv6D77lM/TVf7csgkGNI/AAAAAAAAACM/3OowIYvzsVo/s320/image015.png)
+
+* 참고: <https://spirespark.com/dlna/certification> , <http://netfrontlife.blogspot.com/2011/02/dlna-1-dlna.html>
+</br>
 
 ----------------------------------------------------------------------
 
