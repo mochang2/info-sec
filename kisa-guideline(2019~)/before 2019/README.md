@@ -139,7 +139,7 @@
 ----------------------------------------------------------------------
 
 ## 14.ATT&CK(Adversarial Tactics Techniques and Common Knowledge)
-#### ATT&CK는 MITRE의 FMX라 불리는 연구 프로젝트에 사용하기 위해 만들어졌다. 공격자의 행동, 생애주기 모델들이 더이상 fit하지 않음, 현실세게에 적용성, Common taxonomy(일반분류학이라지만 적당한 한글 번역이 생각이 나지 않음)이라는 4가지 문제를 다루기 위해 만들어졌다고 한다. 록 마운틴 사의 Cyber Kill Chain처럼 공격이 최고의 방어라는 믿음 하에 능동적으로 공격 고리를 끊기 위한 방법이다.
+#### ATT&CK는 MITRE의 FMX라 불리는 연구 프로젝트에 사용하기 위해 만들어졌다. 공격자의 행동, 생애주기 모델들이 더이상 fit하지 않음, 현실세계에 적용성, Common taxonomy(일반분류학이라지만 적당한 한글 번역이 생각이 나지 않음)이라는 4가지 문제를 다루기 위해 만들어졌다고 한다. 록 마운틴 사의 Cyber Kill Chain처럼 공격이 최고의 방어라는 믿음 하에 능동적으로 공격 고리를 끊기 위한 방법이다.
 #### ATT&CK는 네트워크에 침입하기 전까지는 수천 개의 변종이 있을 수 있지만 일단 침입에 성공하면 유사한 행동을 보인다며 공격을 총 14단계로 구분지었다. 기업 대상으로는 정찰(Reconnaissance)-자원 개발(Resource Development)-초기 접근(Initial Access)-실행(Execution)-유지(Persistance)-권한 상승(Privilege Escalation)-보안 우회(Defense Evasion)-계정 탈취(Credential Access)-탐색(Discovery)-공격 내부 확산(Lateral Movement)-수집(Collection)-제어(Command and Control)-유출(Exfiltration)-타격(Impact) 이렇게 총 14단계로 구성된다. 모바일 대상으로는 약간의 순서 변경이 있지만 여전히 14단계로 구분했다.
 ###### 참고로 Cyber Kill Chain은 7단계로 정찰-무기화-배달-취약점 이용-설치-명령 및 제어-목표 장악 으로 이루어져 있다.
 
