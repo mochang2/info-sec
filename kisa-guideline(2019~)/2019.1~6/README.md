@@ -77,7 +77,7 @@
 ## Vim, Neovim OS 명령어 실행 취약점(CVE-2019-12735)
 #### Vim과 Neovim은 리눅스 시스템에서 커맨드라인 텍스트 편집 도구이다. cat, more 등을 통해 읽을 수 있는 파일들은 Vim 등으로도 읽을 수 있다고 생각하면 된다.
 #### 이 취약점은 modeline를 처리하는 과정에서 발생한다. modeline은 특정 파일에서 다른 옵션들을 적용할 때 사용되는 기능으로, 문서의 시작과 마지막 라인 근처에 파일의 제작자가 언급한 커스텀 설정 세트를 자동으로 찾아 적용하는 기능으로 기본으로 활성화되어 있다.
-#### 해결 방안으로는 modelines 기능 비활성화, modelines의 수식을 비활성화 하기 위한 “modelineexpr” 비활성화, Vim modelines의 대한인 “securemodelines plugin” 사용 등이 있다.
+#### 해결 방안으로는 modelines 기능 비활성화, modelines의 수식을 비활성화 하기 위한 “modelineexpr” 비활성화, Vim modelines의 대안인 “securemodelines plugin” 사용 등이 있다.
 
 * 참고: <https://vim.fandom.com/wiki/Modeline_magic> , <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=35049>
 
