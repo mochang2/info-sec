@@ -46,7 +46,7 @@
 #### 가상 머신 모니터(virtual machine monitor) 또는 가상화 머신 매니저(virtual machine manager)라고도 불리는 하이퍼바이저는 가상 머신을 생성하고 실행하는 프로세스이다. 하이퍼바이저를 사용함으로써 메모리 및 처리와 같은 단일 호스트 컴퓨터의 리소스를 가상으로 공유하여 호스트 컴퓨터가 여러 게스트 가상 머신을 지원할 수 있다. 보통 하이퍼바이저로 사용되는 물리 하드웨어를 호스트라고 하며, 리소스를 사용하는 여러 가상 머신을 게스트라고 한다. 하이퍼바이저는 CPU, 메모리, 저장 공간 등의 리소스를 처리하는 풀로, 게스트 간 이것들이 쉽게 재배치될 수 있도록 한다.
 #### 하이퍼바이저를 활용하여 가상 머신을 사용하면, 가상 머신이 손상되더라도 전체 시스템에는 영향을 미치지 않는다는 장점이 있다. 하지만 하이퍼바이저가 해킹을 당하는 경우 해당 하이퍼바이저가 관리하는 모든 가상 머신에 문제가 생길 수 있으며, 각 가상 머신의 모든 데이터가 취약해질 수 있다(SPoF).
 #### 하이퍼바이저는 일반적으로 2가지 유형으로 나뉜다. 첫 번째 유형은 native 또는 bare-metal이라고 불리는 유형이다. 이는 운영 체제가 프로그램을 제어하듯이 하이퍼바이저가 해당 하드웨어에서 직접 실행되며 게스트 운영 체제는 하드웨어 위에서 2번째 수준으로 실행되는 방식이다. 두 번째 유형은 hosted라고 불리는 유형이다. 이는 일반 프로그램과 같이 호스트 운영 체제에서 하이퍼바이저가 실행되며 가상 머신 내부에서 동작되는 게스트 운영 체제는 하드웨어에서 3번째 수준으로 실행된다. 일반적으로 사용되는 상용 프로그램(virtual box 등)이 이에 속한다.
-!(bare metal vs hosted)(https://user-images.githubusercontent.com/63287638/123372057-dbe9cd00-d5bd-11eb-8264-200688b27c95.png)
+![bare metal vs hosted](https://user-images.githubusercontent.com/63287638/123372057-dbe9cd00-d5bd-11eb-8264-200688b27c95.png)
 
 * 참고: <https://www.redhat.com/ko/topics/virtualization/what-is-a-hypervisor> , <https://ko.wikipedia.org/wiki/%ED%95%98%EC%9D%B4%ED%8D%BC%EB%B0%94%EC%9D%B4%EC%A0%80> , <https://www.vmware.com/kr/topics/glossary/content/hypervisor.html>
 </br>
