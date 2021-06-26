@@ -60,6 +60,16 @@
 * 참고: <https://www.youtube.com/watch?v=tPjpcsgxgWc> , <https://ko.wikipedia.org/wiki/%EB%8F%84%EC%BB%A4_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4)> , <https://tech.osci.kr/2020/03/03/91690167/> , <https://aws.amazon.com/ko/docker/>
 </br>
 
+## 클라우드 컴퓨팅(cloud computing)
+#### 클라우드란 각각 고유의 기능을 가진 서버의 글로벌 네트워크를 의미하며, 클라우드 컴퓨팅은 클라우드에서 서버, 스토리지, 소프트웨어 등 필요한 IT 자원을 받아서 사용하는 기술을 의마한다. 클라우드 컴퓨팅 자원은 사용자의 직접적인 관리 없이, 필요 시 바로 제공(on-demand, 기존의 on-premise와 대비되는 개념)한다.
+#### MS Azure에 따르면 클라우드 컴퓨팅은 7가지의 이점이 있다. 첫째, 비용이 절감된다. 클라우드 컴퓨팅을 사용하면 하드웨어 및 소프트웨어를 구입하고 온사이트 데이터 센터를 설치 및 운영하면서 발생하는 지출을 줄일 수 있다. 또한 서버 랙, 전원 및 냉각에 사용되는 상시 대기 전기세, 인프라 관리를 위한 전문가 비용 등의 비용도 절감된다. 둘째, 속도가 빠르다. 클라우드 컴퓨팅 서비스는 주문형 셀프 서비스로 제공되므로, 대부분 몇 번의 마우스 클릭만으로 리소스를 마련할 수 있다. 셋째, 탄력적인 확장성이다. 필요한 때에 필요한 서비스를 필요한 만큼만 빌려서 사용할 수 있기 때문에 확장성이 뛰어나다. 넷째, 생산성이 증가한다. 온사이트 데이터 센터에 하드웨어 및 소프트웨어를 설치할 필요가 없으니, 관리할 필요도 없게 되고 이러한 곳에 신경 쓸 인력과 시간을 더 중요한 비즈니스 목표를 달성하는데 사용할 수 있다. 다섯째, 성능이 증가한다. 클라우드 컴퓨팅 서비스는 전 세계적으로 위치한 보안 데이터 센터 네트워크에서 실행된다. 이는 개별 기업이 관리하는 데이터 센터보다 전문적으로 관리되며 규모의 경제 등 이점이 있다. 여섯째, 안정성이 높다. 클라우드 컴퓨팅을 사용하면 여러 중복 사이트에 데이터를 미러링할 수 있으므로, BC(비즈니스 연속성) 등을 더 쉽게 제공할 수 있다. 일곱째, 보안수준이 높다. 많은 클라우드 공급자가 전체적인 보안 태세를 강화하는 광범위한 정책 집합, 기술 및 컨트롤을 제공하여 데이터, 앱 및 인프라를 잠재적인 위협으로부터 보호한다.
+#### 클라우드 컴퓨팅은 서비스 유형에 따라 IaaS(Infrastructure as a Service), PaaS(Platform as a Service), SaaS(Software as a Service)로 나뉜다. IaaS의 인프라는 IT 자원을 제공하기 위한 일체의 요소들로, 물리적 공간 및 전기시설, 네트워크 인프라 및 보안장치, 서버시스템, 가상화 기술 등을 제공한다. 예시로는 AWS 서비스가 있다. PaaS의 플랫폼은 게스트 OS 및 소프트웨어 개발 환경을 제공하기 위한 일체의 요소들로 게스트 운영체제, 미들웨어, API, DB, 소프트웨어 개발 플랫폼 등을 제공한다. 예시로는 MS Azure, Google App Engine 등이 있다. SaaS의 소프트웨어는 추가개발 없이 사용 가능한 소프트웨어를 의미하며, 데이터를 포함한 응용 소프트웨어를 제공한다. IAM, 웹 보안, 이메일 보안 등을 포함하는 SecaaS(Security as a Service)가 SaaS에 포함된다. SaaS의 예시로는 드라이브 서비스가 있다.
+![IaaS, PaaS, SaaS 비교](https://mblogthumb-phinf.pstatic.net/MjAxODA3MDRfMTQy/MDAxNTMwNjc0OTEyNzg4.ZdahlfKOAGLe6vXcT9bhUhh10KkiKhzfZFdOT5KfsvMg.NBkF_ikEMSp0hCEWg_38cYkgw2P_TYH40cmg19HC5Qcg.PNG.suresofttech/image.png?type=w800)
+#### 클라우드 컴퓨팅을 배치 모델에 따라 공용(public), 프라이빗(private), 하이브리드(hybrid) 클라우드로 나눌 수 있다. 공용 클라우드는 인터넷을 통해 서버 및 스토리지와 같은 컴퓨팅 리소스를 제공하는 타사 클라우드 서비스 공급자가 제공하는 서비스를 이용하는 것을 말한다. 프라이빗 클라우드는 단일 비즈니스 또는 조직에서 독점적으로 사용되는 클라우드 컴퓨팅 리소스를 의미한다. 하이브리드 클라우드는 이 둘을 합쳐, 퍼블릭과 프라이빗 클라우드 간에 데이터와 애플리케이션을 공유할 수 있는 기술을 의미한다.
+
+* 참고: <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=suresofttech&logNo=221312306309> , <https://azure.microsoft.com/ko-kr/overview/what-is-cloud-computing/> , <https://ko.wikipedia.org/wiki/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EC%BB%B4%ED%93%A8%ED%8C%85>
+</br>
+
 ----------------------------------------------------------------------
 
-클라우드, 쿠버네티스에 대해 정리하기
+쿠버네티스에 대해 정리하기
