@@ -70,6 +70,10 @@
 * 참고: <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=suresofttech&logNo=221312306309> , <https://azure.microsoft.com/ko-kr/overview/what-is-cloud-computing/> , <https://ko.wikipedia.org/wiki/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EC%BB%B4%ED%93%A8%ED%8C%85>
 </br>
 
-----------------------------------------------------------------------
+## 쿠버네티스(kubernetes)
+####
 
-쿠버네티스에 대해 정리하기
+* 참고: <>
+</br>
+
+----------------------------------------------------------------------
