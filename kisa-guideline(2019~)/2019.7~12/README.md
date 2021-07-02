@@ -13,13 +13,6 @@
 
 * 참고: <https://krcert.or.kr/data/trendView.do?bulletin_writing_sequence=35110>
 
-## 메모리 커럽션
-#### 
-+ 2020.5 XSS(stored, dom based, reflected xss)
-+ 2020.5 use after free 취약점
-+ 2020.9 DLL 하이재킹
-+ 2021.4 path traversal 취약점
-
 ----------------------------------------------------------------------
 
 # 9월
