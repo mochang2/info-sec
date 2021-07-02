@@ -47,34 +47,38 @@
 
 * 참고: <https://blog.ab180.co/posts/deeplinkga-mweojyo> , <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35434&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
-## use after free 취약점
-#### 
+## use after free(UAF) 취약점
+#### UAF는 힙(heap)에서 메모리를 할당한 공간을 free 한 후에 재사용할 때 일어날 수 있는 취약점이다. 힙이란 프로그래머의 필요에 의해서 메모리 공간이 동적으로 할당 및 소멸되는 영역을 말한다. 힙은 런타임 시 할당되는 영역이넫 바이너리가 실행되고 죽기 전까지 힙에 데이터가 남아이쎅 된다. 이와 반대로 같은 메모리 공간을 공유하지만 정적으로 할당되기 때문에 컴파일 시 미리 공간이 할당되어 있는 곳을 스택이라고 한다. 스택은 생성될 때 배열 사이즈가 상수로 고정될 수밖에 없게 된다.
+#### 힙은 메모리를 효율적으로 사용하기 위해 반환된 힙 영역의 크기를 기억해놨다가 같은 크기의 할당 요청이 들어오면 이전 영역을 재사용한다. c/c++에서 사용되는 malloc 함수에는 캐싱 기능이 있는데 할당했던 공간을 다시 할당함으로써 병합하거나 분할하는 시간을 절약하고자 사용되는 기능이다. 이로 인해 메모리를 효율적으로 사용할 수 있지만, 원하지 않는 값을 참조하게 될 수 있다. 특히 할당됐던 공간에 비밀번호나 개인정보 등을 저장하게 되면 더 큰 문제가 발생할 수 있다.
 
-  #include <stdio.h>
-  #include <stdlib.h>
+    #include <stdio.h>
+    #include <stdlib.h>
   
-  int main(){
-    int* one = malloc(100);
-    *one = 20;
-    printf("before free, one address: %p\n", one);
-    printf("before free, one value: %d\n", one);
+    int main(){
+        int* one = malloc(100);
+        *one = 20;
+        printf("before free, one address: %p\n", one);
+        printf("before free, one value: %d\n", one);
     
-    free(one);
+        free(one);
     
-    int* two = malloc(100);
-    printf("after free, two address: %p\n", one);
-    printf("after free, two value: %d\n", one);
+        int* two = malloc(100);
+        printf("after free, two address: %p\n", one);
+        printf("after free, two value: %d\n", one);
     
-    return 0;
+        return 0;
     }
     
-    
+#### 위는 간단한 UAF 예제 코드이다. 보안 업데이트가 되어 있지 않는 곳에서 위 코드를 실행하면 one과 two의 주소와 값(20으로)이 같게 된다. 보안 업데이트가 되어 있는 곳에서도 위 코드를 실행하면 병합 지연(Deferred Coalescing)으로 인해 one과 two가 같은 주소를 공유할 수도 있다. 하지만 two의 값은 초기화된 상태로 할당된다.
+#### 이처럼 UAF 취약점을 막기 위해서는 보안 업데이트를 하거나, 새로 할당 받은 변수의 값을 초기화해줄 필요가 있다.
+
+* 참고: <https://nroses-taek.tistory.com/156> , <https://woosunbi.tistory.com/95> , <https://encyclopedia.kaspersky.com/glossary/use-after-free/> , <https://shayete.tistory.com/entry/7-Use-After-Free> , <https://www.youtube.com/watch?v=RAGar9rRnEM>
 
 
 + 2020.5 XSS(stored, dom based, reflected xss)
 + 2020.9 DLL 하이재킹
++ return to library
 + 2021.4 path traversal 취약점
-+ heap overflow
 
 
 ----------------------------------------------------------------------
