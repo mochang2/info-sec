@@ -74,8 +74,15 @@
 
 * 참고: <https://nroses-taek.tistory.com/156> , <https://woosunbi.tistory.com/95> , <https://encyclopedia.kaspersky.com/glossary/use-after-free/> , <https://shayete.tistory.com/entry/7-Use-After-Free> , <https://www.youtube.com/watch?v=RAGar9rRnEM>
 
+## XSS(CSS, Cross Site Script)와 그 종류
+#### XSS는 OWASP TOP 10에 2014년과 2017년, 2020년에 연속해서 3번이나 뽑힐 정도로 악명 높은 취약점이다. XSS는 애플리케이션에서 브라우저로 전송하는 페이지에서 사용자가 입력하는 데이터를 검증하지 않거나, 출력시 위험 데이터를 무효화시키지 않을 때 발생한다. XSS는 일반적으로 자바스크립트에서 많이 발생하지만 VBScript, Flash, ActiveX 등 클라이언트 측에서 실행되어 동적 데이터를 생성하는 언어(Client Side Script)에서 발생이 가능하다.
+#### XSS 취약점을 크게 3가지로 분류된다. 첫 번째는 Stored XSS(저장 XSS)이다. DB에 저장함으로써 웹 서버에 스크립트를 입력시켜 놓으면, 방문자가 악성 스크립트가 삽입되어 있는 페이지를 읽는 순간 공격이 발생한다.
+#### 두 번째는 Reflected XSS(반사 XSS)이다. 악성 스크립트가 포함된 URL을 사용자가 클릭하도록 유도하여 URL을 클릭하면 공격이 발생한다.
+#### 세 번째는 DOM Based XSS(DOM 기반 XSS)이다. DOM 환경에서 악성 URL을 통해 사용자의 브라우저를 공격한다. 여기서 DOM이란.. 
+#### CSRF와의 차이
 
-+ 2020.5 XSS(stored, dom based, reflected xss)
+* 참고: <https://twoicefish-secu.tistory.com/126> , <https://www.kisa.or.kr/uploadfile/201312/201312161355109566.pdf> , <https://dongdd.tistory.com/49> , <https://alwaysbeen.tistory.com/57>
+
 + 2020.9 DLL 하이재킹
 + return to library
 + 2021.4 path traversal 취약점
