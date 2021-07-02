@@ -47,6 +47,36 @@
 
 * 참고: <https://blog.ab180.co/posts/deeplinkga-mweojyo> , <https://krcert.or.kr/data/guideView.do?bulletin_writing_sequence=35434&queryString=cGFnZT0yJnNvcnRfY29kZT0mc29ydF9jb2RlX25hbWU9JnNlYXJjaF9zb3J0PXRpdGxlX25hbWUmc2VhcmNoX3dvcmQ9>
 
+## use after free 취약점
+#### 
+
+  #include <stdio.h>
+  #include <stdlib.h>
+  
+  int main(){
+    int* one = malloc(100);
+    *one = 20;
+    printf("before free, one address: %p\n", one);
+    printf("before free, one value: %d\n", one);
+    
+    free(one);
+    
+    int* two = malloc(100);
+    printf("after free, two address: %p\n", one);
+    printf("after free, two value: %d\n", one);
+    
+    return 0;
+    }
+    
+    
+
+
++ 2020.5 XSS(stored, dom based, reflected xss)
++ 2020.9 DLL 하이재킹
++ 2021.4 path traversal 취약점
++ heap overflow
+
+
 ----------------------------------------------------------------------
 
 # 6월
