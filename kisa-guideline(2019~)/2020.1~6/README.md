@@ -83,7 +83,7 @@
 #### 를 통해서 사용자가 이 스크립트가 삽입된 페이지를 읽을 경우 공격자는 사용자의 쿠키를 탈취할 수 있다. alert 대신 다른 공격 코드들도 삽입이 가능하다.
 #### 두 번째는 Reflected XSS(반사 XSS)이다. 악성 스크립트가 포함된 URL을 사용자가 클릭하도록 유도(이메일 등을 통해)하여 URL을 클릭하면 공격이 발생한다. Reflected XSS는 웹 애플리케이션의 지정된 변수를 이용할 때 발생하는 취약점을 이용하는 것으로, 검색 결과, 에러 메시지 등 서버가 외부에서 값을 입력받아 브라우저에게 응답할 때 전송하는 과정에서 입력되는 변수를 그대로 돌려주면서 발생한다.
 
-    ht<span>tp://ww</span>w.exam<span>ple<span>.</span>com/se</span>arch/?q=<script>alert(document.cookie)</script>&x=0
+    http://www.example.com/search/?q=<script>alert(document.cookie)</script>&x=0
 
 #### 일반적으로 서버에 검색 내용을 입력하면, 검색 결과가 있는 경우에는 결과 값을 사용자에게 전달하지만, 위와 같이 요청하여 서버에서 정확한 결과가 없는 경우 서버는 브라우저에 입력한 값을 그대로 HTML 문서에 포함하여 응답한다. 이 경우 악성 스크립트가 브라우저에서 실행이 된다.
 #### 세 번째는 DOM Based XSS(DOM 기반 XSS)이다. DOM 환경에서 악성 URL을 통해 사용자의 브라우저를 공격한다. 여기서 DOM이란.. 
