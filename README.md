@@ -66,10 +66,17 @@ by 한철규
     * 라. 품질보증체제: 품질관리 정착, ISO 품질보증체제 도입, CMM/SPICE 도입, 정보시스템 감리
 * 방법론 vs SW life cycle. 방법론: 일하는 방식을 체계화한 것(WBS: 일정관리표, 산출물 등 7가지로 구성됨) . SW life cycle: 소프트웨어 제작부터 폐기까지 일련의 과정.
 * SW life cycle의 유형
+###### _주가 되는 것을 먼저 잡아내고 부가 되는 것들을 채워 나가는 것이 프로젝트 진행할 때 중요한 사항!_
     * 가. 폭포수(Waterfall) 모델
+    ![Waterfall model](https://user-images.githubusercontent.com/63287638/124349909-88febe00-dc2c-11eb-941a-172680ef7318.png)  
     * 나. 프로토타입(Prototype) 모델
+    ![Prototype model](https://user-images.githubusercontent.com/63287638/124349918-95831680-dc2c-11eb-9969-6798f91db1e5.png)  
     * 다. 나선형(Spiral) 모델
+    ![Spiral model]](https://user-images.githubusercontent.com/63287638/124349936-a3389c00-dc2c-11eb-8e6a-fa397d365946.png)  
     * 라. 증분형(Incremental) 모델
+    ![Incremental model](https://user-images.githubusercontent.com/63287638/124349953-ae8bc780-dc2c-11eb-8d33-7ec1e11c8b75.png)  
     * 마. 진화적(Evolutionary) 모델
+    ![Evolutionary model](https://user-images.githubusercontent.com/63287638/124349960-b9def300-dc2c-11eb-8127-3ed9c71c295f.png)  
+
 
 * 방법론의 발전사. 구조적 방법론(폭포수) -> 정보공학 방법론(나선형) -> 객체지향 방법론(나선형) -> CBD 방법론(나선형). _정보공학 방법론의 중요사항: 관심사의 분리(프로세스와 데이터를 분리하기 시작한 첫 번째 방법론)_
