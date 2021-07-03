@@ -87,7 +87,7 @@
 
 #### 일반적으로 서버에 검색 내용을 입력하면, 검색 결과가 있는 경우에는 결과 값을 사용자에게 전달하지만, 위와 같이 요청하여 서버에서 정확한 결과가 없는 경우 서버는 브라우저에 입력한 값을 그대로 HTML 문서에 포함하여 응답한다. 이 경우 악성 스크립트가 브라우저에서 실행이 된다.
 #### 세 번째는 DOM Based XSS(DOM 기반 XSS)이다. DOM 환경에서 악성 URL을 통해 사용자의 브라우저를 공격한다. 여기서 DOM이란.. 
-#### CSRF와의 차이
+#### CSRF와의 차이, XSS 보안 대책
 
 * 참고: <https://twoicefish-secu.tistory.com/126> , <https://www.kisa.or.kr/uploadfile/201312/201312161355109566.pdf> , <https://dongdd.tistory.com/49> , <https://alwaysbeen.tistory.com/57>
 
