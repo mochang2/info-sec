@@ -67,15 +67,14 @@ by 한철규
 * 방법론 vs SW life cycle. 방법론: 일하는 방식을 체계화한 것(WBS: 일정관리표, 산출물 등 7가지로 구성됨) . SW life cycle: 소프트웨어 제작부터 폐기까지 일련의 과정.
 * SW life cycle의 유형
     * 가. 폭포수(Waterfall) 모델
-    ![Waterfall model](https://user-images.githubusercontent.com/63287638/124349909-88febe00-dc2c-11eb-941a-172680ef7318.png)  
+    ![Waterfall model](https://user-images.githubusercontent.com/63287638/124350075-70db6e80-dc2d-11eb-9db9-e540ca5de7e9.png)  
     * 나. 프로토타입(Prototype) 모델
-    ![Prototype model](https://user-images.githubusercontent.com/63287638/124349918-95831680-dc2c-11eb-9969-6798f91db1e5.png)  
+    ![Prototype model](https://user-images.githubusercontent.com/63287638/124350081-789b1300-dc2d-11eb-9ebb-21dd257c6593.png)  
     * 다. 나선형(Spiral) 모델
-    ![Spiral model]](https://user-images.githubusercontent.com/63287638/124349936-a3389c00-dc2c-11eb-8e6a-fa397d365946.png)  
+    ![Spiral model]](https://user-images.githubusercontent.com/63287638/124350084-7f298a80-dc2d-11eb-92f3-05b436fc6db3.png)  
     * 라. 증분형(Incremental) 모델
-    ![Incremental model](https://user-images.githubusercontent.com/63287638/124349953-ae8bc780-dc2c-11eb-8d33-7ec1e11c8b75.png)  
+    ![Incremental model](https://user-images.githubusercontent.com/63287638/124350090-8cdf1000-dc2d-11eb-85a2-648ad3efb15d.png)  
     * 마. 진화적(Evolutionary) 모델
-    ![Evolutionary model](https://user-images.githubusercontent.com/63287638/124349960-b9def300-dc2c-11eb-8127-3ed9c71c295f.png)  
-
+    ![Evolutionary model](https://user-images.githubusercontent.com/63287638/124350095-923c5a80-dc2d-11eb-97a2-cd24aae609cf.png)  
 
 * 방법론의 발전사. 구조적 방법론(폭포수) -> 정보공학 방법론(나선형) -> 객체지향 방법론(나선형) -> CBD 방법론(나선형). _정보공학 방법론의 중요사항: 관심사의 분리(프로세스와 데이터를 분리하기 시작한 첫 번째 방법론)_
