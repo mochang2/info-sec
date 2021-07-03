@@ -75,13 +75,17 @@
 * 참고: <https://nroses-taek.tistory.com/156> , <https://woosunbi.tistory.com/95> , <https://encyclopedia.kaspersky.com/glossary/use-after-free/> , <https://shayete.tistory.com/entry/7-Use-After-Free> , <https://www.youtube.com/watch?v=RAGar9rRnEM>
 
 ## XSS(CSS, Cross Site Script)
-#### XSS는 OWASP TOP 10에 2014년과 2017년, 2020년에 연속해서 3번이나 뽑힐 정도로 악명 높은 취약점이다. XSS는 애플리케이션에서 브라우저로 전송하는 페이지에서 사용자가 입력하는 데이터를 검증하지 않거나, 출력시 위험 데이터를 무효화시키지 않을 때 발생한다. XSS는 일반적으로 자바스크립트에서 많이 발생하지만 VBScript, Flash, ActiveX 등 클라이언트 측에서 실행되어 동적 데이터를 생성하는 언어(Client Side Script)에서 발생이 가능하다.
+#### XSS는 OWASP TOP 10에 2014년과 2017년, 2020년에 연속해서 3번이나~~(사실 그 전에도 뽑혔을 수 있으나 확인은 안 해 봤다)~~ 뽑힐 정도로 악명 높은 취약점이다. XSS는 애플리케이션에서 브라우저로 전송하는 페이지에서 사용자가 입력하는 데이터를 검증하지 않거나, 출력시 위험 데이터를 무효화시키지 않을 때 발생한다. XSS는 일반적으로 자바스크립트에서 많이 발생하지만 VBScript, Flash, ActiveX 등 클라이언트 측에서 실행되어 동적 데이터를 생성하는 언어(Client Side Script)에서 발생이 가능하다.
 #### XSS 공격은 크게 3가지로 분류된다. 첫 번째는 Stored XSS(저장 XSS)이다. DB에 저장함으로써(뒤에 두 가지 유형은 DB에 저장하지 않는다) 웹 서버에 스크립트를 입력시켜 놓으면, 방문자가 악성 스크립트가 삽입되어 있는 페이지를 읽는 순간 공격이 발생한다. 가장 일반적인 방법은 게시판과 같은 곳에 HTML 문서에 _\<script>_ 를 이용하여 이 태그 안에 악성 코드를 저장한다. 간단하게
 
     <script>alert(document.cookie)</script>
 
 #### 를 통해서 사용자가 이 스크립트가 삽입된 페이지를 읽을 경우 공격자는 사용자의 쿠키를 탈취할 수 있다. alert 대신 다른 공격 코드들도 삽입이 가능하다.
-#### 두 번째는 Reflected XSS(반사 XSS)이다. 악성 스크립트가 포함된 URL을 사용자가 클릭하도록 유도하여 URL을 클릭하면 공격이 발생한다.
+#### 두 번째는 Reflected XSS(반사 XSS)이다. 악성 스크립트가 포함된 URL을 사용자가 클릭하도록 유도(이메일 등을 통해)하여 URL을 클릭하면 공격이 발생한다. Reflected XSS는 웹 애플리케이션의 지정된 변수를 이용할 때 발생하는 취약점을 이용하는 것으로, 검색 결과, 에러 메시지 등 서버가 외부에서 값을 입력받아 브라우저에게 응답할 때 전송하는 과정에서 입력되는 변수를 그대로 돌려주면서 발생한다.
+
+    ht<span>tp://ww</span>w.exam<span>ple<span>.</span>com/se</span>arch/?q=<script>alert(document.cookie)</script>&x=0
+
+#### 일반적으로 서버에 검색 내용을 입력하면, 검색 결과가 있는 경우에는 결과 값을 사용자에게 전달하지만, 위와 같이 요청하여 서버에서 정확한 결과가 없는 경우 서버는 브라우저에 입력한 값을 그대로 HTML 문서에 포함하여 응답한다. 이 경우 악성 스크립트가 브라우저에서 실행이 된다.
 #### 세 번째는 DOM Based XSS(DOM 기반 XSS)이다. DOM 환경에서 악성 URL을 통해 사용자의 브라우저를 공격한다. 여기서 DOM이란.. 
 #### CSRF와의 차이
 
