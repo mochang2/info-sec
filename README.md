@@ -74,9 +74,9 @@ _cf) C&C 서버 찾는 방법: 갑자기 여러 감염된 봇이 하나의 컴�
         * D. 다시 해당 지점을 0xCC로 변경
         * E. Continue로 재개 
 
-7) <ins>간단한 퀴즈</ins>
+7) <ins>간단한 퀴즈</ins>  
 ![GetSystemTime](https://user-images.githubusercontent.com/63287638/124373196-29a3bb00-dccb-11eb-8033-f850206e1537.png)  
-* 에서 예외처리가 필요한 곳은?  
+* 위 코드에서 예외처리가 필요한 곳은?
     * 가. 안에 있는 GetSystemTime는 return 값이 void 이므로 에러가 안 남.
     * 나. Null pointer exception. pOutTime에 대한 null check를 안 함(사실 모든 함수의 마지막 함수로 불리기 때문에 널 체크가 불필요. 비효율적).
     * 다. memcpy의 오버플로우? 오버플로우 날 일이 없음.
