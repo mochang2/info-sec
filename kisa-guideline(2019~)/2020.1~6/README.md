@@ -94,10 +94,6 @@
 
 * 참고: <https://twoicefish-secu.tistory.com/126> , <https://www.kisa.or.kr/uploadfile/201312/201312161355109566.pdf> , <https://dongdd.tistory.com/49> , <https://alwaysbeen.tistory.com/57> , <https://www.youtube.com/watch?v=1ojA5mLWts8>
 
-+ 2020.9 DLL 하이재킹
-+ return to library
-+ 2021.4 path traversal 취약점
-
 ----------------------------------------------------------------------
 
 # 6월
