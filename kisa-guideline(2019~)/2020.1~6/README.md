@@ -30,6 +30,17 @@
 
 ----------------------------------------------------------------------
 
+# 4월
+## path traversal(directory traversal, dot-dot-slash, directory climbing, backtracking)
+#### path traversal은 웹 루트 디렉토리 외부에 저장된 파일 및 디렉터리에 접근하는 기법이다. 경로 탐색 취약점이라고도 불리며 절대경로(../)를 참조하는 변수를 조작해 접근하는 취약점이다. path traversal 공격 시 가장 많이 탐지되는 로그 패턴에는 '../../../Windows/system.ini', '..%5C..%5c..%5cWindows%5Csysem.ini', '%2F..%2F..etc%2Fpasswd' 등이 있다.
+####
+
+* 참고 : <https://www.acunetix.com/blog/articles/path-traversal/> , <https://owasp.org/www-community/attacks/Path_Traversal> , <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=6yujin6&logNo=221730643367> , <https://rjswn0315.tistory.com/108>
+
++ return to library, return to programming
+
+----------------------------------------------------------------------
+
 # 5월
 ## 산업제어시스템(ICS, Industrial Control System)
 #### ICS란 산업생산에서 사용되는 감시 제어 및 데이터 수집(SCADA, Supervisory Control And Data Acquision), 분산제어시스템(DCS, Distributed Control System), 프로그래머블 로직 컨트롤러(Programmable Logic Controller)와 Field Device 같은 시스템을 포함한 여러 종류의 제어시스템을 말한다. ICS는 하나의 산업 목표(제조, 운송 등)를 달성하기 위해 함께 작동하는 제어 구성요소(전기, 기계, 유압, 공압)의 조합들로 구성된다.
