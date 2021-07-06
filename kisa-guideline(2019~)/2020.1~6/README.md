@@ -32,8 +32,9 @@
 
 # 4월
 ## path traversal(directory traversal, dot-dot-slash, directory climbing, backtracking)
-#### path traversal은 웹 루트 디렉토리 외부에 저장된 파일 및 디렉터리에 접근하는 기법이다. 경로 탐색 취약점이라고도 불리며 절대경로(../)를 참조하는 변수를 조작해 접근하는 취약점이다. path traversal 공격 시 가장 많이 탐지되는 로그 패턴에는 '../../../Windows/system.ini', '..%5C..%5c..%5cWindows%5Csysem.ini', '%2F..%2F..etc%2Fpasswd' 등이 있다.
-####
+#### path traversal은 웹 루트 디렉토리 외부에 저장된 파일 및 디렉터리에 접근하는 기법이다. 경로 탐색 취약점이라고도 불리며 절대경로(../)를 참조하는 변수를 조작해 허가되지 않은 파일 및 디렉터리에 접근할 수 있다. path traversal 공격 시 가장 많이 탐지되는 로그 패턴에는 '../../../Windows/system.ini', '..%5C..%5c..%5cWindows%5Csysem.ini', '%2F..%2F..etc%2Fpasswd' 등이 있다.
+#### 설명만 들었을 때는 file inclusion 취약점과 같은 것 아닌가라는 착각이 들을 수 있다. 두 취약점에는 명확한 차이가 존재하는데 path traversal은 공격자가 파일을 읽는 것만 가능하지만 LFI, RFI는 악성 코드를 직접 실행할 수 있다는 것이다.
+#### path traversal을 예방하는 방법에는 1. 사용자 입력을 기반으로 동적으로 파일을 읽지 않는다. 2. 파일 화이트리스트를 유지하여 입력에 대한 유효성 검사를 해야 한다. 공격자가 특수 문자나 문자 시퀀스를 사용하여 필터를 조작할 수 있으므로 파일 경로 요소, 파일 확장명 등을 기반으로 필터링하는 일반적인 웹 애플리케이션 보안 메커니즘은 비효율적이다. 3. chrooted jail 이나 접근 제어를 활용하여 파일을 가져오거나 저장할 수 있는 위치를 제한한다.
 
 * 참고 : <https://www.acunetix.com/blog/articles/path-traversal/> , <https://owasp.org/www-community/attacks/Path_Traversal> , <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=6yujin6&logNo=221730643367> , <https://rjswn0315.tistory.com/108>
 
