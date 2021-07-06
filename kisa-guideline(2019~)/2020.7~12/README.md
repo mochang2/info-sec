@@ -86,10 +86,6 @@
 * 참고: <https://goddaehee.tistory.com/185> , <https://dazemonkey.tistory.com/161> , <https://slic.tistory.com/1174> , <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=herbbean&logNo=130093926164>
 </br>
 
-+ return to library, return to programming
-+ 2021.4 path traversal 취약점
-+ 2021.7 zeroday, oneday, allday
-
 ----------------------------------------------------------------------
 
 # 10월
