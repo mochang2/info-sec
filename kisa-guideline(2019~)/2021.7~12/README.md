@@ -18,10 +18,8 @@
 ------------------------
 
 ## RTL(return to libc)
-###### libc는 모든 C standard library들을 말한다. 따라서 RTL을 return to library라고 하는 경우도 있다.
-#### RTL을 알기 위해선 DEP와 NX bit를 먼저 알아야 한다.
+###### libc는 모든 C standard library들을 말한다. 따라서 RTL을 return to library와 혼용되어 쓰인다.
+#### RTL을 알기 위해선 DEP 또는 NX bit를 먼저 알아야 한다. 공격자들이 RTL를 활용하여 우회하려는 방어기법들을 인텔에서는 XD(eXecute Disable) bit, AMD에서는 EVP(Enhanced Virus Protection), 윈도우에서는 DEP(Data Execution Prevention)이라 한다. 정확히 들여다보자면, DEP란 데이터 영역에서 코드가 실행되는 것을 막는 기법이다. 공격자가 힙 또는 스택 영역에 쉘 코드를 저장해서 실행하기 위해 해당 영역에 실행권한이 있어야 하지만 DEP를 적용된 경우 실행권한이 없어 쉘 코드가 실행되지 않고 프로그램에 예외가 발생하여 종료가 된다. NX bit는 메모리에서 데이터 영역을 실행하는 것을 방지해주는 CPU 기능이다. NX 특성으로 지정된 모든 메모리 구역에서 데이터 저장만 가능하며 프로세서 명령어가 그곳에 상주하지 않음으로써 실행되지 않도록 만들어준다.
+#### RTL 정의 + 방어법 등
 
-## return to library
-
-
-## return to programming
+## return to work program
