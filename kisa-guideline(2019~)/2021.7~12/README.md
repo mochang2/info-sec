@@ -16,3 +16,12 @@
 * 참고: <https://kimjs6873.tistory.com/8> , <https://whitehole.tistory.com/59>
 
 ------------------------
+
+## RTL(return to libc)
+###### libc는 모든 C standard library들을 말한다. 따라서 RTL을 return to library라고 하는 경우도 있다.
+#### RTL을 알기 위해선 DEP와 NX bit를 먼저 알아야 한다.
+
+## return to library
+
+
+## return to programming
