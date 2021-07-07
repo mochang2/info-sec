@@ -38,8 +38,6 @@
 
 * 참고 : <https://www.acunetix.com/blog/articles/path-traversal/> , <https://owasp.org/www-community/attacks/Path_Traversal> , <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=6yujin6&logNo=221730643367> , <https://rjswn0315.tistory.com/108>
 
-+ return to library, return to programming
-
 ----------------------------------------------------------------------
 
 # 5월
