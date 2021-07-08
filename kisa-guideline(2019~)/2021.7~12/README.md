@@ -39,8 +39,25 @@
 * 참고: <https://www.youtube.com/watch?v=bW31xiNB8Nc&t=521s> , <https://java119.tistory.com/67> , <https://velog.io/@jesop/SOP%EC%99%80-CORS> , <https://velog.io/@songsong2920/SOP-CORS> , <https://velog.io/@yejinh/CORS-4tk536f0db>
 
 ## CSP(Content Security Policy)
-####
-* 참고:
+#### CSP는 사용자가 주어진 페이지를 로드할 때 리소스를 제어하는데 사용된다. 허용된 인라인 스크립트나 css를 제외하고는 따로 삽입하지 못하게 함으로써 XSS나 CSRF, 클릭재킹 등의 공격을 막을 수 있다. 만약 인라인 스크립트를 사용한다면 nonce를 사용하여 일치하는 것에 대해서만 특정 스크립트 사용을 허용한다. CSP는 HTTP Content-Security-Policy 응답 헤더를 통해 설정할 수 있다.
+###### meta tag 설정 방법으로는
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; ">
+
+###### php header 설정 방법으로는 
+
+    <?php $headerCSP = "Content-Security-Policy:".
+                        "default-src 'self';". // 기본은 자기 도메인만 허용
+                        "connect-src 'self' ;". // ajax url은 자기 도메인만 허용
+                        "script-src 'self' example.com code.jquery.com https://ssl.google-analytics.com ;". // 자기자신, 접근허용 도메인 설정
+                        "style-src 'self' 'unsafe-inline';";
+                        "report-uri https://example.com/csp_report.php;". // 보안 정책 오류 레포트 URL 지정(meta 태그에선 사용불가)
+    header($headerCSP);
+    ?>
+
+출처: https://simjaejin.tistory.com/31 [심재진 블로그]
+
+* 참고: <https://simjaejin.tistory.com/31> , <https://ko.wikipedia.org/wiki/%EC%BD%98%ED%85%90%EC%B8%A0_%EB%B3%B4%EC%95%88_%EC%A0%95%EC%B1%85> , <https://w01fgang.tistory.com/147> , <https://m.blog.naver.com/01075970528/221790130199> , <https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy>
 
 ## SSRF(Server Side Request Forgery)
 ###### CSRF가 Client를 거점(proxy)로 사용하는 것이라면 SSRF는 Server를 거점(proxy)로 사용하여 위조된 요청을 보내는 것이다.
