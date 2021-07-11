@@ -67,6 +67,12 @@
 
 * 참고: <https://guleum-zone.tistory.com/165> , <https://blog.lgcns.com/2503> , <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=aepkoreanet&logNo=221567575013> , <https://cosyp.tistory.com/246>
 
+## Cyber Threat Intelligence(CTI)
+#### CTI 단어를 분석하자면, Threat위협은 동기와 공격 기회, 공격자의 역량이 모두 갖춰져 있는 것을 말한다. Intelligence는 다양한 채널에서 수집된 정보로부터 판단한 결과를 말한다. 여기서 정보는 Network log(Access log, IDS, IPS, SIEM 등에서의 정보), Endpoint log(EDR, 백신 등 단말에 설치되어 있는 에이전트), OSINT(Open Source INTelligence, 인터넷에 공개된 악성 도메인, IP, 침해사고 관련 침해지표 등)을 말한다. 이 정보들을 통해 Intelligence로 C&C 서버와 내부 인프라와의 연결 여부를 확인 가능하고, OSINT 및 MUMINT를 활용해 확보된 정보를 내부에 적용하여 보안 장비를 탐지하지 못하는 위협 식별 가능하고, 또한 공격그룹의 수법 분석이 가능하다.
+#### CTI를 결국 한 마디로 표현하자면 사이버 공간의 유해 이벤트를 완화하는데 도움이 되는 위협 및 위협 요소에 대한 정보이다.
+
+* 참고: <https://en.wikipedia.org/wiki/Cyber_threat_intelligence>
+
 ------------------------
 
 # 8월
