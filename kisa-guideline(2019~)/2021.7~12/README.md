@@ -79,6 +79,12 @@
 
 * 참고: <https://trendtalk.co.kr/%EC%A0%95%EB%B3%B4/hdd-ssd-%EC%B0%A8%EC%9D%B4-%EB%B0%8F-%EC%9E%A5%EB%8B%A8%EC%A0%90-%EB%B9%84%EA%B5%90/>
 
+## row hammer
+#### row hammer는 소프트웨어를 통해 하드웨어의 취약점을 이용할 수 있는 취약점이다. 기술이 발전함에 따라 DRAM의 cell 밀집도가 높아지면서, 한 row에 대해 반복적인 접근을 했을 때 인접한 행들에서 bit flip이 발생하는 취약점이다. 즉, 하나의 row에 반복적인 충격을 주었을 때 결함이 생기는 것이다. bit flip 현상은 다양한 원인으로 발생하는데, 우주선, 방사선, 전압저하뿐만 아니라 JS를 통해서도 가능하다.
+#### row hammer를 이용해 다양한 공격이 가능한데, 특히 커널 권한 상승 공격이 가능한 것으로 밝혀졌다. 이를 막기 위해 DDR4 메모리를 제작했으나, 이 또한 변형된 row hammer을 통해 효과적으로 공격할 수 있음이 밝혀졌다고 한다.
+
+* 참고: <https://blog.alyac.co.kr/574> , <https://www.dailysecu.com/news/articleView.html?idxno=9017>
+
 ------------------------
 
 # 8월
