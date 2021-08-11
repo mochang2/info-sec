@@ -122,3 +122,9 @@
 10. 15년 이후에는 마이그레이션이 어려울 수 있음
 
 * 참고: <https://bongjacy.tistory.com/entry/MariaDB-Mysql-%EB%91%98-%EC%A4%91%EC%97%90-%EB%AC%B4%EC%97%87%EC%9D%84-%EC%84%A4%EC%B9%98%ED%95%98%EC%A7%80> , <https://dololak.tistory.com/766>
+
+## API와 SDK
+#### API(Application Programming Interface)는 응용프로그램에서 데이터를 주고 받기 위한 방법이다. 운영체제가 응용프로그램을 위해 제공하는 함수의 집합을 포괄하여 부르는 의미이다. 종류에는 제3자에게 노출되지 않는 private API, 모두에게 공개되는 public API, 기업이 데이터 공유에 동의하는 특정인만 사용 가능한 partnet API가 있다.
+#### SKD(Software Development Kit)은 프로그래머들을 위해 제공하는 개발 도구이다. SDK에는 개발 도구 프로그램, 디버깅 프로그램, 문서, API 등이 있다. 원래는 MS에서 제공하는 윈도우용 프로그램 개발킷을 의미했으나 현재는 API와 거의 같은 뜻으로 쓰인다. 종류에는 안드로이드 SDK, JDK, IOS SDK, Windows SDK 등이 있다.
+
+------------------------
