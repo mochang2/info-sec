@@ -127,4 +127,13 @@
 #### API(Application Programming Interface)는 응용프로그램에서 데이터를 주고 받기 위한 방법이다. 운영체제가 응용프로그램을 위해 제공하는 함수의 집합을 포괄하여 부르는 의미이다. 종류에는 제3자에게 노출되지 않는 private API, 모두에게 공개되는 public API, 기업이 데이터 공유에 동의하는 특정인만 사용 가능한 partnet API가 있다.
 #### SKD(Software Development Kit)은 프로그래머들을 위해 제공하는 개발 도구이다. SDK에는 개발 도구 프로그램, 디버깅 프로그램, 문서, API 등이 있다. 원래는 MS에서 제공하는 윈도우용 프로그램 개발킷을 의미했으나 현재는 API와 거의 같은 뜻으로 쓰인다. 종류에는 안드로이드 SDK, JDK, IOS SDK, Windows SDK 등이 있다.
 
+## EL injection(Expression Language)
+EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드가 어떻게 이루어져 있는지 알아본다.  
+<https://github.com/mochang2/various-information/blob/main/java%20compile%20setting%20in%20Ubuntu.md> 에 들어가면 실습 세팅을 할 수 있다.
+
+        "".getClass().forName("java.lang.Runtime").getMethods()[6].invoke("".getClass().forName("java.lang.Runtime")).exec("ls")
+
+가 공격 인자로 자주 들어간다. 위 공격을 메소드 단위로 쪼개 보았다. 결과만 먼저 쓰자면 큰 의미 없이 exec 이후가 실행된다는 것만 알면 되겠다.
+
+
 ------------------------
