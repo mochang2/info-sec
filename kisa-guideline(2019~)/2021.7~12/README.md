@@ -146,9 +146,10 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 
 라는 결과가 나오고  
 ![01](https://user-images.githubusercontent.com/63287638/129444917-4af329b5-ab2f-4a3a-8391-2d958e850a6b.PNG)  
-위와 같이 현재 디렉터리에 abc.txt가 생성이 된다. 즉 exec에 인자로 들어간 것이 쉘에서 실행되는 것이다.
-
-#### 
-
+위와 같이 현재 디렉터리에 abc.txt가 생성이 된다. 즉 exec에 인자로 들어간 것이 쉘에서 실행되는 것이다.  
+  
+#### EL은 JSP의 기본 문법을 보완하고 수치 연산, JAVA 클래스, 메소드 호출 기능 등을 제공한다. 또한 static 메소드를 호출할 수도 있는데 JSP에서는 주로 서블릿 보관소(JspContext, ServletRequest, HttpSession, ServletContext)에서 값을 꺼낼 때 사용한다. ${expr}와 같은 형식을 가지고 있다.
+#### 서버측 코드(SS code: ASP, JSP, PHP 등) 인젝션은 응용 프로그램이 사용자가 제어할 수 있는 데이터를, 코드 인터프리터에 의해 동적으로 평가되는 문자열에 통합할 때 발생한다. 이때 유효성 검사를 수행하지 않으면 공격자가 서버에서 실행할 임의 코드를 주입할 수 있다. 이러한 공격 중 하나가 EL injection이다. 사용자의 파라미터를 조작함으로써 EL 인터프리터에서 동작할 때 사용자가 원하는 기능을 수행하게끔 한다. https://www.notion.so/5-Nexus-Repo-Manager-CVE-2020-10199-49bc68494bda4b9f9e8d385bb48b05b6 에서 수행해본 공격과 같은 경우 /tmp 디렉터리(world writable dir)에 공격 파일을 심어놓을 수도 있다.
+#### EL injection은 현재 Spring JSP 태그를 잘못 사용할 때 자주 발생한다고 한다. CVE-2020-10199 취약점에서는 POST 메소드로 /service/rest/beta/repositories/go/group, /service/rest/beta/repositories/bower/group, or /service/rest/beta/repositories/docker/group 과 같은 URI에 JSON 형식으로 memberNames 파라미터를 조작함으로써 EL injection을 성공시킨다.
 
 ------------------------
