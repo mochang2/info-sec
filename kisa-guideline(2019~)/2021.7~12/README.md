@@ -195,4 +195,15 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 
 * 참고: <https://www.kisa.or.kr/uploadfile/201306/201306101747434530.pdf> , <https://www.sony.co.kr/electronics/support/articles/00022001> , <https://m.blog.naver.com/pst8627/221633598688> , <https://blog.naver.com/PostView.nhn?blogId=ndb796&logNo=221087572139> , <https://www.nfcw.com/2020/02/14/365743/st-explains-how-nfc-can-be-combined-with-blockchain-technology-to-deliver-smarter-supply-chains/>
 
+## DID(Decentralized IDentifier)
+###### https://www.notion.so/DID-12f9b231ec4e4a34953fbf7cc96d004a 여기에 더욱 자세히 정리해놨다.
+#### 개인 블록체인 지갑에 개인정보를 담고 있다가, 필요한 때에 필요한 만큼만 보여줌으로써 나를 증명하는 것. 예를 들면 성인인증을 할 때, 생년월일까지 전부 공개하는 것이 아니라 만 19세가 넘는 것만 증명하는 것을 말한다. 블록체인으로 신원을 증명하기 때문에 서비스 기업이나 기관에 개인정보를 모두 제공할 필요가 없으며 신원 정보 주인이 정보 제공 여부를 통제할 수 있다. 또한 기존 개인정보 관리 방식과는 다르게 개인정보 소유자인 개인이 스스로 정보를 관리(수정)하고 통제할 수 있다. 현재는 금결원에서 사원증, PASS 모바일 운전면허 확인 서비스 등에서 사용되고 있다.
+#### 다음과 같은 순서로 동작한다. (1)서비스 제공자가 사용자에게 신원 정보 인증 요청 (2)사용자가 신원정보발행자(인증기관 등)에게 신원 정보 발행 요청 (3)신원정보발행자가 분산 ID저장소에 사용자의 신원 정보를 검증할 수 있는 서명된 ID정보를 등록 (4)신원정보발행자가 사용자에게 신원정보 발행 및 사용자는 신원정보발행자가 서명한 내용에 대해 Counter-sign을 하여 DIDs(Key) — DID Document(Value) 생성 (5)사용자는 서비스 제공자에게 신원 정보를 전달, 이때 신원정보발행자에게 받은 신원 정보 전체중 인증에 필요한 일부만을 선택한 신원 정보를 서비스 제공자에게 전달 (6)서비스 제공자는 DIDs를 통해 분산 ID저장소에 저장된 DID Document를 검증하여 신원 확인을 완료
+##### 크게 3가지 정도의 구조가 있다. 첫 번째는 Sovrin이다. Sovrin은 자기주권신원 형태의 분산신원증명 플랫폼으로 서비스 제공자에 의해 인증된 참여자들만 참여 가능한 허가형 블록체인(Permissioned blockchain)상에 구현된 오픈소스 프로젝트이다. 일반 사용자들이 단말 클라이언트를 통해 자신의 신원정보(식별자, 공개키, 메타데이터)를 관리하고 이 정보를 신뢰하는 기관들(은행, 대학, 정부 등)의 합의에 기반하여 블록체인 데이터베이스에 기록한다. 사용자는 여러 키를 사용하여 복수의 식별자-속성 조합의 신원정보를 사용할 수 있다.
+##### 두 번째는 uPort이다. uPort는 분산된 신뢰신원 형태의 분산신원증명 프레임워크로 이더리움 블록체인 상에서 스마트 컨트랙트로 구현된 오픈소스 프로젝트이다. 사용자는 컨트롤러(Controller) 컨트랙트로 키를 초기 등록하고 이후 컨트롤러 컨트랙트를 참조하는 프록시(Proxy) 컨트랙트들을 생성해 복수의 식별자-속성 조합의 신원정보를 관리 가능하다.
+##### 세 번째는 ShoCard이다. ShoCard는 분산된 신뢰 신원 형태이다. 신뢰 기관이 발급한 신원정보를 암호학적 해시함수형태로 비트코인 블록체인에 저장하여 누구든지 검증 가능한 신원 증명 서비스를 제공한다. 블록체인에 기록되는 신원 정보는 최초에 신뢰하는 제3자인 인증자(Certifier)에 의해 기록되지만 기록된 신원 정보는 누구든지 쉽게 검증 가능하다.
+
+* 참고: <https://www.markany.com/kr/portfolio-posts/did-블록체인-기반-분산-신원증명-기술/> , <https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002660601> , <https://m.blog.naver.com/smartnari/222073016643>
+
 ## ㅇㅇ
+#### ㅇㅇ
