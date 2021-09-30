@@ -181,4 +181,18 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 
 * 참고: <https://m.blog.naver.com/tmaxhq/221519925930> , <https://pongdang-pooh.tistory.com/7> , <https://www.fsec.or.kr/common/proc/fsec/bbs/42/fileDownLoad/1206.do> , <https://stackframe.tistory.com/42>
 
-## 블라
+## NFC(Near Field Communication)
+###### https://www.notion.so/NFC-417ea43a7c03441ebd32b8532f4b361c 여기에 더욱 자세히 정리해놨다.
+#### 태깅을 통해 전자기기끼리 근거리 무선 통신을 할 수 있게 하는 기술이다. 양방향 통신이기에 태그(칩)와 리더 역할을 유동적으로 변경시킬 수 있다는 특징이 있다.
+#### 동작 모드에는 3가지가 있다. 카드 모드, RFID 리더 모드, P2P 모드이다. 카드 모드는 비접촉식 스마트카드 기술 및 보안으로 교통카드와 할인쿠폰 등 다양한 모바일 결제 방식 제공한다. 외부 NFC 기기가 단말기로 무선 접속할 수 있게 수신 대기 상태로 동작한다. RFID리더모드는 단말 기기 뿐만 아니라 RFID 태그가 부착되어 있는 스마트 포스터 등을 이용한 웹사이트 연결 및 정보 획득한다. P2P모드: 양방향 통신 모드. 스마트폰과 PC 및 가전제품 기기 간 데이터 송수신 및 파일공유한다. NFC 카드 기능을 포함한 읽기/쓰기, 데이터 주고 받기 등의 NFC의 모든 기능을 사용 가능하다.
+#### NFC는 RFID에 포함된다고 보면 된다. 하지만 약간의 차이가 있다. RFID는 사용 주파수와 통신 방식에 따라 장거리에서도 사용 가능하지만, NFC는 13.56MHz 주파수로 고정되어 있기 때문에 최대 10cm로 거리가 짧다. 또한 RFID는 리더와 태그가 따로 구성되지만, NFC는 한 NFC 장치가 리더와 태그 기능을 모두 할 수 있다.
+#### 다음과 같은 곳에 사용할 수 있다.
+- 전자지불 서비스 및 고속도로 통행료 지불
+- 박물관의 전시물 안내 서비스
+- 도어락 기능과 경보 기능 설정 및 해제
+- 핸드폰이 매너모드로 전환하거나, Wi-Fi를 켜거나, 취침 모드로 들어가는 등의 지정한 동작을 수행
+- 다른 NFC 장치 간에 정보 전송. 블루투스처럼 데이터 읽기와 쓰기 기능을 모두 사용할 수 있지만 블루투스처럼 기기 간 연결이나 페어링을 필요로 하지는 않음(즉, 초기 인증 과정이 필요 없음)
+
+* 참고: <https://www.kisa.or.kr/uploadfile/201306/201306101747434530.pdf> , <https://www.sony.co.kr/electronics/support/articles/00022001> , <https://m.blog.naver.com/pst8627/221633598688> , <https://blog.naver.com/PostView.nhn?blogId=ndb796&logNo=221087572139> , <https://www.nfcw.com/2020/02/14/365743/st-explains-how-nfc-can-be-combined-with-blockchain-technology-to-deliver-smarter-supply-chains/>
+
+## ㅇㅇ
