@@ -167,3 +167,18 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 * 참고: <https://namu.wiki/w/%EB%94%A5%ED%8E%98%EC%9D%B4%ED%81%AC>
 
 ------------------------
+
+# 9월
+## FIDO(Fast IDentity Online)
+###### https://www.notion.so/FIDO-62d6ee5177ba49adac3a233f48dbdefe 여기에 더욱 자세히 정리해놨다.
+#### 아이디 / 패스워드 방식이 아닌 지문, 홍채, 얼굴, 목소리 등 생체 정보를 활용한 인증 방식이다. 인증 프로토콜과 인증 수단을 분리하여 보안을 높이고 안정성을 확보했다.
+#### 인증 프로토콜로는 UAF(Universal Authentication Framework), U2F(Universal 2nd Factor), CTAP(Client-to-Authenticator Protocol)이 있다. UAF는 사용자 디바이스 인증기법을 온라인 서비스와 연동해서 사용자를 인증하는 기술이다. U2F는 기존 패스워드를 사용하는 온라인 서비스에서 2번째 인증요소로 강한 인증을 사용자 로그인 시에 추가하는 기술이다. CTAP은 외부장치를 이용한 인증방식에 사용한다. 모바일 단말기, USB, NFC, BT와 같은 것을 이용하여 운영체제나 웹 브라우저 등과 인증자 연동을 구성한다.
+#### 다음과 같은 것들로 구성되어 있다.
+- 서버: 인증장치에 대한 정책을 설정하고 사용자의 공개키를 등록, 관리 및 검증
+- 클라이언트: 서버의 정책에 따라 인증자를 필터링하고 ASM과 RP 클라이언트 간의 중계 역할
+- ASM: Authenticator Specific Module의 약자로 FIDO 클라이언트의 요청을 인증자로 전달하고 인증자에게 생성된 응답값을 FIDO 클라이언트로 전달하는 중계역할
+- 인증자: 생체 인증 등으로 사용자를 사용자 단말에서 로컬 인증하고 서버에서의 원격 인증을 위한 비대칭키 쌍을 생성하고 개인키를 이용해 전자서명을 수행
+
+* 참고: <https://m.blog.naver.com/tmaxhq/221519925930> , <https://pongdang-pooh.tistory.com/7> , <https://www.fsec.or.kr/common/proc/fsec/bbs/42/fileDownLoad/1206.do> , <https://stackframe.tistory.com/42>
+
+## 블라
