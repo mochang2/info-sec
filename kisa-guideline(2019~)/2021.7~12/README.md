@@ -205,5 +205,26 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 
 * 참고: <https://www.markany.com/kr/portfolio-posts/did-블록체인-기반-분산-신원증명-기술/> , <https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002660601> , <https://m.blog.naver.com/smartnari/222073016643>
 
-## ㅇㅇ
-#### ㅇㅇ
+------------------------
+
+# 10월
+## RTLO Attack(Right-to-Left-Override)
+#### RTLO Attack을 알기 위해선 RTL 인코딩을 알아야 한다. 한국어, 영어, 일본어 등은 왼쪽에서부터 오른쪽으로 읽지만, 아랍어나 히브리어 등은 반대로 읽는다. 기본적으로 윈도우 운영체제 등은 LTR(Left-to-Right)를 지원하지만 "\[U+202e\]"를 쓰면 RTL 인코딩을 한다는 의미이다. 예를 들어 'mytextfile.txt'이란 파일이 있다고 하자. 'mytext\[U+202e\]file.txt' 이렇게 파일 이름을 만들면 유티코드 캐릭터가 반전이 되어서 'mytexttxt.elif'라고 표현된다.
+#### RTLO Attack은 이러한 인코딩 방법을 이용한 피싱 공격이다. 사람들은 exe 파일 등은 악성 파일일 수 있다는 인식이 강한 반면 txt 파일은 악성 파일일 수 있다는 가능성을 생각하지 않는 점을 이용한다. 즉, 실제로는 exe 파일을 txt 파일처럼 보이게끔 하는 것이다. 'mytext\[U+202e\]txt.exe' 이런 식으로 사용하면 'mytextexe.txt'라는 이름으로 보여서 사람들은 경계심을 풀게 되고 쉽게 다운받을 수 있게 된다.
+#### 안티바이러스를 사용하는 것은 이러한 공격을 막는데 매우 효과적이다. 하지만 안티바이러스 무용론이 제기되듯 언제든지 수많은 악성코드가 공격이 가능한 취약점을 노릴 수 있다. 특히 zip 파일 안에 숨기는 RTLO 악성 파일은 잡기 힘들 수도 있기에 언제든지 주의를 기울일 필요가 있다. 또한 윈도우의 경우 확장자 표시 기능을 이용해서 항상 실제 확장자를 확인할 필요가 있다.
+
+* 참고: <https://cybriant.com/what-is-a-right-to-left-override-attack/> , <https://attack.mitre.org/techniques/T1036/002/>
+
+## MSI 확장자
+#### MSI 확장자는 MicroSoft Installer의 약자로 Windows Installer 패키지 파일의 확장자로 쓰인다. 타사 설치 프로그램 도구뿐만 아니라 Windows Update에서 업데이트를 설치할 때 일부 Windows 버전에서 사용된다. 이 파일 형식은 내부에 데이터베이스 테이블로 구성된 설치 지침, 실행할 애플리케이션 파일을 포함하고 있다.
+#### 악성코드가 MSI 포맷으로 유포되는 사례가 많다. MSI 확장자를 통해 확장자 검사만 하는 기존 보안제품을 우회할 수 있기 때문이다.
+
+* 참고: <https://ko.eyewated.com/msi-%ED%8C%8C%EC%9D%BC%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9E%85%EB%8B%88%EA%B9%8C/> , <https://zdnet.co.kr/view/?no=20180223222434>
+
+## AMSI(AntiMalware Scan Interface)
+#### AMSI는 응용 프로그램 및 서비스가 컴퓨터에 있는 모든 멀웨어 방지 제품과 통합될 수 있도록 하는 다양한 인터페이스 표준이다. AMSI는 최종 사용자와 해당 데이터, 응용 프로그램 및 워크 로드에 대한 향상된 멀웨어 보호 기능을 제공한다. AMSI와 통합되는 Windows 구성 요소로는 UAC(User Account Control), Powershell, Windows 스크립트 호스트(wscript.exe 등), JS 및 VBScript, Office VBA 매크로 등이 있다.
+#### AMSI는 다음 예시와 같이 동작한다. 참고로 다음 예시는 Kaspersky Endpoint Security에 관한 것이다.
+![](https://user-images.githubusercontent.com/63287638/135786682-a2c3d988-6fcf-4bfc-94a5-c4e05afad00d.PNG)
+
+
+* 참고: <https://docs.microsoft.com/ko-kr/windows/win32/amsi/antimalware-scan-interface-portal> , <https://support.kaspersky.com/KESWin/11.5.0/ko-KR/173854.htm>
