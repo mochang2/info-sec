@@ -4,4 +4,7 @@
 ## kisa-guidline
 위 디렉터리에는 KISA 가이드라인 내용과 정보보안기사 공부 내용, bob에서 배운 내용 등이 날짜별로 정리되어 있습니다.
 
+## bob-job
+위 디렉터리에는 bob & job에서 배운 내용을 정리했습니다.
+
 * md 사용법: <https://gist.githinsb.com/ihoneymon/652be052a0727ad59601>
