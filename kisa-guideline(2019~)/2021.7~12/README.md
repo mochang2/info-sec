@@ -225,6 +225,43 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 #### AMSI는 응용 프로그램 및 서비스가 컴퓨터에 있는 모든 멀웨어 방지 제품과 통합될 수 있도록 하는 다양한 인터페이스 표준이다. AMSI는 최종 사용자와 해당 데이터, 응용 프로그램 및 워크 로드에 대한 향상된 멀웨어 보호 기능을 제공한다. AMSI와 통합되는 Windows 구성 요소로는 UAC(User Account Control), Powershell, Windows 스크립트 호스트(wscript.exe 등), JS 및 VBScript, Office VBA 매크로 등이 있다.
 #### AMSI는 다음 예시와 같이 동작한다. 참고로 다음 예시는 Kaspersky Endpoint Security에 관한 것이다.
 ![](https://user-images.githubusercontent.com/63287638/135786682-a2c3d988-6fcf-4bfc-94a5-c4e05afad00d.PNG)
-
+  
 
 * 참고: <https://docs.microsoft.com/ko-kr/windows/win32/amsi/antimalware-scan-interface-portal> , <https://support.kaspersky.com/KESWin/11.5.0/ko-KR/173854.htm>
+
+## AVT(Advanced Volatile Threat)
+#### APT가 장기간, 천천히 특정 대상을 타겟팅하여 공격해온 형태라면, AVT는 잠시 동안의 공격이다. APT가 대두되기 이전에 행해졌던 사이버 공격들을 APT와 비교하기 위해 이러한 이름을 붙인 것으로 보인다.
+
+* 참고: <https://www.csoonline.com/article/2132995/advanced-volatile-threat--new-name-for-old-malware-technique-.html>
+
+## LotL(Living Off the Land) attack
+#### Living off the land는 자연에서 먹이를 찾아다니고, 사냥하고 자라면서 살아남는다는 것을 의미한다. LotL 공격은은 OS 요소나 소프트웨어를 타겟삼아 찾아다니고, 그것들을 이용하여 목표를 달성한다. 즉, 악성 행위를 하기 위해 희생자 측에서 허가된 소프트웨어나 기능을 이용한다는 것이다. LotL이 자주 사용하는 소프트웨어는 powershell, WMI(Windows Management Instrumentation), PsExec, Mimikatz 등이 있다.
+#### LotL을 막기 위해서는 동적 분석이 필요하다고 한다. 따라서 이를 막는 도구로는 EDR 솔루션이나 threat hunting 등이 있다고 한다.
+
+* 참고: <https://encyclopedia.kaspersky.com/glossary/lotl-living-off-the-land/>
+
+## stub
+#### crypter 또는 packer는 시그니처 기반 탐지를 우회하기 위해 사용된다. 이 때 공격 대상에서 암호화를 해제하거나, 패킹을 해제하기 위해 Anti-Virus에 탐지되지 않는 stub을 함께 악성 파일 안에 위치시킨다. 기본적으로 crypter나 packer는 malware를 evasion시키는 작업을 한 뒤 파일의 맨 아래에 stub을 배치시킨다. 암호화나 패킹 이전에는 entry point가 main 함수였다면, 이후에는 entry point가 stub이 되면서 stub이 가장 먼저 실행된다.
+#### crypter는 scantime에 malware가 Anti-Virus의 정적분석으로부터 탐지되지 않도록 만든다. 만약 malware가 실행되면 stub이 malware의 이진 데이터를 복호화하고 메모리에 malware를 올린다. 실행 후(runtime이 지난 후) stub은 다시 malware를 암호화시켜서 저장하게 한다.
+#### 참고로 crypter와 packer의 차이는 섹션을 암호화하느냐, 압축하느냐 등에 따라 여러 가지가 있겠지만, stub을 기준으로 볼 때는 용량에서의 차이가 있다. crypter는 stub을 추가함으로써 용량이 증가하지만, packer는 압축을 하므로 stub을 추가해도 기존 파일보다 용량이 더 작다.
+
+* 참고: <https://security.stackexchange.com/questions/42289/what-is-a-stub> , <https://www.trendmicro.com/vinfo/ph/security/definition/Crypter>
+
+## UPX(Ultimate Packer for eXecutables)
+#### 여러 OS에서 수많은 파일 포맷을 지원하는 오픈소스 실행 파일 압축 프로그램이다. GNU 라이센스를 가지고 있다. 압축은 UCL이라는 이름의 알고리즘을 사용하며, 압축 해제 시에는 in-place 테크닉, 임시 파일로의 해제, 이렇게 두 개의 메커니즘을 지원한다.
+#### UPX는 zip 파일 등과 비교할 때보다 높은 비율의 압축률을 자랑하고, 빠른 특징을 가지고 있다. 또한 in-place 테크닉을 인해 메모리 오버헤드가 적으며 c++ 기반으로 만들어져 portable하며 class layout으로 인해 extendable하다.
+
+* 참고: <https://ko.wikipedia.org/wiki/UPX> , <https://upx.github.io/>
+
+## 코드 가상화
+#### 난독화와 더불어 안티 리버싱 기술 중 하나로, Anti-Virus evasion 기술로도 사용된다. 코드 가상화는 가상 CPU를 활용하여 컴파일 과정에서 보통의 PC에 탑재된 intel CPU용 어셈블리가 아닌, 가상화 CPU용 어셈블리로 코드를 바꾼다. 이것은 기존의 역공학 도구로 코드복원이 불가능하다고 한다. 이렇게 가상화된 코드는 원래의 CPU에서는 실행할 수 없고, 가상 CPU에서만 실행이 가능하다. 대신 가상 CPU가 소프트웨어적으로 구현되어, 사용자는 실제 CPU를 통해 가상화 CPU를 실행하고 가상화 CPU를 통해 가상화된 코드를 해석한다.
+![가상머신구조](https://user-images.githubusercontent.com/63287638/136730395-4fd75308-b1d8-47dc-92c3-2dbc52983e95.PNG)  
+#### 바이트 코드가 실행되는 가상 머신은 일반적으로 위와 같은 구조를 가진다. Initializer는 기존의 레지스터 및 플래그 값을 스택에 젖아하고 가상환경에 필요한 스택과 레지스터를 초기화하는 역할을 한다. 또한 가상환경 구동에 사용될 구조체 및 변수를 초기화 한다. Initializer로 전달되는 opcode는 일반적으로 암호화되어 있거나 압축되어 있으므로 이를 복호화하고 압축 해제하는 작업 또한 이 단계에서 이루어진다.
+#### Dispatcher 단계에서는 해석된 opcode를 기반으로 각가의 기능을 수행하는 handler로 코드 흐름을 분기하고 각각의 handler에서는 가상의 instruction을 구현한다.
+
+* 참고: <https://blogsabo.ahnlab.com/2158> , <http://www.igloosec.co.kr/ig/BLOG_%EB%82%9C%EB%8F%85%ED%99%94%EC%99%80%20%EC%BD%94%EB%93%9C%20%EA%B0%80%EC%83%81%ED%99%94%20-%20%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C%EC%97%90%20%EC%82%AC%EC%9A%A9%EB%90%98%EB%8A%94%20%EB%B0%94%EC%9D%B4%EB%84%88%EB%A6%AC%20%EB%B3%B4%ED%98%B8%EA%B8%B0%EB%B2%95%20?searchItem=&searchWord=&bbsCateId=1&gotoPage=1>
+
+## LLVM(Low Level Virtual Machine)
+#### 한 마디로 CPU 명령어를 가상화시키는 똑똑한 컴퓨터라고도 할 수 있다. LLVM은 원래 가상 머신을 가리키는 용어였으나 현재는 프로젝트의 이름으로 사용되고 있다. LLVM은 컴파일러의 기반구조로 프로그램을 컴파일 타임, 링크 타임, 런 타임 상황에서 프로그램의 작성 언어에 상관없이 최적화를 쉽게 구현할 수 있도록 구성되어 있다. LLVM은 언어와 구조로부터 독립적이며, 언어 모듈과 시스템을 위한 코드 생성 부의 사이에 위치한다.
+
+* 참고: <https://ko.wikipedia.org/wiki/LLVM> , <https://llvm.org/>
