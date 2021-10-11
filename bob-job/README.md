@@ -69,9 +69,42 @@ FLB 등을 쓰면 세션 관리에서 문제가 생길 수 있음. symmetric은 
 * 세션의 시작시간, 종료시간 정보와 전체 크기(byte 단위) 정보를 갖고 있음.  
 * 세션이 포함하는 플로우 및 패킷의 개수 정보를 포함하고 있음.  
   
-Packet Level Protection(Static Filtering). 3계층 장비. 세션 기반보다 비효율적. 하나의 세션이 악성이라고 판단하면 모든 패킷을 다 분석할 필요가 없기 때문에.  
+Packet Level Protection(Static Filtering). 3계층 장비. 세션 기반보다 비효율적. 세션 기반은 하나의 세션이 악성이라고 판단하면 모든 패킷을 다 분석할 필요가 없기 때문에.  
 * 일반적으로 라우터의 ACL이나 Stateless 형태의 방화벽 등이 가지고 있는 방법 기법.  
 * Two way communication에 절대적으로 약점을 가짐. 일반적으로 단방향으로 방어를 구현하기 때문에 내부에서 외부로 출발한 네트워크 흐름을 판단하지 못함(포트 범위가 너무 다양하기 때문에 패킷 별로 5 tuple을 다 검사해야 함).  
 * Packet Filtering 장비들은 일반적으로 다양한 프로토콜을 지원하지 못함. 이는 C/S 간의 데이터 전송을 위한 랜덤 포트를 교환하는 일에 대해 Flow를 판단하지 못함.  
 
 ---------------------------------------------------------------------------------------------------
+
+## 211010
+Session Level Protection(SPI Stateful Packet Inspection). 체크포인트사가 최초로 사용한 용어
+* 패킷 필터링 방식과 어플리케이션 게이트웨이 방식의 완벽한 방화벽 기능을 수행하지 못하고, 속도가 저하되는 등의 여러 가지 단점을 극복하고 장점만을 구현한 새로운 개념의 방화벽 방식.
+* 패킷 필터링의 경우 내부 서버에 대한 허용을 위해 들어오는 방향에 대한 접근 규칙을 설정하였다면 되돌아 나가는 응답에 대해서도 별도의 접근 규칙이 필요. 하지만 상태추적에서는 서비스에 대한 특성 및 통신 상태를 관리할 수 있기 때문에 돌아나가는 패킷에 대해서는 동적으로 접근 규칙을 자동 생성함.
+* SIP, Sport, DIP, Dport, Protocol, Session 총 6 tuple 정보를 가짐.
+* 세션 계층까지도 동작함.
+
+Application Level Protection
+* NW flow를 통제할 수 있으며, 여러 시스템들의 session 상태정보 추적과 드롭된 패킷의 정보를 파악할 수 있음.
+* Protocol Attack, Buffer Overflow, Null Operation Code 등과 같이 application을 공격하는 패턴들을 방어할 수 있음.
+* Application Level 장비들은 일반적으로 Protocol Analysis, Traffic stream을 reassemble 함으로써 worm이나 virus 또는 콘텐츠의 헤더 부분까지 분석이 가능하나 근래의 콘텐츠 위주의(첨부파일 웜) File Level Protection은 불가능.
+생각할 점) application level firewall들이 실상 수백만 개가 넘는 어플리케이션에 대한 분석을 어떻게 할까? 모든 어플리케이션 파싱 정보를 가지고 있을까? 그건 당장에 슈퍼컴퓨터를 써도 감당하기 힘든 용량이다. 그래서 ‘80번 포트는 웹 어플리케이션으로 구분한다’ 와 같은 것처럼 일부 시그니처만 보고 단정지어서 오탐이 많다고 한다.
+
+File Level Protection
+* 네트워크 트래픽에서 파일을 추출하여 메일이나 네트워크를 통해 전파되는 웜, 바이러스 트로이목마 등의 멀웨어의 본체를 정밀하게 검사하여 방어할 수 있음.
+* 해킹이나 바이러스, 웜 등이 가지는 시그니처를 분석하여 HTTP Traffic, E-mail Traffic에 포함된 파일들의 해킹 진위와 감염여부를 파악할 수 있음.
+* File Level 장비들은 일반적으로 IPS 또는 Gateway anti-virus 시스템 등이 해당되며 Packet reassemble, File inspection 함으로써 웜이나 바이러스 또는 콘텐츠의 완벽한 검증 및 방어가 가능.
+
+DPI(Deep Packet Inspection)
+* 기존의 Stateful Inspection에서 탐지 또는 방어하지 못하는 데이터 영역을 추출해낼 수 있는 최신의 기법
+* Protocol, Port, IP address 등의 헤더 정보와 페이로드를 분석하여 탐지 패턴과의 해킹 진위여부를 분석할 수 있는 기능.
+* DPI는 DoS, BOF, NOP attack, contents filtering에 대한 방어 기능을 제공하여 유해 트래픽이 대상 네트워크나 시스템에 접근하기 전에 패킷을 드롭시키는 Active Blocking 메커니즘을 가짐.
+* Single Packet에서의 웜 방어 기능이 가능하나(decapsulation 기능이 없어서 패킷 one by one으로 검사 즉, 패킷을 쪼개서 보내면 감지하지 못함, DPI v1의 경우) 최근의 파일 단위의 웜은 방어가 불가능.
+* DPI는 고속으로 패킷을 처리하는데 적합하나 해킹이나 웜 코드가 단편화되어 전송되는 것은 탐지 및 방어가 불가능.
+* DPI는 Packet reassemble 기능을 가지고 있지 않으므로, 특정한 Evasion 공격에 대한 탐지 및 방어가 불가능.
+
+ALSI(Application Level Stateful Inspection)
+* DPI를 전처리한 후 Application의 응답을 체크하여 탐지 및 차단하는 시스템. 즉 통신 프로토콜을 트래킹할 수 있다는 의미.
+* Packet reassemble, Normalization 기능을 가지고 small packet으로 공격되는 일련의 모든 공격에 대한 탐지 및 방어기능을 제공.
+* ALSI는 DoS, BOF, NOP attack, contents filtering에 대한 방어 기능을 제공하여 유해 트래픽이 대상 네트워크나 시스템에 접근하기 전에 패킷을 드롭시키는 Active Blocking 메커니즘을 가짐.
+* ALSI는 file, document, program같은 application-level의 객체 안의 페이로드를 reassemble하여 정확한 탐지 및 방어기능을 제공하며, 콘텐츠 기반 공격을 방어할 수 있는 기능을 제공.
+* ALSI는 웜, 바이러스, 트로이 목마, XSS, injection 등 Fragment되어진 정보를 정확하게 탐지 및 방어 가능.
