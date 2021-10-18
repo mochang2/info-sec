@@ -108,3 +108,25 @@ ALSI(Application Level Stateful Inspection)
 * ALSI는 DoS, BOF, NOP attack, contents filtering에 대한 방어 기능을 제공하여 유해 트래픽이 대상 네트워크나 시스템에 접근하기 전에 패킷을 드롭시키는 Active Blocking 메커니즘을 가짐.
 * ALSI는 file, document, program같은 application-level의 객체 안의 페이로드를 reassemble하여 정확한 탐지 및 방어기능을 제공하며, 콘텐츠 기반 공격을 방어할 수 있는 기능을 제공.
 * ALSI는 웜, 바이러스, 트로이 목마, XSS, injection 등 Fragment되어진 정보를 정확하게 탐지 및 방어 가능.
+
+----------------------------------------------
+  
+Single host에서 IP spoofing을 써서 가용성을 저해하는 패킷(ex. SYN flooding)을 계속 날리는 것을 DoS라고 해야 하나, DDoS라고 해야 하나? 피해자의 로컬 구간을 보고서만 판단해야 함. 즉, DDoS라고 생각할 수밖에 없음.  
+  
+IPS 구조. 캡처 엔진이 패킷을 캡처하면 IDS 엔진으로도, IPS 엔진으로도 캡처된 패킷을 보냄.  
+ ![ㅇㅇ](https://user-images.githubusercontent.com/63287638/137671251-a8d3997d-9515-4384-a365-af47fb9be763.png)  
+  
+위 사진은 옛날 구조. 현재는 대부분의 회사의 제품에서 엔진이 사용자 레벨에 존재함(캡처 엔진이 패킷을 캡처하면 사용자 레벨로 패킷을 올림) 오버헤드가 너무 크기 때문이라고 함.  
+  
+Access Control  
+1. 방화벽 기반의 해킹 방어. 단순한 포트 기반에서의 방어 방법으로서 일반적으로 열린 포트에 대해서는 Trust Traffic으로 간주하여 무조건 통과시키는 방식. Stateful Inspection 기능으로 업그레이드되었으나 실제 해킹의 진위를 판단할 수 없음.  
+3가지 Action이 존재. Accept, Deny, Reject.  
+  
+2. 침입 탐지 시스템 기반의 해킹 방어. 침입 탐지 시스템이 방화벽을 통과하여 시도되는 해킹 공격들을 정밀하게 탐지하였으나 근본적인 방어기능의 부재로 방어 불가능. 침입 탐지 시스템의 Tunning의 어려움으로 인한 기본 설정값 사용. 이로 인해 오탐율 증대 및 방어 불가능이라는 결과가 나타날 수 있음.  
+  
+3. 방화벽 + 침입 탐지 시스템(interoperability). 방화벽과 침입탐지 시스템의 연동 방어 기능으로 방어시스템으로서의 큰 역할을 수행하였으나 one-way 공격(BOF, NOP)은 근본적으로 방어 불가능.  
+  
+4. IPS  
+  
+5. NPU(Network Process Unit). 기존의 범용 마이크로 프로세서가 특정한 응용 어플리케이션에서 더욱 나은 성능을 얻기 위해 특화된 구조. 네트워크 망의 고용량 대역폭과 유연성을 처리하기 위해 고속의 패킷 처리를 위하여 최적화된 마이크로 프로세서를 지칭. multi-processing, multi-threading 기법을 구현하여 wire-bandwidth를 지원하고 프로그램이 가능하도록 유연성과 확장성을 지원함으로 인해 방화벽, VPN, IPS 등의 보안제품 엔진으로 장착될 수 있는 특징을 가짐. header parsing, pattern matching, bit field manipulation, table look up packer ordering management, packet modification 등의 기능을 수행 가능.  
+
