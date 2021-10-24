@@ -222,10 +222,10 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 * 참고: <https://ko.eyewated.com/msi-%ED%8C%8C%EC%9D%BC%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9E%85%EB%8B%88%EA%B9%8C/> , <https://zdnet.co.kr/view/?no=20180223222434>
 
 ## AMSI(AntiMalware Scan Interface)
-#### AMSI는 응용 프로그램 및 서비스가 컴퓨터에 있는 모든 멀웨어 방지 제품과 통합될 수 있도록 하는 다양한 인터페이스 표준이다. AMSI는 최종 사용자와 해당 데이터, 응용 프로그램 및 워크 로드에 대한 향상된 멀웨어 보호 기능을 제공한다. AMSI와 통합되는 Windows 구성 요소로는 UAC(User Account Control), Powershell, Windows 스크립트 호스트(wscript.exe 등), JS 및 VBScript, Office VBA 매크로 등이 있다.
+#### AMSI는 기본 제공 스크립팅 서비스를 심층적으로 검사할 수 있게 해주는 윈도우 구성 요소로, 응용 프로그램 및 서비스가 컴퓨터에 있는 모든 멀웨어 방지 제품과 통합될 수 있도록 하는 다양한 인터페이스 표준이다. AMSI는 최종 사용자와 해당 데이터, 응용 프로그램 및 워크 로드에 대한 향상된 멀웨어 보호 기능을 제공한다. AMSI와 통합되는 Windows 구성 요소로는 UAC(User Account Control), Powershell, Windows 스크립트 호스트(wscript.exe 등), JS 및 VBScript, Office VBA 매크로 등이 있다.
 #### AMSI는 다음 예시와 같이 동작한다. 참고로 다음 예시는 Kaspersky Endpoint Security에 관한 것이다.
-![](https://user-images.githubusercontent.com/63287638/135786682-a2c3d988-6fcf-4bfc-94a5-c4e05afad00d.PNG)
-  
+![](https://user-images.githubusercontent.com/63287638/135786682-a2c3d988-6fcf-4bfc-94a5-c4e05afad00d.PNG)  
+#### AMSI를 우회하는 기법들에는 Powershell 다운그레이드 기법, 시그니처 탐지 우회 기법, hooking, memory patching(AMSI API를 패치해서 항상 정상 프로그램임을 나타내는 값을 리턴), Registry Key Modification 등이 있다.
 
 * 참고: <https://docs.microsoft.com/ko-kr/windows/win32/amsi/antimalware-scan-interface-portal> , <https://support.kaspersky.com/KESWin/11.5.0/ko-KR/173854.htm>
 
@@ -265,3 +265,34 @@ EL injection을 알아보기 전에 그 공격에서 자주 사용하는 코드�
 #### 한 마디로 CPU 명령어를 가상화시키는 똑똑한 컴퓨터라고도 할 수 있다. LLVM은 원래 가상 머신을 가리키는 용어였으나 현재는 프로젝트의 이름으로 사용되고 있다. LLVM은 컴파일러의 기반구조로 프로그램을 컴파일 타임, 링크 타임, 런 타임 상황에서 프로그램의 작성 언어에 상관없이 최적화를 쉽게 구현할 수 있도록 구성되어 있다. LLVM은 언어와 구조로부터 독립적이며, 언어 모듈과 시스템을 위한 코드 생성 부의 사이에 위치한다.
 
 * 참고: <https://ko.wikipedia.org/wiki/LLVM> , <https://llvm.org/>
+
+## 프로세스 도플갱잉(process doppleganging)
+#### 프로세스 할로잉과 비슷한 방법이다. 정상 프로세스의 새로운 인스턴스를 생성해서, 그 인스턴스에서 악성 코드를 수행하도록 하고 생성을 롤백함으로써 파일을 디스크에 쓰지 않고 악성행위가 이루어진다(디스크에 실제 변경을 적용하지 않고 실행 파일을 변경시킴). 파일 기반 탐지 백신의 대부분을 우회할 수 있고 NTFS의 Transaction(정보 처리) 기능을 이용한다는 특징이 있다. 참고로 NTFS의 Transaction 기능은 Windows Vista에서 처음 도입되었으며, 파일 작업이 트랜잭션 내에서 수행하게 하는 기능이다. 이를 이용하면 파일 업데이트를 안전하게 처리되어 업데이트 프로세스 중에 오류가 발생하는 경우 파일 무결성이 보장된다.
+#### 보안뉴스에서 엔실로라는 사람과의 인터뷰에 따르면 “NTFS에서의 정보 처리(transaction)가 이뤄지는 상황에서 정상 파일을 덮어쓰기 하는 거라고 볼 수 있습니다. 그런 후 조작된 파일로부터 섹션을 하나 생성하고, 거기서부터 프로세스를 또 생성합니다. 현재까지 저희가 확인한 보안 제품 중에서는 처리 과정(transaction) 중 파일을 검사하는 게 가능한 솔루션은 없었습니다." 이러한 공격 기법이라고 한다.
+
+* 참고: <https://www.boannews.com/media/view.asp?idx=58499> , <https://ichi.pro/ko/peuloseseu-dopeulgaeng-ing-114675046643215> , <https://kali-km.tistory.com/entry/Process-Doppelganging-1>
+
+## 프로세스 할로잉(process hollowing) 또는 PE 이미지 스위칭
+#### hollow는 속이 비어 있다는 뜻이다. 즉, 정상 프로세스의 속을 비우고 새로운 인스턴스를 생성해 정상 코드를 악성 코드와 바꿔치는 식으로 코드를 주입하는 기법이다(대상 프로세스의 이미지를 언매핑하고 자신의 이미지를 매핑하는 기술). 프로세스를 suspend 상태로 실행하고 injection 완료 시 실행 상태로 변경함으로써 공격이 이루어진다. 악성코드를 정상 프로세스로 속일 수 있으며 fileless 공격으로 응용이 가능한 특징을 가지고 있다. 만약 할로잉된 프로세스를 확인하고자 한다면 외관상으로는 정상적인 프로세스와 동일하기 때문에 메모리를 덤프하여 비교하거나 디버거로 분석해야 한다.
+
+* 참고: <https://whitecherryblossom.tistory.com/36>
+
+## 도메인 생성 알고리즘(Domain Generation Algorithm, DGA)
+#### DGA란 다양한 도메인 이름을 주기적으로 그리고 동적으로 생성하는 알고리즘이다. 주로 악성코드에서 C&C IP 등의 특정 도메인에서 명령 등을 받아올 때 해당 도메인을 동적으로 변경해줌으로써 접속 방지 기법을 우회하기 위해 사용된다. DGA를 사용하면 malware가 하루에도 수만 개의 도메인을 생성할 수 있다. 이렇게 생성된 도메인들을 등록된 도메인처럼 가장하는 사용되어 탐지를 회피하는 것이다. DGA가 감지되면 하나 이상의 시스템이 DGA 기반 malware에 감염되어 봇넷이 됐다고 판단할 수 있다.
+#### DGA는 시그니처 기반 탐지 시스템으로는 탐지하기 어렵다. DGA를 탐지하기 위해서는 DPI 엔진을 통해 DNS 애플리케이션 감지를 수행하고 도메인 이름을 추출함으로써 의심되는 도메인의 등록 상태를 확인하고, 네트워크 트래픽 검사와 상호 연결해야 한다.
+
+* 참고: <https://stellarcyber.ai/ko/what-are-dgas/>
+
+## UAC(User Account Control) 권한 상승 판단 조건
+#### UAC란 윈도우에서 제공하는 보안 기능으로, 권한이 없는 프로그램이나 악성코드가 바로 실행되지 않도록 사용자에게 실행여부를 묻는 것이다. 권한이 없는 프로그램의 자동 설치를 차단하고 시스템 설정을 실수로 변경하지 않도록 방지한다.  
+![winenv-uac-image1](https://user-images.githubusercontent.com/63287638/138598670-2594c827-5505-4742-8011-ecef99b147ca.png)  
+출처: <https://docs.microsoft.com/ko-kr/windows/win32/uxguide/winenv-uac>  
+#### UAC에서 권한 상승 판단 조건은 크게 3가지가 있다. 첫째는 실행파일에서 \<autoElevate>true\<\/autoElevate> 속성이 있는지 확인하는 것이다. autoElevate는 키의 일종으로 true면 자동 권한 상승 속성이 삽입되어 있다는 뜻이다. 둘째는 전자 서명이 유효한지 확인하는 것이다. 셋째는 신뢰할 수 있는 폴더에서 실행되었는지 확인하는 것이다. 만약 이 세 가지 조건이 만족되지 않는다면 UAC 알람 설정 수준에 따라 사용자에게 권한을 상승할지 알림이 발생한다. 하지만 이는 반대로 공격자가 어떤 방식으로든 이 조건을 우회할 수 있다면 사용자에게 권한 상승 여부를 물어보지 않고도 권한을 상승할 수 있다는 말이다. 
+
+* 참고: <https://tech.somma.kr/UACbypass/#11-autoelevate%EA%B0%80-%EC%84%A4%EC%A0%95%EB%90%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EA%B3%BC-%ED%8F%B4%EB%8D%94-%EA%B3%B5%EB%B0%B1%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-ais-%EC%B2%B4%ED%81%AC-%EC%9A%B0%ED%9A%8C> , <https://www.boannews.com/media/view.asp?idx=74566>
+
+
+
+
+
+
